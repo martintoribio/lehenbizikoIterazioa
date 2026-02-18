@@ -28,7 +28,7 @@ public class QuerySalesGUI extends JFrame {
 	private DefaultTableModel tableModelProducts;
 
 	private JFrame thisFrame; 
-
+	private JFrame jasotakoPantaila;
 	private String[] columnNamesProducts = new String[] {
 			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Title"), 
 			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Price"),
@@ -38,7 +38,8 @@ public class QuerySalesGUI extends JFrame {
 	private JTextField jTextFieldSearch;
 	
 
-	public QuerySalesGUI() {
+	public QuerySalesGUI(JFrame pantaila) {
+		jasotakoPantaila=pantaila;
 		tableProducts.setEnabled(false);
 		thisFrame=this;
 		this.getContentPane().setLayout(null);
@@ -54,6 +55,7 @@ public class QuerySalesGUI extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				thisFrame.setVisible(false);
+				jasotakoPantaila.setVisible(true);
 
 			}
 		});		
@@ -137,3 +139,4 @@ public class QuerySalesGUI extends JFrame {
 		 });
 	}
 }
+

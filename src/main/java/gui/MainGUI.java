@@ -46,17 +46,18 @@ public class MainGUI extends JFrame {
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
+	private JFrame nirePantaila;
 	/**
 	 * This is the default constructor
 	 */
 	public MainGUI( String mail) {
 		super();
-
+		nirePantaila=this;
 		this.sellerMail=mail;
 		
 		this.setSize(495, 290);
 		jLabelSelectOption = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
-		jLabelSelectOption.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jLabelSelectOption.setFont(new Font("Tahoma", Font.BOLD, 20));
 		jLabelSelectOption.setForeground(Color.BLACK);
 		jLabelSelectOption.setHorizontalAlignment(SwingConstants.CENTER);
 		
@@ -94,8 +95,9 @@ public class MainGUI extends JFrame {
 		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.CreateSale"));
 		jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new CreateSaleGUI(sellerMail);
+				JFrame a = new CreateSaleGUI(sellerMail,nirePantaila);
 				a.setVisible(true);
+				nirePantaila.setVisible(false);
 			}
 		});
 		
@@ -103,9 +105,10 @@ public class MainGUI extends JFrame {
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.QuerySales"));
 		jButtonQueryQueries.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new QuerySalesGUI();
+				JFrame a = new QuerySalesGUI(nirePantaila);
 
 				a.setVisible(true);
+				nirePantaila.setVisible(false);
 			}
 		});
 		

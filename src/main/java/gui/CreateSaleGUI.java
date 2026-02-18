@@ -49,7 +49,7 @@ public class CreateSaleGUI extends JFrame {
 	private JCalendar jCalendar = new JCalendar();
 	private Calendar calendarAct = null;
 	private Calendar calendarAnt = null;
-
+	private JFrame jasotakoPantaila;
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	
 	JComboBox<String> jComboBoxStatus = new JComboBox<String>();
@@ -64,8 +64,8 @@ public class CreateSaleGUI extends JFrame {
 	private JFrame thisFrame;
 	private final JButton btnNewButton_2 = new JButton("grabar Imagen"); //$NON-NLS-1$ //$NON-NLS-2$
 
-	public CreateSaleGUI(String mail) {
-
+	public CreateSaleGUI(String mail,JFrame pantaila) {
+		jasotakoPantaila=pantaila;
 		thisFrame=this;
 		this.sellerMail=mail;
 		this.getContentPane().setLayout(null);
@@ -108,7 +108,8 @@ public class CreateSaleGUI extends JFrame {
 		jButtonClose.setBounds(new Rectangle(328, 228, 101, 30));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				thisFrame.setVisible(false);			}
+				thisFrame.setVisible(false);
+				jasotakoPantaila.setVisible(true);}
 		});
 
 		jLabelMsg.setBounds(new Rectangle(26, 275, 377, 20));
@@ -303,3 +304,4 @@ public  String encodeFileToBase64Binary(File file){
         return encodedfile;
     }
 }
+
