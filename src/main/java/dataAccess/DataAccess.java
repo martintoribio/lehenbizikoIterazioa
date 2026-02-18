@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
+import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -251,7 +252,14 @@ public void open(){
         return resizedImage;
     }
 	
-	
+	@WebMethod public boolean isLogin(String email, String password) {
+
+		List<Sale> res = new ArrayList<Sale>();	
+		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =?1 AND s.password=?2",Seller.class);   
+		query.setParameter(1, email);
+		query.setParameter(2, password);
+		return query.getResultList().isEmpty();
+	}
 	
 	public void close(){
 		db.close();

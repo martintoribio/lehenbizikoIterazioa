@@ -27,8 +27,8 @@ public class MainGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel jContentPane = null;
-	private JButton jButtonCreateQuery = null;
-	private JButton jButtonQueryQueries = null;
+	private JButton jButtonLogin = null;
+	private JButton jButtonRegister = null;
 
     private static BLFacade appFacadeInterface;
 	
@@ -39,7 +39,7 @@ public class MainGUI extends JFrame {
 	public static void setBussinessLogic (BLFacade facade){
 		appFacadeInterface=facade;
 	}
-	protected JLabel jLabelSelectOption;
+	protected JLabel jLabelTitle;
 	private JRadioButton rdbtnNewRadioButton;
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JRadioButton rdbtnNewRadioButton_2;
@@ -56,10 +56,10 @@ public class MainGUI extends JFrame {
 		this.sellerMail=mail;
 		
 		this.setSize(495, 290);
-		jLabelSelectOption = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
-		jLabelSelectOption.setFont(new Font("Tahoma", Font.BOLD, 20));
-		jLabelSelectOption.setForeground(Color.BLACK);
-		jLabelSelectOption.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title"));
+		jLabelTitle.setFont(new Font("Tahoma", Font.BOLD, 20));
+		jLabelTitle.setForeground(Color.BLACK);
+		jLabelTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		rdbtnNewRadioButton = new JRadioButton("English");
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
@@ -91,21 +91,21 @@ public class MainGUI extends JFrame {
 		panel.add(rdbtnNewRadioButton_2);
 		panel.add(rdbtnNewRadioButton);
 		
-		jButtonCreateQuery = new JButton();
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.CreateSale"));
-		jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
+		jButtonLogin = new JButton();
+		jButtonLogin.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.LoginGUI"));
+		jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new CreateSaleGUI(sellerMail,nirePantaila);
+				JFrame a = new LoginGUI();
 				a.setVisible(true);
 				nirePantaila.setVisible(false);
 			}
 		});
 		
-		jButtonQueryQueries = new JButton();
-		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.QuerySales"));
-		jButtonQueryQueries.addActionListener(new java.awt.event.ActionListener() {
+		jButtonRegister = new JButton();
+		jButtonRegister.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.RegisterGUI"));
+		jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new QuerySalesGUI(nirePantaila);
+				JFrame a = new RegisterGUI();
 
 				a.setVisible(true);
 				nirePantaila.setVisible(false);
@@ -114,9 +114,9 @@ public class MainGUI extends JFrame {
 		
 		jContentPane = new JPanel();
 		jContentPane.setLayout(new GridLayout(4, 1, 0, 0));
-		jContentPane.add(jLabelSelectOption);
-		jContentPane.add(jButtonCreateQuery);
-		jContentPane.add(jButtonQueryQueries);
+		jContentPane.add(jLabelTitle);
+		jContentPane.add(jButtonLogin);
+		jContentPane.add(jButtonRegister);
 		jContentPane.add(panel);
 		
 		
@@ -132,9 +132,9 @@ public class MainGUI extends JFrame {
 	}
 	
 	private void paintAgain() {
-		jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
-		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.QuerySales"));
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.CreateSale"));
+		jLabelTitle.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
+		jButtonRegister.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.QuerySales"));
+		jButtonLogin.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.CreateSale"));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.MainTitle")+ ": "+sellerMail);
 	}
 	

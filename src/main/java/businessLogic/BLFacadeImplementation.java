@@ -106,6 +106,13 @@ public class BLFacadeImplementation  implements BLFacade {
         }
         return null;
     }
+    
+    @WebMethod public boolean isLogin(String email, String password) {
+		dbManager.open();
+		boolean b = dbManager.isLogin(email, password);
+		dbManager.close();
+		return true;
+	}
 
     
 }
