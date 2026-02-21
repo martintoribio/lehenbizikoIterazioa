@@ -10,16 +10,22 @@ import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
 
 public class RegisteredGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JLabel emailText;
+	private JLabel pasahitzaText;
+	private JLabel pasahitza2Text;
+	private JLabel erroreMezua;
+	private JTextField email;
+	private JTextField pasahitza1;
+	private JTextField pasahitza2;
+	private JButton erregistratuBotoia;
 
 	/**
 	 * Launch the application.
@@ -47,40 +53,54 @@ public class RegisteredGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setBounds(166, 11, 202, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Posta elektronikoa:");
-		lblNewLabel.setFont(lblNewLabel.getFont().deriveFont(lblNewLabel.getFont().getStyle() | Font.BOLD));
-		lblNewLabel.setBounds(28, 14, 128, 14);
-		contentPane.add(lblNewLabel);
-		
-		lblNewLabel_1 = new JLabel("Pasahitza:");
-		lblNewLabel_1.setFont(lblNewLabel_1.getFont().deriveFont(lblNewLabel_1.getFont().getStyle() | Font.BOLD));
-		lblNewLabel_1.setBounds(28, 49, 128, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		lblNewLabel_2 = new JLabel("Pasahitza errepikatu:");
-		lblNewLabel_2.setFont(lblNewLabel_2.getFont().deriveFont(lblNewLabel_2.getFont().getStyle() | Font.BOLD));
-		lblNewLabel_2.setBounds(28, 87, 128, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(91, 46, 115, 20);
-		contentPane.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(172, 84, 115, 20);
-		contentPane.add(textField_2);
-		
-		JButton btnNewButton = new JButton("ERREGISTRATU");
-		btnNewButton.setBounds(149, 184, 148, 36);
-		contentPane.add(btnNewButton);
+
+		email = new JTextField();
+		email.setBounds(166, 11, 202, 20);
+		contentPane.add(email);
+		email.setColumns(10);
+
+		emailText = new JLabel("Posta elektronikoa:");
+		emailText.setBounds(28, 14, 128, 14);
+		emailText.setFont(emailText.getFont().deriveFont(emailText.getFont().getStyle() | Font.BOLD));
+		contentPane.add(emailText);
+
+		pasahitzaText = new JLabel("Pasahitza:");
+		pasahitzaText.setBounds(28, 49, 63, 14);
+		pasahitzaText.setFont(pasahitzaText.getFont().deriveFont(pasahitzaText.getFont().getStyle() | Font.BOLD));
+		contentPane.add(pasahitzaText);
+
+		pasahitza2Text = new JLabel("Pasahitza errepikatu:");
+		pasahitza2Text.setBounds(28, 87, 128, 14);
+		pasahitza2Text.setFont(pasahitza2Text.getFont().deriveFont(pasahitza2Text.getFont().getStyle() | Font.BOLD));
+		contentPane.add(pasahitza2Text);
+
+		pasahitza1 = new JTextField();
+		pasahitza1.setBounds(91, 46, 115, 20);
+		pasahitza1.setColumns(10);
+		contentPane.add(pasahitza1);
+
+		pasahitza2 = new JTextField();
+		pasahitza2.setBounds(172, 84, 115, 20);
+		pasahitza2.setColumns(10);
+		contentPane.add(pasahitza2);
+
+		erregistratuBotoia = new JButton("ERREGISTRATU");
+		erregistratuBotoia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
+					erroreMezua.setText("Idatzi dituzun pasahitzak ez dira berdinak.");
+					erroreMezua.setForeground(Color.red);
+				} else {
+					erroreMezua.setText("");
+				}
+			}
+		});
+		erregistratuBotoia.setBounds(149, 184, 148, 36);
+		contentPane.add(erregistratuBotoia);
+
+		erroreMezua = new JLabel("");
+		erroreMezua.setBounds(91, 145, 266, 14);
+		contentPane.add(erroreMezua);
 
 	}
 }

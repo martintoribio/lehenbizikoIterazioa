@@ -55,8 +55,8 @@ public class ApplicationLauncher {
 			//g.setVisible(true);
 			
 		}catch (Exception e) {
-			a.jLabelSelectOption.setText("Error: "+e.toString());
-			a.jLabelSelectOption.setForeground(Color.RED);	
+			a.jLabelTitle.setText("Error: "+e.toString());
+			a.jLabelTitle.setForeground(Color.RED);	
 			
 			System.out.println("Error in ApplicationLauncher: "+e.toString());
 		}
