@@ -50,8 +50,8 @@ public class RegisteredGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisteredGUI() {
-		uneko_pantaila=this;
-		main_page=new MainGUIErregistratua("");
+		uneko_pantaila = this;
+		main_page = new MainGUIErregistratua("");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -60,36 +60,36 @@ public class RegisteredGUI extends JFrame {
 		contentPane.setLayout(null);
 
 		email = new JTextField();
-		email.setBounds(166, 11, 202, 20);
+		email.setBounds(168, 12, 130, 20);
 		contentPane.add(email);
 		email.setColumns(10);
 
 		emailText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.email"));
-		emailText.setBounds(28, 14, 128, 14);
+		emailText.setBounds(28, 14, 130, 14);
 		emailText.setFont(emailText.getFont().deriveFont(emailText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(emailText);
 
 		pasahitzaText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.password"));
-		pasahitzaText.setBounds(28, 49, 63, 14);
+		pasahitzaText.setBounds(28, 49, 130, 14);
 		pasahitzaText.setFont(pasahitzaText.getFont().deriveFont(pasahitzaText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(pasahitzaText);
 
 		pasahitza2Text = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.passwordrepeat"));
-		pasahitza2Text.setBounds(28, 87, 128, 14);
+		pasahitza2Text.setBounds(28, 87, 130, 14);
 		pasahitza2Text.setFont(pasahitza2Text.getFont().deriveFont(pasahitza2Text.getFont().getStyle() | Font.BOLD));
 		contentPane.add(pasahitza2Text);
 
 		pasahitza1 = new JTextField();
-		pasahitza1.setBounds(91, 46, 115, 20);
+		pasahitza1.setBounds(168, 47, 131, 20);
 		pasahitza1.setColumns(10);
 		contentPane.add(pasahitza1);
 
 		pasahitza2 = new JTextField();
-		pasahitza2.setBounds(172, 84, 115, 20);
+		pasahitza2.setBounds(168, 85, 131, 20);
 		pasahitza2.setColumns(10);
 		contentPane.add(pasahitza2);
 
-		erregistratuBotoia = new JButton("ERREGISTRATU");
+		erregistratuBotoia = new JButton("Erregistratu");
 		erregistratuBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
@@ -99,16 +99,27 @@ public class RegisteredGUI extends JFrame {
 					erroreMezua.setText("");
 					uneko_pantaila.setVisible(false);
 					main_page.setVisible(true);
-					
+
 				}
 			}
 		});
-		erregistratuBotoia.setBounds(149, 184, 148, 36);
+		erregistratuBotoia.setBounds(91, 189, 126, 27);
 		contentPane.add(erregistratuBotoia);
 
 		erroreMezua = new JLabel("");
 		erroreMezua.setBounds(91, 145, 266, 14);
 		contentPane.add(erroreMezua);
+
+		JButton atzeraButton = new JButton("Atzera");
+		atzeraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame main = new MainGUI();
+				main.setVisible(true);
+				uneko_pantaila.setVisible(false);
+			}
+		});
+		atzeraButton.setBounds(242, 189, 115, 27);
+		contentPane.add(atzeraButton);
 
 	}
 }

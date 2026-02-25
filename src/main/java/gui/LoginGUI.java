@@ -21,6 +21,7 @@ public class LoginGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField emailTextField;
 	private JTextField passwordTextField;
+	private JFrame nirePantaila;
 
 	/**
 	 * Launch the application.
@@ -42,6 +43,7 @@ public class LoginGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginGUI() {
+		nirePantaila = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -49,26 +51,26 @@ public class LoginGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel email = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.email"));
-		email.setBounds(56, 30, 46, 14);
-		contentPane.add(email);
+		JLabel emailText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.email"));
+		emailText.setBounds(30, 30, 141, 14);
+		contentPane.add(emailText);
 		
 		JLabel password = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.password"));
-		password.setBounds(56, 75, 46, 14);
+		password.setBounds(30, 75, 141, 14);
 		contentPane.add(password);
 		
 		emailTextField = new JTextField();
-		emailTextField.setBounds(122, 27, 86, 20);
+		emailTextField.setBounds(181, 28, 123, 20);
 		contentPane.add(emailTextField);
 		emailTextField.setColumns(10);
 		
 		passwordTextField = new JTextField();
-		passwordTextField.setBounds(122, 72, 86, 20);
+		passwordTextField.setBounds(181, 73, 123, 20);
 		contentPane.add(passwordTextField);
 		passwordTextField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Login egin");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton loginBotoia = new JButton("Login");
+		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
 				boolean b =facade.isLogin(emailTextField.getText(), passwordTextField.getText());
@@ -77,8 +79,19 @@ public class LoginGUI extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(163, 192, 120, 23);
-		contentPane.add(btnNewButton);
+		loginBotoia.setBounds(91, 189, 126, 27);
+		contentPane.add(loginBotoia);
+		
+		JButton atzeraButton = new JButton("Atzera");
+		atzeraButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		JFrame main = new MainGUI();
+		main.setVisible(true);
+		nirePantaila.setVisible(false);
+		}
+		});
+		atzeraButton.setBounds(242, 189, 115, 27);
+		contentPane.add(atzeraButton);
 
 	}
 }

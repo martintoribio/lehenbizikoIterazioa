@@ -50,10 +50,9 @@ public class MainGUI extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public MainGUI( String mail) {
+	public MainGUI() {
 		super();
 		nirePantaila=this;
-		this.sellerMail=mail;
 		
 		this.setSize(495, 290);
 		jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title"));
