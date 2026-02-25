@@ -114,6 +114,20 @@ public class BLFacadeImplementation  implements BLFacade {
 		return true;
 	}
 
-    
+    @WebMethod 
+    public boolean addFavorite(String email, Sale sale) {
+        dbManager.open();
+        boolean success = dbManager.addFavorite(email, sale);
+        dbManager.close();
+        return success;
+    }
+
+    @WebMethod 
+    public List<Sale> getFavorites(String email) {
+        dbManager.open();
+        List<Sale> favorites = dbManager.getFavorites(email);
+        dbManager.close();
+        return favorites;
+    }
 }
 

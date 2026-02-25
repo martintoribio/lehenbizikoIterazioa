@@ -75,7 +75,8 @@ public class LoginGUI extends JFrame {
 				BLFacade facade = MainGUI.getBusinessLogic();
 				boolean b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
 				if (b) {
-					new MainGUIErregistratua(null).setVisible(true);
+					new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
+					nirePantaila.setVisible(false);
 				}
 			}
 		});

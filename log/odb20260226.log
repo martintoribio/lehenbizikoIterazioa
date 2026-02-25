@@ -1,0 +1,69 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-26 00:01:49 #1 store] 
+Database 'C:\Users\marti\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 6704@Asus-Martín
+
+[2026-02-26 00:01:49 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-26 00:01:49 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-26 00:01:49 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-26 00:01:49 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-26 00:01:49 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-26 00:01:49 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-26 00:08:06 #1 store] 
+Database 'C:\Users\marti\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 2512@Asus-Martín
+
+[2026-02-26 00:08:06 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-26 00:08:06 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-26 00:08:06 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-26 00:08:06 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-26 00:08:06 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-26 00:08:06 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-26 00:12:15 #1 store] 
+Database 'C:\Users\marti\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 15872@Asus-Martín
+
+[2026-02-26 00:12:15 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-26 00:12:15 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-26 00:12:15 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-26 00:12:15 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-26 00:12:15 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-26 00:12:15 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+

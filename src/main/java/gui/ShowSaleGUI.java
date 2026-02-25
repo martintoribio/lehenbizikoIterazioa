@@ -40,12 +40,15 @@ public class ShowSaleGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	DefaultComboBoxModel<String> statusOptions = new DefaultComboBoxModel<String>();
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
+	
+	private JButton btnFavorite = new JButton("Gehitu gogokoei");
+	
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	private JLabel statusField=new JLabel();
 	private JFrame thisFrame;
 	
-	public ShowSaleGUI(Sale sale) { 
+	public ShowSaleGUI(Sale sale, String email) { 
 		thisFrame=this; 
 		this.setVisible(true);
 		this.getContentPane().setLayout(null);
@@ -73,6 +76,19 @@ public class ShowSaleGUI extends JFrame {
 				thisFrame.setVisible(false);			}
 		});
 
+		btnFavorite.setBounds(new Rectangle(140, 268, 180, 30));
+		btnFavorite.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BLFacade facade = MainGUI.getBusinessLogic();
+				boolean success = facade.addFavorite(email, sale);
+				if(success) {
+					JOptionPane.showMessageDialog(thisFrame, "Gehituta");
+				} else {
+					JOptionPane.showMessageDialog(thisFrame, "Error al añadir a favoritos", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		
 		jLabelMsg.setBounds(new Rectangle(275, 214, 305, 20));
 		jLabelMsg.setForeground(Color.red);
 
@@ -84,6 +100,8 @@ public class ShowSaleGUI extends JFrame {
 		this.getContentPane().add(jLabelError, null);
 
 		this.getContentPane().add(jButtonClose, null);
+		this.getContentPane().add(btnFavorite, null);
+		
 		this.getContentPane().add(jLabelTitle, null);
 		
 		
@@ -130,7 +148,9 @@ public class ShowSaleGUI extends JFrame {
 		statusField = new JLabel(Utils.getStatus(sale.getStatus())); 
 		statusField.setBounds(137, 191, 92, 16);
 		getContentPane().add(statusField);
-		setVisible(true);
+	    getContentPane().add(btnFavorite, null);
+		
+		this.setVisible(true);
 	}	 
 	public BufferedImage rescale(BufferedImage originalImage)
     {

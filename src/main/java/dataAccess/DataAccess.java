@@ -262,6 +262,44 @@ public void open(){
 	}
 	
 	
+	public boolean addFavorite(String email, Sale sale) {
+	    db.getTransaction().begin();
+	    try {
+	        Seller seller = db.find(Seller.class, email);
+	        
+	        if (seller == null) {
+	            if (email == null || email.trim().isEmpty()) {
+	                email = "temporal_user@gmail.com";
+	            }
+	            seller = new Seller(email, "New User");
+	            db.persist(seller);
+	        }
+	        Sale managedSale = db.find(Sale.class, sale.getSaleNumber());
+	        if (managedSale != null) {
+	            seller.addFavorite(managedSale);
+	            db.persist(seller);
+	            db.getTransaction().commit();
+	            return true;
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Errorea DataAccess.addFavorite-n: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	    
+	    if (db.getTransaction().isActive()) {
+	        db.getTransaction().rollback();
+	    }
+	    return false;
+	}
+	
+	public List<Sale> getFavorites(String email) {
+	    Seller seller = db.find(Seller.class, email);
+	    if (seller != null) {
+	        return new ArrayList<Sale>(seller.getFavorites());
+	    }
+	    return new ArrayList<Sale>();
+	}
+	
 	public void close(){
 		db.close();
 		System.out.println("DataAcess closed");

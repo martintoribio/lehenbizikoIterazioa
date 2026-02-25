@@ -43,6 +43,9 @@ public class MainGUIErregistratua extends JFrame {
 	private JRadioButton rdbtnNewRadioButton;
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JRadioButton rdbtnNewRadioButton_2;
+	
+	private JButton jButtonViewFavorites = null;
+	
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
@@ -105,18 +108,28 @@ public class MainGUIErregistratua extends JFrame {
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
 		jButtonQueryQueries.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new QuerySalesGUI(nirePantaila);
+				JFrame a = new QuerySalesGUI(nirePantaila, sellerMail);
 
 				a.setVisible(true);
 				nirePantaila.setVisible(false);
 			}
 		});
 		
+		jButtonViewFavorites = new JButton("Nire produktu faboritoak ikusi");
+		jButtonViewFavorites.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new QueryFavoritesGUI(nirePantaila, sellerMail);
+		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
+		    }
+		});
+		
 		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(4, 1, 0, 0));
+		jContentPane.setLayout(new GridLayout(5, 1, 0, 0));
 		jContentPane.add(jLabelSelectOption);
 		jContentPane.add(jButtonCreateQuery);
 		jContentPane.add(jButtonQueryQueries);
+		jContentPane.add(jButtonViewFavorites);
 		jContentPane.add(panel);
 		
 		

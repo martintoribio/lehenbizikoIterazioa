@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
@@ -27,6 +28,9 @@ public class Seller implements Serializable {
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
+	@XmlIDREF
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Sale> favorites = new ArrayList<Sale>();
 
 	public Seller() {
 		super();
@@ -110,5 +114,14 @@ public class Seller implements Serializable {
 		return true;
 	}
 
+	public List<Sale> getFavorites() {
+	    return favorites;
+	}
+
+	public void addFavorite(Sale sale) {
+	    if (!favorites.contains(sale)) {
+	        favorites.add(sale);
+	    }
+	}
 	
 }

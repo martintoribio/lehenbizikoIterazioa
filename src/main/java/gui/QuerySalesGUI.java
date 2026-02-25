@@ -37,9 +37,12 @@ public class QuerySalesGUI extends JFrame {
 	};
 	private JTextField jTextFieldSearch;
 	
+	private String loggedEmail;
 
-	public QuerySalesGUI(JFrame pantaila) {
+	
+	public QuerySalesGUI(JFrame pantaila, String email) {
 		jasotakoPantaila=pantaila;
+		this.loggedEmail = email;
 		tableProducts.setEnabled(false);
 		thisFrame=this;
 		this.getContentPane().setLayout(null);
@@ -133,7 +136,7 @@ public class QuerySalesGUI extends JFrame {
 		            	Point point = mouseEvent.getPoint();
 				        int row = table.rowAtPoint(point);
 		            	Sale s=(Sale) tableModelProducts.getValueAt(row, 3);
-			            new ShowSaleGUI(s);
+			            new ShowSaleGUI(s, loggedEmail);
 		            }
 		        }
 		 });
