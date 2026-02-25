@@ -26,6 +26,8 @@ public class RegisteredGUI extends JFrame {
 	private JTextField pasahitza1;
 	private JTextField pasahitza2;
 	private JButton erregistratuBotoia;
+	private JFrame main_page;
+	private JFrame uneko_pantaila;
 
 	/**
 	 * Launch the application.
@@ -47,6 +49,8 @@ public class RegisteredGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisteredGUI() {
+		uneko_pantaila=this;
+		main_page=new MainGUIErregistratua("");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -92,6 +96,9 @@ public class RegisteredGUI extends JFrame {
 					erroreMezua.setForeground(Color.red);
 				} else {
 					erroreMezua.setText("");
+					uneko_pantaila.setVisible(false);
+					main_page.setVisible(true);
+					
 				}
 			}
 		});

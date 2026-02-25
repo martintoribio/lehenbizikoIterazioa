@@ -1,0 +1,115 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-21 23:34:33 #1 store] 
+Database 'C:\Users\Ibon\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 16060@HP-Ibon
+
+[2026-02-21 23:34:33 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-21 23:34:33 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-21 23:34:33 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-21 23:34:33 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-21 23:34:33 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-21 23:34:33 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-21 23:34:44 #1 store] 
+Database 'C:\Users\Ibon\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 6308@HP-Ibon
+
+[2026-02-21 23:34:44 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-21 23:34:44 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-21 23:34:44 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-21 23:34:44 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-21 23:34:44 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-21 23:34:44 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-21 23:46:53 #1 store] 
+Database 'C:\Users\Ibon\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 5940@HP-Ibon
+
+[2026-02-21 23:46:53 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-21 23:46:53 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-21 23:46:53 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-21 23:46:53 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-21 23:46:53 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-21 23:46:53 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-21 23:47:36 #1 store] 
+Database 'C:\Users\Ibon\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 6264@HP-Ibon
+
+[2026-02-21 23:47:36 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-21 23:47:36 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-21 23:47:36 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-21 23:47:36 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-21 23:47:36 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-21 23:47:36 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-21 23:54:31 #1 store] 
+Database 'C:\Users\Ibon\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 9416@HP-Ibon
+
+[2026-02-21 23:54:31 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-21 23:54:31 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-21 23:54:31 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-21 23:54:31 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-21 23:54:31 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-21 23:54:31 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
