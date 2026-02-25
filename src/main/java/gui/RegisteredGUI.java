@@ -89,7 +89,7 @@ public class RegisteredGUI extends JFrame {
 		pasahitza2.setColumns(10);
 		contentPane.add(pasahitza2);
 
-		erregistratuBotoia = new JButton("Erregistratu");
+		erregistratuBotoia = new JButton(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.Register"));
 		erregistratuBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
@@ -110,7 +110,7 @@ public class RegisteredGUI extends JFrame {
 		erroreMezua.setBounds(91, 145, 266, 14);
 		contentPane.add(erroreMezua);
 
-		JButton atzeraButton = new JButton("Atzera");
+		JButton atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.Back"));
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame main = new MainGUI();

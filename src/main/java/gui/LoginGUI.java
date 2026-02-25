@@ -50,30 +50,30 @@ public class LoginGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel emailText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.email"));
 		emailText.setBounds(30, 30, 141, 14);
 		contentPane.add(emailText);
-		
+
 		JLabel password = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.password"));
 		password.setBounds(30, 75, 141, 14);
 		contentPane.add(password);
-		
+
 		emailTextField = new JTextField();
 		emailTextField.setBounds(181, 28, 123, 20);
 		contentPane.add(emailTextField);
 		emailTextField.setColumns(10);
-		
+
 		passwordTextField = new JTextField();
 		passwordTextField.setBounds(181, 73, 123, 20);
 		contentPane.add(passwordTextField);
 		passwordTextField.setColumns(10);
-		
-		JButton loginBotoia = new JButton("Login");
+
+		JButton loginBotoia = new JButton(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.Login"));
 		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
-				boolean b =facade.isLogin(emailTextField.getText(), passwordTextField.getText());
+				boolean b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
 				if (b) {
 					new MainGUIErregistratua(null).setVisible(true);
 				}
@@ -81,14 +81,14 @@ public class LoginGUI extends JFrame {
 		});
 		loginBotoia.setBounds(91, 189, 126, 27);
 		contentPane.add(loginBotoia);
-		
-		JButton atzeraButton = new JButton("Atzera");
+
+		JButton atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.Back"));
 		atzeraButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-		JFrame main = new MainGUI();
-		main.setVisible(true);
-		nirePantaila.setVisible(false);
-		}
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame main = new MainGUI();
+				main.setVisible(true);
+				nirePantaila.setVisible(false);
+			}
 		});
 		atzeraButton.setBounds(242, 189, 115, 27);
 		contentPane.add(atzeraButton);
