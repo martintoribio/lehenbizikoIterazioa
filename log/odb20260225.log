@@ -573,3 +573,417 @@ New type java.util.ArrayList<java.lang.Object>
 [2026-02-25 11:55:23 #7 type.registry] 
 New type java.util.ArrayList<domain.Sale>
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:36:16 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 27348@DESKTOP-IME1R1O
+
+[2026-02-25 14:36:16 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:36:16 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:36:16 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:36:16 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:36:16 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:36:16 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:47:08 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 8136@DESKTOP-IME1R1O
+
+[2026-02-25 14:47:08 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:47:08 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:47:08 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:47:08 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:47:08 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:47:08 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:48:57 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 6464@DESKTOP-IME1R1O
+
+[2026-02-25 14:48:57 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:48:57 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:48:57 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:48:57 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:48:57 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:48:57 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:49:06 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 6128@DESKTOP-IME1R1O
+
+[2026-02-25 14:49:06 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:49:06 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:49:06 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:49:06 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:49:06 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:49:06 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:49:13 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 1236@DESKTOP-IME1R1O
+
+[2026-02-25 14:49:13 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:49:13 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:49:13 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:49:13 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:49:13 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:49:13 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:50:28 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 25800@DESKTOP-IME1R1O
+
+[2026-02-25 14:50:28 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:50:28 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:50:28 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:50:28 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:50:28 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:50:28 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 14:51:10 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 27580@DESKTOP-IME1R1O
+
+[2026-02-25 14:51:10 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 14:51:10 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 14:51:10 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 14:51:10 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 14:51:10 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 14:51:10 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:17:52 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 1892@DESKTOP-IME1R1O
+
+[2026-02-25 15:17:52 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:17:52 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:17:52 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:17:52 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:17:52 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:17:52 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:18:08 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 26120@DESKTOP-IME1R1O
+
+[2026-02-25 15:18:08 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:18:08 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:18:08 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:18:08 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:18:08 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:18:08 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:18:16 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 16004@DESKTOP-IME1R1O
+
+[2026-02-25 15:18:16 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:18:16 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:18:16 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:18:16 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:18:16 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:18:16 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:18:22 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 7096@DESKTOP-IME1R1O
+
+[2026-02-25 15:18:22 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:18:22 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:18:22 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:18:22 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:18:22 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:18:22 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:18:28 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 1032@DESKTOP-IME1R1O
+
+[2026-02-25 15:18:28 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:18:28 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:18:28 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:18:28 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:18:28 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:18:28 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:21:20 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 12836@DESKTOP-IME1R1O
+
+[2026-02-25 15:21:20 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:21:20 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:21:20 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:21:20 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:21:20 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:21:20 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:23:11 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 16452@DESKTOP-IME1R1O
+
+[2026-02-25 15:23:11 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:23:11 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:23:11 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:23:11 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:23:11 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:23:11 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:28:52 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 23924@DESKTOP-IME1R1O
+
+[2026-02-25 15:28:52 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:28:52 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:28:52 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:28:52 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:28:52 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:28:52 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:29:19 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 21732@DESKTOP-IME1R1O
+
+[2026-02-25 15:29:19 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:29:19 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:29:19 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:29:19 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:29:19 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:29:19 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:29:27 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 11992@DESKTOP-IME1R1O
+
+[2026-02-25 15:29:27 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:29:27 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:29:27 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:29:27 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:29:27 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:29:27 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 15:29:34 #1 store] 
+Database 'C:\Users\Danocrackspinner\git\lehenbizikoIterazioa\src\main\resources\products.temp' is opened by 25296@DESKTOP-IME1R1O
+
+[2026-02-25 15:29:34 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 15:29:34 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 15:29:34 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 15:29:34 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 15:29:34 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 15:29:34 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+

@@ -69,12 +69,12 @@ public class RegisteredGUI extends JFrame {
 		emailText.setFont(emailText.getFont().deriveFont(emailText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(emailText);
 
-		pasahitzaText = new JLabel("Pasahitza:");
+		pasahitzaText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.password"));
 		pasahitzaText.setBounds(28, 49, 63, 14);
 		pasahitzaText.setFont(pasahitzaText.getFont().deriveFont(pasahitzaText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(pasahitzaText);
 
-		pasahitza2Text = new JLabel("Pasahitza errepikatu:");
+		pasahitza2Text = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.passwordrepeat"));
 		pasahitza2Text.setBounds(28, 87, 128, 14);
 		pasahitza2Text.setFont(pasahitza2Text.getFont().deriveFont(pasahitza2Text.getFont().getStyle() | Font.BOLD));
 		contentPane.add(pasahitza2Text);
@@ -97,7 +97,7 @@ public class RegisteredGUI extends JFrame {
 					erroreMezua.setForeground(Color.red);
 				} else {
 					erroreMezua.setText("");
-					uneko_pantaila.setVisible(rootPaneCheckingEnabled);
+					uneko_pantaila.setVisible(false);
 					main_page.setVisible(true);
 					
 				}

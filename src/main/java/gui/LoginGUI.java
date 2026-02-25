@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
 public class LoginGUI extends JFrame {
@@ -48,11 +49,11 @@ public class LoginGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel email = new JLabel("Email");
+		JLabel email = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.email"));
 		email.setBounds(56, 30, 46, 14);
 		contentPane.add(email);
 		
-		JLabel password = new JLabel("Password");
+		JLabel password = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.password"));
 		password.setBounds(56, 75, 46, 14);
 		contentPane.add(password);
 		
