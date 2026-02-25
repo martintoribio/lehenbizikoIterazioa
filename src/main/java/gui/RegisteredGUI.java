@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
@@ -63,7 +64,7 @@ public class RegisteredGUI extends JFrame {
 		contentPane.add(email);
 		email.setColumns(10);
 
-		emailText = new JLabel("Posta elektronikoa:");
+		emailText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.email"));
 		emailText.setBounds(28, 14, 128, 14);
 		emailText.setFont(emailText.getFont().deriveFont(emailText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(emailText);
@@ -96,7 +97,7 @@ public class RegisteredGUI extends JFrame {
 					erroreMezua.setForeground(Color.red);
 				} else {
 					erroreMezua.setText("");
-					uneko_pantaila.setVisible(false);
+					uneko_pantaila.setVisible(rootPaneCheckingEnabled);
 					main_page.setVisible(true);
 					
 				}

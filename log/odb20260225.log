@@ -412,3 +412,164 @@ New type java.util.ArrayList<java.lang.Object>
 [2026-02-25 11:29:04 #7 type.registry] 
 New type java.util.ArrayList<domain.Sale>
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:38:38 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 5180@U110119
+
+[2026-02-25 11:38:38 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:38:38 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:38:38 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:38:38 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:38:38 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:38:38 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:44:42 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 6260@U110119
+
+[2026-02-25 11:44:42 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:44:42 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:44:42 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:44:42 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:44:42 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:44:42 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:47:19 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 816@U110119
+
+[2026-02-25 11:47:19 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:47:19 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:47:19 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:47:19 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:47:19 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:47:19 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:47:41 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 9552@U110119
+
+[2026-02-25 11:47:41 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:47:41 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:47:41 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:47:41 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:47:41 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:47:41 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:53:41 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 10028@U110119
+
+[2026-02-25 11:53:41 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:53:41 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:53:41 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:53:41 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:53:42 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:53:42 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:53:54 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 11188@U110119
+
+[2026-02-25 11:53:55 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:53:55 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:53:55 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:53:55 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:53:55 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:53:55 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-02-25 11:55:23 #1 store] 
+Database 'C:\Users\ehu\git\lehenbizikoIterazioa2\src\main\resources\products.temp' is opened by 11020@U110119
+
+[2026-02-25 11:55:23 #2 type.registry] 
+New type domain.Seller
+
+[2026-02-25 11:55:23 #3 type] 
+Type domain.Seller is not enhanced.
+
+[2026-02-25 11:55:23 #4 type.registry] 
+New type domain.Sale
+
+[2026-02-25 11:55:23 #5 type] 
+Type domain.Sale is not enhanced.
+
+[2026-02-25 11:55:23 #6 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-02-25 11:55:23 #7 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
