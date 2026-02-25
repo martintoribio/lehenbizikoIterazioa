@@ -261,6 +261,7 @@ public void open(){
 		return query.getResultList().isEmpty();
 	}
 	
+	
 	public void close(){
 		db.close();
 		System.out.println("DataAcess closed");
