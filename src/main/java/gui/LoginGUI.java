@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import businessLogic.BLFacade;
+import domain.Seller;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -73,8 +74,8 @@ public class LoginGUI extends JFrame {
 		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
-				boolean b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
-				if (b) {
+				Seller b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
+				if (b!=null) {
 					new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
 					nirePantaila.setVisible(false);
 				}

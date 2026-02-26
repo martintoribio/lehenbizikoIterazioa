@@ -24,7 +24,8 @@ public class Seller implements Serializable {
 	@XmlID
 	@Id 
 	private String email;
-	private String name; 
+	private String name;
+	private String pasahitza;
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
@@ -36,9 +37,10 @@ public class Seller implements Serializable {
 		super();
 	}
 
-	public Seller(String email, String name) {
+	public Seller(String email, String name, String pasahitza) {
 		this.email = email;
 		this.name = name;
+		this.pasahitza=pasahitza;
 	}
 	
 	

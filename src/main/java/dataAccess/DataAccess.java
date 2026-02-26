@@ -79,9 +79,9 @@ public class DataAccess  {
 		try { 
 	       
 		    //Create sellers 
-			Seller seller1=new Seller("seller1@gmail.com","Aitor Fernandez");
-			Seller seller2=new Seller("seller22@gmail.com","Ane Gaztañaga");
-			Seller seller3=new Seller("seller3@gmail.com","Test Seller");
+			Seller seller1=new Seller("seller1@gmail.com","Aitor Fernandez","aurrera");
+			Seller seller2=new Seller("seller22@gmail.com","Ane Gaztañaga","aurrera");
+			Seller seller3=new Seller("seller3@gmail.com","Test Seller","aurrera");
 
 			
 			//Create products
@@ -252,13 +252,15 @@ public void open(){
         return resizedImage;
     }
 	
-	@WebMethod public boolean isLogin(String email, String password) {
-
-		List<Sale> res = new ArrayList<Sale>();	
-		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =?1 AND s.password=?2",Seller.class);   
+	@WebMethod public Seller isLogin(String email, String password) {
+	
+		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =?1 AND s.pasahitza=?2",Seller.class);   
 		query.setParameter(1, email);
 		query.setParameter(2, password);
-		return query.getResultList().isEmpty();
+		if (!query.getResultList().isEmpty()){
+			return query.getResultList().get(0);
+		}	
+		return null;
 	}
 	
 	
@@ -271,7 +273,7 @@ public void open(){
 	            if (email == null || email.trim().isEmpty()) {
 	                email = "temporal_user@gmail.com";
 	            }
-	            seller = new Seller(email, "New User");
+	            seller = new Seller(email, "New User","");
 	            db.persist(seller);
 	        }
 	        Sale managedSale = db.find(Sale.class, sale.getSaleNumber());
