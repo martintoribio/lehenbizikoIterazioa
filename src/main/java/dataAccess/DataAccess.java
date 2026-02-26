@@ -57,7 +57,7 @@ public class DataAccess  {
 		if  (c.isDatabaseInitialized()) 
 			initializeDB();
 		System.out.println("DataAccess created => isDatabaseLocal: "+c.isDatabaseLocal()+" isDatabaseInitialized: "+c.isDatabaseInitialized());
-
+	
 		close();
 
 	}
@@ -88,9 +88,9 @@ public class DataAccess  {
 			Date today = UtilDate.trim(new Date());
 		
 			
-			seller1.addSale("futbol baloia", "oso polita, gutxi erabilita", 10, 2,  today, null);
-			seller1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi",20,  2,  today, null);
-			seller1.addSale("samsung 42\" telebista", "berria, erabili gabe", 175, 1,  today, null);
+			seller1.addSale("futbol baloia", "oso polita, gutxi erabilita", 2, 10,  today, null);
+			seller1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi",2,  20,  today, null);
+			seller1.addSale("samsung 42\" telebista", "berria, erabili gabe", 1, 175,  today, null);
 
 
 			seller2.addSale("imac 27", "7 urte, dena ondo dabil", 1, 200,today, null);
@@ -262,7 +262,40 @@ public void open(){
 		}	
 		return null;
 	}
-	
+	@WebMethod public boolean isRegister(String email, String password, String name) {
+		
+		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =:email OR s.name=:name  ",Seller.class);   
+		query.setParameter("email", email);
+		query.setParameter("name", name);
+		if (query.getResultList().isEmpty()){
+			db.getTransaction().begin();
+			Seller s =new Seller(email,name,password);
+			db.persist(s);
+			db.getTransaction().commit();
+			return true;
+		}	
+		return false;
+	}
+	@WebMethod public boolean buy(Sale s) {
+		if (s!=null) {
+			try {
+				if (!s.bought) {
+					db.getTransaction().begin();
+					db.merge(s).setBought(true);
+					db.getTransaction().commit();
+					return true;
+				}
+			}catch(Exception e) {
+				if(db.getTransaction().isActive()) {
+					db.getTransaction().rollback();
+				}
+				return false;
+			}
+		}
+		return false;
+		
+		
+	}
 	
 	public boolean addFavorite(String email, Sale sale) {
 	    db.getTransaction().begin();

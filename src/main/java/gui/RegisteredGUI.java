@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import businessLogic.BLFacade;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -26,6 +29,7 @@ public class RegisteredGUI extends JFrame {
 	private JTextField pasahitza2;
 	private JButton erregistratuBotoia;
 	private JFrame uneko_pantaila;
+	private JTextField name;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -80,7 +84,7 @@ public class RegisteredGUI extends JFrame {
 		pasahitza2.setColumns(10);
 
 		erroreMezua = new JLabel("");
-		erroreMezua.setBounds(91, 145, 266, 14);
+		erroreMezua.setBounds(91, 164, 266, 14);
 		contentPane.add(erroreMezua);
 
 		erregistratuBotoia = new JButton(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.Register"));
@@ -89,14 +93,21 @@ public class RegisteredGUI extends JFrame {
 				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
 					erroreMezua.setText("Idatzi dituzun pasahitzak ez dira berdinak.");
 					erroreMezua.setForeground(Color.red);
-				} else if (email.getText().trim().isEmpty()) {
+				} else if (email.getText().trim().isEmpty()&&name.getText().trim().isEmpty()) {
 					erroreMezua.setText("Emaila ezin da hutsik egon");
 					erroreMezua.setForeground(Color.red);
 				} else {
 					erroreMezua.setText("");
-					JFrame main_page = new MainGUIErregistratua(email.getText());
-					main_page.setVisible(true);
-					uneko_pantaila.setVisible(false);
+					BLFacade b=MainGUI.getBusinessLogic();
+					boolean ald=b.isRegister(email.getText(),pasahitza1.getText(), name.getText());
+					if (ald) {
+						JFrame main_page = new MainGUIErregistratua(email.getText());
+						main_page.setVisible(true);
+						uneko_pantaila.setVisible(false);
+					}else {
+						erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.registError"));
+					}
+					
 				}
 			}
 		});
@@ -113,5 +124,15 @@ public class RegisteredGUI extends JFrame {
 		});
 		atzeraButton.setBounds(242, 189, 115, 27);
 		contentPane.add(atzeraButton);
+		
+		name = new JTextField();
+		name.setText(""); 
+		name.setBounds(168, 127, 130, 20);
+		contentPane.add(name);
+		name.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.name")); 
+		lblNewLabel.setBounds(28, 130, 86, 14);
+		contentPane.add(lblNewLabel);
 	}
 }

@@ -40,7 +40,7 @@ public class QuerySalesGUI extends JFrame {
 	private String loggedEmail;
 
 	
-	public QuerySalesGUI(JFrame pantaila, String email) {
+	public QuerySalesGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		jasotakoPantaila=pantaila;
 		this.loggedEmail = email;
 		tableProducts.setEnabled(false);
@@ -103,12 +103,15 @@ public class QuerySalesGUI extends JFrame {
 					if (sales.isEmpty() ) jLabelProducts.setText(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.NoProducts"));
 					else jLabelProducts.setText(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Products"));
 					for (domain.Sale sale:sales){
-						Vector<Object> row = new Vector<Object>();
-						row.add(sale.getTitle());
-						row.add(sale.getPrice());
-						row.add(new SimpleDateFormat("dd-MM-yyyy").format(sale.getPublicationDate()));
-						row.add(sale); // product object added in order to obtain it with tableModelProducts.getValueAt(i,2)
-						tableModelProducts.addRow(row);		
+						if (!sale.bought) {
+							Vector<Object> row = new Vector<Object>();
+							row.add(sale.getTitle());
+							row.add(sale.getPrice());
+							row.add(new SimpleDateFormat("dd-MM-yyyy").format(sale.getPublicationDate()));
+							row.add(sale); // product object added in order to obtain it with tableModelProducts.getValueAt(i,2)
+							tableModelProducts.addRow(row);
+						}
+								
 					}
 				} catch (Exception e1) {
 
@@ -136,7 +139,7 @@ public class QuerySalesGUI extends JFrame {
 		            	Point point = mouseEvent.getPoint();
 				        int row = table.rowAtPoint(point);
 		            	Sale s=(Sale) tableModelProducts.getValueAt(row, 3);
-			            new ShowSaleGUI(s, loggedEmail);
+			            new ShowSaleGUI(s, loggedEmail,aurrekoPantaila);
 		            }
 		        }
 		 });

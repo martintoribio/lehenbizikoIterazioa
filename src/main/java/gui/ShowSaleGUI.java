@@ -47,8 +47,9 @@ public class ShowSaleGUI extends JFrame {
 	private JLabel jLabelError = new JLabel();
 	private JLabel statusField=new JLabel();
 	private JFrame thisFrame;
+	private JButton buyButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleGUI.buy")); 
 	
-	public ShowSaleGUI(Sale sale, String email) { 
+	public ShowSaleGUI(Sale sale, String email,JFrame aurrekoPantaila) { 
 		thisFrame=this; 
 		this.setVisible(true);
 		this.getContentPane().setLayout(null);
@@ -76,7 +77,7 @@ public class ShowSaleGUI extends JFrame {
 				thisFrame.setVisible(false);			}
 		});
 
-		btnFavorite.setBounds(new Rectangle(140, 268, 180, 30));
+		btnFavorite.setBounds(new Rectangle(137, 214, 168, 37));
 		btnFavorite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BLFacade facade = MainGUI.getBusinessLogic();
@@ -148,7 +149,18 @@ public class ShowSaleGUI extends JFrame {
 		statusField = new JLabel(Utils.getStatus(sale.getStatus())); 
 		statusField.setBounds(137, 191, 92, 16);
 		getContentPane().add(statusField);
-	    getContentPane().add(btnFavorite, null);
+	    buyButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		BLFacade b=MainGUI.getBusinessLogic();
+	    		b.buy(sale);
+	    		JFrame hurrengoPan = new BuyGUI(sale,aurrekoPantaila);
+	    		hurrengoPan.setVisible(true);
+	    		dispose();
+	    	}
+	    });
+	    buyButton.setVisible(true);
+	    buyButton.setBounds(140, 262, 168, 33);
+	    getContentPane().add(buyButton);
 		
 		this.setVisible(true);
 	}	 

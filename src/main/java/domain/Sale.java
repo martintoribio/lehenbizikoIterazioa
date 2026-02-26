@@ -27,6 +27,7 @@ public class Sale implements Serializable {
 	private float price;
 	private Date pubDate;
 	private String fileName;
+	public boolean bought=false;
 	
 	private Seller seller;  
 	
@@ -217,7 +218,9 @@ public class Sale implements Serializable {
 	public String toString(){
 		return saleNumber+";"+title+";"+price;  
 	}
-
+	public void setBought(boolean b) {
+		bought =b;
+	}
 
 
 

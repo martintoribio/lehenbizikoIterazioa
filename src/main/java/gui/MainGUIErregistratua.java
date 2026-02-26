@@ -55,6 +55,7 @@ public class MainGUIErregistratua extends JFrame {
 	 */
 	public MainGUIErregistratua( String mail) {
 		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		nirePantaila=this;
 		this.sellerMail=mail;
 		
@@ -100,7 +101,6 @@ public class MainGUIErregistratua extends JFrame {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				JFrame a = new CreateSaleGUI(sellerMail,nirePantaila);
 				a.setVisible(true);
-				nirePantaila.setVisible(false);
 			}
 		});
 		
@@ -108,19 +108,17 @@ public class MainGUIErregistratua extends JFrame {
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
 		jButtonQueryQueries.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new QuerySalesGUI(nirePantaila, sellerMail);
+				JFrame a = new QuerySalesGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
 
 				a.setVisible(true);
-				nirePantaila.setVisible(false);
 			}
 		});
 		
-		jButtonViewFavorites = new JButton("Nire produktu faboritoak ikusi");
+		jButtonViewFavorites = new JButton(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.name"));
 		jButtonViewFavorites.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryFavoritesGUI(nirePantaila, sellerMail);
+		        JFrame a = new QueryFavoritesGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
 		        a.setVisible(true);
-		        nirePantaila.setVisible(false);
 		    }
 		});
 		
@@ -131,6 +129,7 @@ public class MainGUIErregistratua extends JFrame {
 		jContentPane.add(jButtonQueryQueries);
 		jContentPane.add(jButtonViewFavorites);
 		jContentPane.add(panel);
+		
 		
 		
 		setContentPane(jContentPane);
@@ -147,8 +146,9 @@ public class MainGUIErregistratua extends JFrame {
 	private void paintAgain() {
 		jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.SelectOption"));
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.CreateSale"));
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.MainTitle")+ ": "+sellerMail);
+		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.CreateSale"));
+		jButtonViewFavorites.setText(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.name"));
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
 	}
 	
 } // @jve:decl-index=0:visual-constraint="0,0"

@@ -66,6 +66,8 @@ public interface BLFacade  {
 	@WebMethod public Image downloadImage(String imageName);
 	
 	@WebMethod public Seller isLogin(String login, String password);
+	@WebMethod public boolean isRegister(String login, String password, String name);
+	@WebMethod public boolean buy(Sale s);
 	
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);

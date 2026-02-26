@@ -114,6 +114,18 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return b;
 	}
+    @WebMethod public boolean isRegister(String email, String password, String name) {
+		dbManager.open();
+		boolean b = dbManager.isRegister(email, password, name );
+		dbManager.close();
+		return b;
+	}
+    @WebMethod public boolean buy(Sale s) {
+		dbManager.open();
+		boolean b = dbManager.buy(s);
+		dbManager.close();
+		return b;
+	}
 
     @WebMethod 
     public boolean addFavorite(String email, Sale sale) {

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class QueryFavoritesGUI extends JFrame {
@@ -16,11 +17,11 @@ public class QueryFavoritesGUI extends JFrame {
 	private JTable tableProducts = new JTable();
 	private DefaultTableModel tableModelProducts;
 	private JButton jButtonClose = new JButton("Itxi");
-	private JLabel jLabelTitle = new JLabel("Nire produktu gogokoenak");
+	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.add"));
 
 	private String[] columnNamesProducts = new String[] { "Izena", "Prezioa", "Data" };
 
-	public QueryFavoritesGUI(JFrame pantaila, String email) {
+	public QueryFavoritesGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(600, 400));
 		this.setTitle("Nire gogokoenak");
@@ -52,7 +53,7 @@ public class QueryFavoritesGUI extends JFrame {
 				if (mouseEvent.getClickCount() == 2) {
 					int row = tableProducts.rowAtPoint(mouseEvent.getPoint());
 					Sale s = (Sale) tableModelProducts.getValueAt(row, 3);
-					new ShowSaleGUI(s, email);
+					new ShowSaleGUI(s,email,aurrekoPantaila);
 				}
 			}
 		});
