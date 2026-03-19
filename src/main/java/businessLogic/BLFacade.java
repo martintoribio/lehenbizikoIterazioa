@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import domain.Sale;
-import domain.Seller;
+import domain.User;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
@@ -24,7 +24,7 @@ public interface BLFacade  {
 	  
 
 	/**
-	 * This method creates/adds a product to a seller
+	 * This method creates/adds a product to an user
 	 * 
 	 * @param title of the product
 	 * @param description of the product
@@ -35,7 +35,7 @@ public interface BLFacade  {
 	 * @return Sale
 	 */
    @WebMethod
-	public Sale createSale(String title, String description, int status, float price, Date pubDate, String sellerEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException;
+	public Sale createSale(String title, String description, int status, float price, Date pubDate, String userEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException;
 	
 	
 	/**
@@ -57,7 +57,7 @@ public interface BLFacade  {
 
 	
 	/**
-	 * This method calls the data access to initialize the database with some sellers and products.
+	 * This method calls the data access to initialize the database with some users and products.
 	 * It is only invoked  when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
 	@WebMethod public void initializeBD();
@@ -65,7 +65,7 @@ public interface BLFacade  {
 		
 	@WebMethod public Image downloadImage(String imageName);
 	
-	@WebMethod public Seller isLogin(String login, String password);
+	@WebMethod public User isLogin(String login, String password);
 	@WebMethod public boolean isRegister(String login, String password, String name);
 	@WebMethod public boolean buy(Sale s);
 	

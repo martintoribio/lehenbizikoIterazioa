@@ -8,7 +8,7 @@ import javax.jws.WebService;
 
 import dataAccess.DataAccess;
 import domain.Sale;
-import domain.Seller;
+import domain.User;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
@@ -44,9 +44,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * {@inheritDoc}
 	 */
    @WebMethod
-	public Sale createSale(String title, String description,int status, float price, Date pubDate, String sellerEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
+	public Sale createSale(String title, String description,int status, float price, Date pubDate, String userEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
 		dbManager.open();
-		Sale product=dbManager.createSale(title, description, status, price, pubDate, sellerEmail, file);		
+		Sale product=dbManager.createSale(title, description, status, price, pubDate, userEmail, file);		
 		dbManager.close();
 		return product;
    };
@@ -108,9 +108,9 @@ public class BLFacadeImplementation  implements BLFacade {
         return null;
     }
     
-    @WebMethod public Seller isLogin(String email, String password) {
+    @WebMethod public User isLogin(String email, String password) {
 		dbManager.open();
-		Seller b = dbManager.isLogin(email, password);
+		User b = dbManager.isLogin(email, password);
 		dbManager.close();
 		return b;
 	}

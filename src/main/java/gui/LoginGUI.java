@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import businessLogic.BLFacade;
-import domain.Seller;
+import domain.User;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -45,6 +46,7 @@ public class LoginGUI extends JFrame {
 	 */
 	public LoginGUI() {
 		nirePantaila = this;
+		JLabel erroreMezua = new JLabel(""); //$NON-NLS-1$ //$NON-NLS-2$
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -74,10 +76,13 @@ public class LoginGUI extends JFrame {
 		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
-				Seller b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
+				User b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
 				if (b!=null) {
 					new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
 					nirePantaila.setVisible(false);
+				} else {
+					erroreMezua.setForeground(Color.red);
+					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.ErroreMezua"));
 				}
 			}
 		});
@@ -94,6 +99,11 @@ public class LoginGUI extends JFrame {
 		});
 		atzeraButton.setBounds(242, 189, 115, 27);
 		contentPane.add(atzeraButton);
+		
+		
+		erroreMezua.setBounds(118, 129, 246, 20);
+		contentPane.add(erroreMezua);
 
 	}
 }
+

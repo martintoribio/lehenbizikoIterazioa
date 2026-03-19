@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 
 import configuration.ConfigXML;
 import configuration.UtilDate;
-import domain.Seller;
+import domain.User;
 import domain.Sale;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
@@ -69,7 +69,7 @@ public class DataAccess  {
 	
 	
 	/**
-	 * This method  initializes the database with some products and sellers.
+	 * This method  initializes the database with some products and users.
 	 * This method is invoked by the business logic (constructor of BLFacadeImplementation) when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
 	public void initializeDB(){
@@ -78,32 +78,32 @@ public class DataAccess  {
 
 		try { 
 	       
-		    //Create sellers 
-			Seller seller1=new Seller("seller1@gmail.com","Aitor Fernandez","aurrera");
-			Seller seller2=new Seller("seller22@gmail.com","Ane Gaztañaga","aurrera");
-			Seller seller3=new Seller("seller3@gmail.com","Test Seller","aurrera");
+		    //Create users 
+			User user1=new User("user1@gmail.com","Aitor Fernandez","aurrera");
+			User user2=new User("user2@gmail.com","Ane Gaztañaga","aurrera");
+			User user3=new User("user3@gmail.com","Test User","aurrera");
 
 			
 			//Create products
 			Date today = UtilDate.trim(new Date());
 		
 			
-			seller1.addSale("futbol baloia", "oso polita, gutxi erabilita", 2, 10,  today, null);
-			seller1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi",2,  20,  today, null);
-			seller1.addSale("samsung 42\" telebista", "berria, erabili gabe", 1, 175,  today, null);
+			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", 2, 10,  today, null);
+			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi",2,  20,  today, null);
+			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", 1, 175,  today, null);
 
 
-			seller2.addSale("imac 27", "7 urte, dena ondo dabil", 1, 200,today, null);
-			seller2.addSale("iphone 17", "oso gutxi erabilita", 2, 400, today, null);
-			seller2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", 3,225, today, null);
-			seller2.addSale("polar kilor erlojua", "Vantage M, ondo dago", 3, 30, today, null);
+			user2.addSale("imac 27", "7 urte, dena ondo dabil", 1, 200,today, null);
+			user2.addSale("iphone 17", "oso gutxi erabilita", 2, 400, today, null);
+			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", 3,225, today, null);
+			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", 3, 30, today, null);
 
-			seller3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", 3,45, today, null);
+			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", 3,45, today, null);
 
 			
-			db.persist(seller1);
-			db.persist(seller2);
-			db.persist(seller3);
+			db.persist(user1);
+			db.persist(user2);
+			db.persist(user3);
 
 	
 			db.getTransaction().commit();
@@ -116,7 +116,7 @@ public class DataAccess  {
 	
 	
 	/**
-	 * This method creates/adds a product to a seller
+	 * This method creates/adds a product to an user
 	 * 
 	 * @param title of the product
 	 * @param description of the product
@@ -125,12 +125,12 @@ public class DataAccess  {
 	 * @param category of a product
 	 * @param publicationDate
 	 * @return Product
- 	 * @throws SaleAlreadyExistException if the same product already exists for the seller
+ 	 * @throws SaleAlreadyExistException if the same product already exists for the user
 	 */
-	public Sale createSale(String title, String description, int status, float price,  Date pubDate, String sellerEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
+	public Sale createSale(String title, String description, int status, float price,  Date pubDate, String userEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
 		
 
-		System.out.println(">> DataAccess: createProduct=> title= "+title+" seller="+sellerEmail);
+		System.out.println(">> DataAccess: createProduct=> title= "+title+" user="+userEmail);
 		try {
 		
 
@@ -142,18 +142,18 @@ public class DataAccess  {
 
 			db.getTransaction().begin();
 			
-			Seller seller = db.find(Seller.class, sellerEmail);
-			if (seller.doesSaleExist(title)) {
+			User user = db.find(User.class, userEmail);
+			if (user.doesSaleExist(title)) {
 				db.getTransaction().commit();
 				throw new SaleAlreadyExistException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.SaleAlreadyExist"));
 			}
 
-			Sale sale = seller.addSale(title, description, status, price, pubDate, file);
+			Sale sale = user.addSale(title, description, status, price, pubDate, file);
 			//next instruction can be obviated
 
-			db.persist(seller); 
+			db.persist(user); 
 			db.getTransaction().commit();
-			 System.out.println("sale stored "+sale+ " "+seller);
+			 System.out.println("sale stored "+sale+ " "+user);
 
 			
 
@@ -252,9 +252,9 @@ public void open(){
         return resizedImage;
     }
 	
-	@WebMethod public Seller isLogin(String email, String password) {
+	@WebMethod public User isLogin(String email, String password) {
 	
-		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =?1 AND s.pasahitza=?2",Seller.class);   
+		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =?1 AND u.pasahitza=?2",User.class);   
 		query.setParameter(1, email);
 		query.setParameter(2, password);
 		if (!query.getResultList().isEmpty()){
@@ -264,12 +264,12 @@ public void open(){
 	}
 	@WebMethod public boolean isRegister(String email, String password, String name) {
 		
-		TypedQuery<Seller> query = db.createQuery("SELECT s FROM Seller s WHERE s.email =:email OR s.name=:name  ",Seller.class);   
+		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =:email OR u.name=:name  ",User.class);   
 		query.setParameter("email", email);
 		query.setParameter("name", name);
 		if (query.getResultList().isEmpty()){
 			db.getTransaction().begin();
-			Seller s =new Seller(email,name,password);
+			User s =new User(email,name,password);
 			db.persist(s);
 			db.getTransaction().commit();
 			return true;
@@ -300,19 +300,19 @@ public void open(){
 	public boolean addFavorite(String email, Sale sale) {
 	    db.getTransaction().begin();
 	    try {
-	        Seller seller = db.find(Seller.class, email);
+	        User user = db.find(User.class, email);
 	        
-	        if (seller == null) {
+	        if (user == null) {
 	            if (email == null || email.trim().isEmpty()) {
 	                email = "temporal_user@gmail.com";
 	            }
-	            seller = new Seller(email, "New User","");
-	            db.persist(seller);
+	            user = new User(email, "New User","");
+	            db.persist(user);
 	        }
 	        Sale managedSale = db.find(Sale.class, sale.getSaleNumber());
 	        if (managedSale != null) {
-	            seller.addFavorite(managedSale);
-	            db.persist(seller);
+	            user.addFavorite(managedSale);
+	            db.persist(user);
 	            db.getTransaction().commit();
 	            return true;
 	        }
@@ -328,9 +328,9 @@ public void open(){
 	}
 	
 	public List<Sale> getFavorites(String email) {
-	    Seller seller = db.find(Seller.class, email);
-	    if (seller != null) {
-	        return new ArrayList<Sale>(seller.getFavorites());
+	    User user = db.find(User.class, email);
+	    if (user != null) {
+	        return new ArrayList<Sale>(user.getFavorites());
 	    }
 	    return new ArrayList<Sale>();
 	}
