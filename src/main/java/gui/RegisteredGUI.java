@@ -91,10 +91,10 @@ public class RegisteredGUI extends JFrame {
 		erregistratuBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
-					erroreMezua.setText("Idatzi dituzun pasahitzak ez dira berdinak.");
+					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.differentPasswords"));
 					erroreMezua.setForeground(Color.red);
-				} else if (email.getText().trim().isEmpty()&&name.getText().trim().isEmpty()) {
-					erroreMezua.setText("Emaila ezin da hutsik egon");
+				} else if (email.getText().trim().isEmpty()||name.getText().trim().isEmpty()||pasahitza1.getText().trim().isEmpty()||pasahitza2.getText().trim().isEmpty()) {
+					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.blankData"));
 					erroreMezua.setForeground(Color.red);
 				} else {
 					erroreMezua.setText("");
@@ -107,7 +107,6 @@ public class RegisteredGUI extends JFrame {
 					}else {
 						erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.registError"));
 					}
-					
 				}
 			}
 		});

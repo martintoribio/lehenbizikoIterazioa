@@ -76,8 +76,8 @@ public class LoginGUI extends JFrame {
 		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
-				User b = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
-				if (b!=null) {
+				User u = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
+				if (u!=null) {
 					new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
 					nirePantaila.setVisible(false);
 				} else {

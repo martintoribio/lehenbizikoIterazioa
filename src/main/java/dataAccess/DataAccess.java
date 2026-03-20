@@ -269,8 +269,8 @@ public void open(){
 		query.setParameter("name", name);
 		if (query.getResultList().isEmpty()){
 			db.getTransaction().begin();
-			User s =new User(email,name,password);
-			db.persist(s);
+			User u =new User(email,name,password);
+			db.persist(u);
 			db.getTransaction().commit();
 			return true;
 		}	
@@ -300,13 +300,6 @@ public void open(){
 	    try {
 	        User user = db.find(User.class, email);
 	        
-	        if (user == null) {
-	            if (email == null || email.trim().isEmpty()) {
-	                email = "temporal_user@gmail.com";
-	            }
-	            user = new User(email, "New User","");
-	            db.persist(user);
-	        }
 	        Sale managedSale = db.find(Sale.class, sale.getSaleNumber());
 	        if (managedSale != null) {
 	            user.addFavorite(managedSale);
