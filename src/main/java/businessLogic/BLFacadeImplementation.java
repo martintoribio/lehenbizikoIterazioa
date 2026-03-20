@@ -120,11 +120,11 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return b;
 	}
-    @WebMethod public boolean buy(Sale s) {
+    @WebMethod public Sale buy(Sale s, String email) {
 		dbManager.open();
-		boolean b = dbManager.buy(s);
+		Sale sale = dbManager.buy(s, email);
 		dbManager.close();
-		return b;
+		return sale;
 	}
 
     @WebMethod 
@@ -141,6 +141,13 @@ public class BLFacadeImplementation  implements BLFacade {
         List<Sale> favorites = dbManager.getFavorites(email);
         dbManager.close();
         return favorites;
+    }
+    @WebMethod 
+    public List<Sale> getBoughtSales(String email){
+    	dbManager.open();
+    	List<Sale> boughtSales = dbManager.getBoughtSales(email);
+    	dbManager.close();
+    	return boughtSales;
     }
 }
 

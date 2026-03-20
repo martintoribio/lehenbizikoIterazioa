@@ -151,9 +151,7 @@ public class ShowSaleGUI extends JFrame {
 		getContentPane().add(statusField);
 	    buyButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		BLFacade b=MainGUI.getBusinessLogic();
-	    		b.buy(sale);
-	    		JFrame hurrengoPan = new BuyGUI(sale,aurrekoPantaila);
+	    		JFrame hurrengoPan = new BuyGUI(sale,aurrekoPantaila, email);
 	    		hurrengoPan.setVisible(true);
 	    		dispose();
 	    	}

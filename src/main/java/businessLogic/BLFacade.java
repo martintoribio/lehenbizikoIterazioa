@@ -67,9 +67,11 @@ public interface BLFacade  {
 	
 	@WebMethod public User isLogin(String login, String password);
 	@WebMethod public boolean isRegister(String login, String password, String name);
-	@WebMethod public boolean buy(Sale s);
+	@WebMethod public Sale buy(Sale s, String email);
+	@WebMethod public List<Sale> getBoughtSales(String email);
 	
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
+	
 	
 }

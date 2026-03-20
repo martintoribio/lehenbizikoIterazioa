@@ -276,25 +276,23 @@ public void open(){
 		}	
 		return false;
 	}
-	@WebMethod public boolean buy(Sale s) {
-		if (s!=null) {
+	@WebMethod public Sale buy(Sale s, String email) {
+		if (s!=null && email!=null) {
 			try {
-				if (!s.bought) {
-					db.getTransaction().begin();
-					db.merge(s).setBought(true);
-					db.getTransaction().commit();
-					return true;
-				}
+				db.getTransaction().begin();
+				//Ez da begiratu behar sale erosita dagoen, querySales-en bakarrik erosita ez dauden sale-ak erakusten direlako
+				Sale sale = db.find(Sale.class, s.getSaleNumber());
+				sale.setBought(true);
+				User user = db.find(User.class, email);
+				user.addBought(sale);
+				db.getTransaction().commit();
+					return sale;
 			}catch(Exception e) {
-				if(db.getTransaction().isActive()) {
-					db.getTransaction().rollback();
-				}
-				return false;
+				db.getTransaction().rollback();
+				return null;
 			}
 		}
-		return false;
-		
-		
+		return null; // ez dago s-rik
 	}
 	
 	public boolean addFavorite(String email, Sale sale) {
@@ -333,6 +331,14 @@ public void open(){
 	        return new ArrayList<Sale>(user.getFavorites());
 	    }
 	    return new ArrayList<Sale>();
+	}
+	
+	public List<Sale> getBoughtSales(String email){
+		User user = db.find(User.class, email);
+		if (user !=null) {
+			return new ArrayList<Sale>(user.getBoughtSales());
+		}
+		return new ArrayList<Sale>();
 	}
 	
 	public void close(){

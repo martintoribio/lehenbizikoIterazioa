@@ -20,7 +20,7 @@ public class BuyGUI extends JFrame {
 	private JTextField CNumber;
 	private JTextField CPin;
 	private static final int baseSize = 160;
-	public BuyGUI(Sale s,JFrame aurrekoa) {
+	public BuyGUI(Sale s,JFrame aurrekoa, String email) { // User bakoitzaren erosketak gordetzeko erabiltzailearen email-a gorde
 		this.setSize(495,290);
 		getContentPane().setLayout(null);
 		
@@ -55,7 +55,7 @@ public class BuyGUI extends JFrame {
 		BuyButton.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
 				 BLFacade b = MainGUI.getBusinessLogic();
-				 b.buy(s);
+				 b.buy(s, email);
 				 aurrekoa.setVisible(true);
 				 dispose();//this.setVisible(false)
 				 

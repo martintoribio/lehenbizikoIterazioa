@@ -29,6 +29,7 @@ public class MainGUIErregistratua extends JFrame {
 	private JPanel jContentPane = null;
 	private JButton jButtonCreateQuery = null;
 	private JButton jButtonQueryQueries = null;
+	private JButton jButtonLogout = null;
 
     private static BLFacade appFacadeInterface;
 	
@@ -45,6 +46,7 @@ public class MainGUIErregistratua extends JFrame {
 	private JRadioButton rdbtnNewRadioButton_2;
 	
 	private JButton jButtonViewFavorites = null;
+	private JButton jButtonViewBought = null;
 	
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -114,7 +116,7 @@ public class MainGUIErregistratua extends JFrame {
 			}
 		});
 		
-		jButtonViewFavorites = new JButton(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.name"));
+		jButtonViewFavorites = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryFavorites"));
 		jButtonViewFavorites.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        JFrame a = new QueryFavoritesGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
@@ -122,12 +124,31 @@ public class MainGUIErregistratua extends JFrame {
 		    }
 		});
 		
+		jButtonViewBought = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
+		jButtonViewBought.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new QueryBoughtGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
+		        a.setVisible(true);
+		    }
+		});
+		
+		jButtonLogout = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
+		jButtonLogout.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new MainGUI();
+		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
+		    }
+		});
+		
 		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(5, 1, 0, 0));
+		jContentPane.setLayout(new GridLayout(7, 1, 0, 0));
 		jContentPane.add(jLabelSelectOption);
 		jContentPane.add(jButtonCreateQuery);
 		jContentPane.add(jButtonQueryQueries);
 		jContentPane.add(jButtonViewFavorites);
+		jContentPane.add(jButtonViewBought);
+		jContentPane.add(jButtonLogout);
 		jContentPane.add(panel);
 		
 		
@@ -147,7 +168,9 @@ public class MainGUIErregistratua extends JFrame {
 		jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.SelectOption"));
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
 		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.CreateSale"));
-		jButtonViewFavorites.setText(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.name"));
+		jButtonViewFavorites.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryFavorites"));
+		jButtonViewBought.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
+		jButtonLogout.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
 	}
 	

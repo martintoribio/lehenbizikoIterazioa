@@ -32,6 +32,9 @@ public class User implements Serializable {
 	@XmlIDREF
 	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Sale> favorites = new ArrayList<Sale>();
+	@XmlIDREF
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Sale> boughtSales = new ArrayList<Sale>();
 
 	public User() {
 		super();
@@ -124,6 +127,14 @@ public class User implements Serializable {
 	    if (!favorites.contains(sale)) {
 	        favorites.add(sale);
 	    }
+	}
+	
+	public List<Sale> getBoughtSales() {
+		return boughtSales;
+	}
+	
+	public void addBought(Sale s) {
+		boughtSales.add(s);
 	}
 	
 }
