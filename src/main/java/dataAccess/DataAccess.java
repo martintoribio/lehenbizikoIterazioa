@@ -22,6 +22,7 @@ import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.User;
 import domain.Sale;
+import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
@@ -79,9 +80,9 @@ public class DataAccess  {
 		try { 
 	       
 		    //Create users 
-			User user1=new User("user1@gmail.com","Aitor Fernandez","aurrera");
-			User user2=new User("user2@gmail.com","Ane Gaztañaga","aurrera");
-			User user3=new User("user3@gmail.com","Test User","aurrera");
+			User user1=new User("user1@gmail.com","Aitor Fernandez","aurrera", null);
+			User user2=new User("user2@gmail.com","Ane Gaztañaga","aurrera", null);
+			User user3=new User("user3@gmail.com","Test User","aurrera", null);
 
 			
 			//Create products
@@ -262,14 +263,19 @@ public void open(){
 		}	
 		return null;
 	}
-	@WebMethod public boolean isRegister(String email, String password, String name) {
+	@WebMethod public boolean isRegister(String email, String password, String name, String tIzena, String tZenb, int PIN) {
 		
 		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =:email OR u.name=:name  ",User.class);   
 		query.setParameter("email", email);
 		query.setParameter("name", name);
-		if (query.getResultList().isEmpty()){
+		TypedQuery<Txartela> query2 = db.createQuery("SELECT t FROM Txartela t WHERE t.tIzena=:tIzena AND t.tZenb=:tZenb AND t.PIN=:PIN", Txartela.class);
+		query2.setParameter("tIzena", tIzena);
+		query2.setParameter("tZenb", tZenb);
+		query2.setParameter("PIN", PIN);
+		if (query.getResultList().isEmpty() && query2.getResultList().isEmpty()){
 			db.getTransaction().begin();
-			User u =new User(email,name,password);
+			Txartela txartela = new Txartela(tIzena, tZenb, PIN);
+			User u =new User(email,name,password, txartela);
 			db.persist(u);
 			db.getTransaction().commit();
 			return true;

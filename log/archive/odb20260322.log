@@ -1,0 +1,11 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-03-22 01:02:07 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 30248@ubuntu
+
+[2026-03-22 01:02:07 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-03-22 01:02:07 #3 type] 
+Type domain.Sale is not enhanced.
+

@@ -26,6 +26,9 @@ public class User implements Serializable {
 	private String email;
 	private String name;
 	private String pasahitza;
+	@OneToOne(cascade=CascadeType.PERSIST)
+	private Txartela txartela;
+	private int saldoa;
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
@@ -40,10 +43,12 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(String email, String name, String pasahitza) {
+	public User(String email, String name, String pasahitza, Txartela txartela) {
 		this.email = email;
 		this.name = name;
 		this.pasahitza=pasahitza;
+		this.txartela = txartela;
+		saldoa = 0;
 	}
 	
 	
@@ -135,6 +140,18 @@ public class User implements Serializable {
 	
 	public void addBought(Sale s) {
 		boughtSales.add(s);
+	}
+	
+	public Txartela getTxartela() {
+		return txartela;
+	}
+	
+	public int getSaldoa() {
+		return saldoa;
+	}
+	
+	public void setSaldoa(int saldoBerria) {
+		this.saldoa = saldoBerria;
 	}
 	
 }

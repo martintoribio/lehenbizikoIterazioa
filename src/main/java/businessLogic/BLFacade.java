@@ -6,6 +6,7 @@ import java.util.List;
 
 import domain.Sale;
 import domain.User;
+import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
@@ -66,7 +67,7 @@ public interface BLFacade  {
 	@WebMethod public Image downloadImage(String imageName);
 	
 	@WebMethod public User isLogin(String login, String password);
-	@WebMethod public boolean isRegister(String login, String password, String name);
+	@WebMethod public boolean isRegister(String login, String password, String name, String tIzena, String tZenb, int PIN);
 	@WebMethod public Sale buy(Sale s, String email);
 	@WebMethod public List<Sale> getBoughtSales(String email);
 	

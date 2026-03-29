@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import dataAccess.DataAccess;
 import domain.Sale;
 import domain.User;
+import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
@@ -114,9 +115,9 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return b;
 	}
-    @WebMethod public boolean isRegister(String email, String password, String name) {
+    @WebMethod public boolean isRegister(String email, String password, String name, String tIzena, String tZenb, int PIN) {
 		dbManager.open();
-		boolean b = dbManager.isRegister(email, password, name );
+		boolean b = dbManager.isRegister(email, password, name, tIzena, tZenb, PIN);
 		dbManager.close();
 		return b;
 	}
