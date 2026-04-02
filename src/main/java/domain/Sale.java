@@ -28,8 +28,8 @@ public class Sale implements Serializable {
 	private Date pubDate;
 	private String fileName;
 	public boolean bought=false;
-	
-	private User seller;  
+	@ManyToOne
+	private User user;  
 	
 	public Sale(){
 		super();
@@ -59,7 +59,7 @@ public class Sale implements Serializable {
 		}
 		}
 
-		this.seller = seller;
+		this.user = seller;
 		
 	}
 	
@@ -193,7 +193,7 @@ public class Sale implements Serializable {
 	 * @return the associated seller
 	 */
 	public User getSeller() {
-		return seller;
+		return user;
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class Sale implements Serializable {
 	 * @param seller to assign to the sale
 	 */
 	public void setSeller(User seller) {
-		this.seller = seller;
+		this.user = seller;
 	}
 
 	/**

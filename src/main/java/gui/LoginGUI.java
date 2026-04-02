@@ -89,7 +89,7 @@ public class LoginGUI extends JFrame {
 		loginBotoia.setBounds(91, 189, 126, 27);
 		contentPane.add(loginBotoia);
 
-		JButton atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.Back"));
+		JButton atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame main = new MainGUI();

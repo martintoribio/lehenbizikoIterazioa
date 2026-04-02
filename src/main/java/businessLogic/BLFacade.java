@@ -10,6 +10,7 @@ import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.NahikoDirurikEzException;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -67,12 +68,13 @@ public interface BLFacade  {
 	@WebMethod public Image downloadImage(String imageName);
 	
 	@WebMethod public User isLogin(String login, String password);
-	@WebMethod public boolean isRegister(String login, String password, String name, String tIzena, String tZenb, int PIN);
-	@WebMethod public Sale buy(Sale s, String email);
+	@WebMethod public boolean isRegister(String login, String password, String tIzena, String tZenb, int PIN);
+	@WebMethod public Sale buy(Sale s, String email) throws NahikoDirurikEzException;
 	@WebMethod public List<Sale> getBoughtSales(String email);
 	
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
+	@WebMethod public float getSaldoa(String email);
 	
 	
 }

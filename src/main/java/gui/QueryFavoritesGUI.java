@@ -16,7 +16,7 @@ public class QueryFavoritesGUI extends JFrame {
 	private JScrollPane scrollPanelProducts = new JScrollPane();
 	private JTable tableProducts = new JTable();
 	private DefaultTableModel tableModelProducts;
-	private JButton jButtonClose = new JButton("Itxi");
+	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryFavourites.add"));
 
 	private String[] columnNamesProducts = new String[] { "Izena", "Prezioa", "Data" };

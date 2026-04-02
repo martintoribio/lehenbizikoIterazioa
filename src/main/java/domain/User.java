@@ -24,31 +24,29 @@ public class User implements Serializable {
 	@XmlID
 	@Id 
 	private String email;
-	private String name;
 	private String pasahitza;
 	@OneToOne(cascade=CascadeType.PERSIST)
 	private Txartela txartela;
-	private int saldoa;
+	private float saldoa;
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
 	@XmlIDREF
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> favorites = new ArrayList<Sale>();
 	@XmlIDREF
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> boughtSales = new ArrayList<Sale>();
 
 	public User() {
 		super();
 	}
 
-	public User(String email, String name, String pasahitza, Txartela txartela) {
+	public User(String email, String pasahitza, Txartela txartela) {
 		this.email = email;
-		this.name = name;
 		this.pasahitza=pasahitza;
 		this.txartela = txartela;
-		saldoa = 0;
+		saldoa = 50;
 	}
 	
 	
@@ -59,20 +57,18 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	
+	public String getPasahitza() {
+		return pasahitza;
 	}
 	
-
+	public void setPasahitza(String pasahitza) {
+		this.pasahitza = pasahitza;
+	}
 	
 	
 	public String toString(){
-		return email+";"+name+sales;
+		return email+";"+sales;
 	}
 	
 	/**
@@ -146,12 +142,25 @@ public class User implements Serializable {
 		return txartela;
 	}
 	
-	public int getSaldoa() {
+	public float getSaldoa() {
 		return saldoa;
 	}
 	
-	public void setSaldoa(int saldoBerria) {
+	public void setSaldoa(float saldoBerria) {
 		this.saldoa = saldoBerria;
+	}
+	
+	public void diruaGehitu(float diruKop) {
+		this.saldoa+=diruKop;
+	}
+	
+	public boolean diruaKendu(float diruKop) {
+		if (saldoa-diruKop>=0) {
+			this.saldoa-=diruKop;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }

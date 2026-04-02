@@ -54,8 +54,9 @@ public class BuyGUI extends JFrame {
 		JButton BuyButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("BuyGUI.buy"));
 		BuyButton.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
-				 BLFacade b = MainGUI.getBusinessLogic();
-				 b.buy(s, email);
+			
+				 //BLFacade b = MainGUI.getBusinessLogic();
+				 //b.buy(s, email);
 				 aurrekoa.setVisible(true);
 				 dispose();//this.setVisible(false)
 				 

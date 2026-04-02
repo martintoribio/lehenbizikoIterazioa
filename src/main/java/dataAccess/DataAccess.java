@@ -26,6 +26,7 @@ import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.NahikoDirurikEzException;
 
 /**
  * It implements the data access to the objectDb database
@@ -80,9 +81,9 @@ public class DataAccess  {
 		try { 
 	       
 		    //Create users 
-			User user1=new User("user1@gmail.com","Aitor Fernandez","aurrera", null);
-			User user2=new User("user2@gmail.com","Ane Gaztañaga","aurrera", null);
-			User user3=new User("user3@gmail.com","Test User","aurrera", null);
+			User user1=new User("user1@gmail.com","aurrera", null);
+			User user2=new User("user2@gmail.com","aurrera", null);
+			User user3=new User("user3@gmail.com","aurrera", null);
 
 			
 			//Create products
@@ -263,42 +264,47 @@ public void open(){
 		}	
 		return null;
 	}
-	@WebMethod public boolean isRegister(String email, String password, String name, String tIzena, String tZenb, int PIN) {
+	@WebMethod public boolean isRegister(String email, String password, String tIzena, String tZenb, int PIN) {
 		
-		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =:email OR u.name=:name  ",User.class);   
+		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =:email",User.class);   
 		query.setParameter("email", email);
-		query.setParameter("name", name);
-		TypedQuery<Txartela> query2 = db.createQuery("SELECT t FROM Txartela t WHERE t.tIzena=:tIzena AND t.tZenb=:tZenb AND t.PIN=:PIN", Txartela.class);
-		query2.setParameter("tIzena", tIzena);
+		TypedQuery<Txartela> query2 = db.createQuery("SELECT t FROM Txartela t WHERE t.tZenb=:tZenb", Txartela.class);
 		query2.setParameter("tZenb", tZenb);
-		query2.setParameter("PIN", PIN);
 		if (query.getResultList().isEmpty() && query2.getResultList().isEmpty()){
 			db.getTransaction().begin();
 			Txartela txartela = new Txartela(tIzena, tZenb, PIN);
-			User u =new User(email,name,password, txartela);
+			User u =new User(email,password, txartela);
 			db.persist(u);
 			db.getTransaction().commit();
 			return true;
 		}	
 		return false;
 	}
-	@WebMethod public Sale buy(Sale s, String email) {
-		if (s!=null && email!=null) {
-			try {
-				db.getTransaction().begin();
-				//Ez da begiratu behar sale erosita dagoen, querySales-en bakarrik erosita ez dauden sale-ak erakusten direlako
-				Sale sale = db.find(Sale.class, s.getSaleNumber());
-				sale.setBought(true);
-				User user = db.find(User.class, email);
+	@WebMethod public Sale buy(Sale s, String email) throws NahikoDirurikEzException{
+		try {
+			db.getTransaction().begin();
+			//Ez da begiratu behar sale erosita dagoen, querySales-en bakarrik erosita ez dauden sale-ak erakusten direlako
+			Sale sale = db.find(Sale.class, s.getSaleNumber());
+			sale.setBought(true);
+			User user = db.find(User.class, email);
+			float saldoa = user.getSaldoa();
+			float prezioa = sale.getPrice();
+			if (saldoa-prezioa>=0) {
 				user.addBought(sale);
+				user.diruaKendu(prezioa);
 				db.getTransaction().commit();
 					return sale;
-			}catch(Exception e) {
-				db.getTransaction().rollback();
-				return null;
+			} else {
+				throw new NahikoDirurikEzException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.NahikoDirurikEzException"));
 			}
+			
+		}catch (NahikoDirurikEzException e) {
+			db.getTransaction().rollback();
+			throw e;
+		}catch(Exception e) {
+			db.getTransaction().rollback();
+			return null;
 		}
-		return null; // ez dago s-rik
 	}
 	
 	public boolean addFavorite(String email, Sale sale) {
@@ -338,6 +344,15 @@ public void open(){
 			return new ArrayList<Sale>(user.getBoughtSales());
 		}
 		return new ArrayList<Sale>();
+	}
+	
+	public float getSaldoa(String email) {
+		User user = db.find(User.class, email);
+		if (user!=null) {
+			float saldoa = user.getSaldoa();
+			return saldoa;
+		}
+		return 0;
 	}
 	
 	public void close(){

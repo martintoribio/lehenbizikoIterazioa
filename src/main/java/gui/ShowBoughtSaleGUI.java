@@ -12,10 +12,9 @@ import java.awt.image.BufferedImage;
 
 import businessLogic.BLFacade;
 import domain.Sale;
-import exceptions.NahikoDirurikEzException;
 
 
-public class ShowSaleGUI extends JFrame{
+public class ShowBoughtSaleGUI extends JFrame {
 	
     File targetFile;
     BufferedImage targetImg;
@@ -48,11 +47,9 @@ public class ShowSaleGUI extends JFrame{
 	private JLabel jLabelError = new JLabel();
 	private JLabel statusField=new JLabel();
 	private JFrame thisFrame;
-	private JButton buyButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleGUI.buy")); 
-	private JLabel saldoa = new JLabel();
-	private float unekoSaldoa;
+	private JButton claimButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleBoughtGUI.claim")); 
 	
-	public ShowSaleGUI(Sale sale, String email,JFrame aurrekoPantaila) { 
+	public ShowBoughtSaleGUI(Sale sale, String email,JFrame aurrekoPantaila) { 
 		thisFrame=this; 
 		this.setVisible(true);
 		this.getContentPane().setLayout(null);
@@ -93,10 +90,10 @@ public class ShowSaleGUI extends JFrame{
 			}
 		});
 		
-		jLabelMsg.setBounds(new Rectangle(16, 305, 500, 20));
+		jLabelMsg.setBounds(new Rectangle(275, 214, 305, 20));
 		jLabelMsg.setForeground(Color.red);
 
-		jLabelError.setBounds(new Rectangle(16, 305, 500, 20));
+		jLabelError.setBounds(new Rectangle(6, 231, 320, 20));
 		jLabelError.setForeground(Color.red);
 		
 
@@ -138,14 +135,9 @@ public class ShowSaleGUI extends JFrame{
 		labelStatus.setFont(new Font("Lucida Grande", Font.BOLD, 13));
 		labelStatus.setBounds(37, 231, 289, 16);
 		getContentPane().add(labelStatus);
-		labelStatus.setBounds(37, 231, 289, 16);
+		
 		
 		BLFacade facade = MainGUI.getBusinessLogic();
-		
-		unekoSaldoa = facade.getSaldoa(email);
-		saldoa.setText(unekoSaldoa + "€");
-		saldoa.setBounds(new Rectangle(520, 56, 90, 20));
-		getContentPane().add(saldoa);
 		String file=sale.getFile();
 		if (file!=null) {
 			Image img=facade.downloadImage(file);
@@ -157,25 +149,15 @@ public class ShowSaleGUI extends JFrame{
 		statusField = new JLabel(Utils.getStatus(sale.getStatus())); 
 		statusField.setBounds(137, 191, 92, 16);
 		getContentPane().add(statusField);
-	    buyButton.addActionListener(new ActionListener() {
+	    claimButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		try {
-	    			//JFrame hurrengoPan = new BuyGUI(sale,aurrekoPantaila, email);
-		    		//hurrengoPan.setVisible(true);
-	    			facade.buy(sale, email);
-	    			float prezioa = sale.getPrice();
-	    			unekoSaldoa -= prezioa;
-	    			saldoa.setText(unekoSaldoa + "€");
-		    		dispose();
-	    		} catch (NahikoDirurikEzException exc) {
-	    			jLabelError.setText(exc.getMessage());
-	    		}
-	    		
+	    		//claimGUI-ra eraman
+	    		dispose();
 	    	}
 	    });
-	    buyButton.setVisible(true);
-	    buyButton.setBounds(140, 262, 168, 33);
-	    getContentPane().add(buyButton);
+	    claimButton.setVisible(true);
+	    claimButton.setBounds(140, 262, 168, 33);
+	    getContentPane().add(claimButton);
 		
 		this.setVisible(true);
 	}	 
@@ -187,7 +169,6 @@ public class ShowSaleGUI extends JFrame{
         g.dispose();
         return resizedImage;
     }
-	
 	
 	
 }

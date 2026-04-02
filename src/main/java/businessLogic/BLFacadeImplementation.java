@@ -13,6 +13,7 @@ import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.NahikoDirurikEzException;
 
 import java.awt.image.BufferedImage;
 import java.awt.Image;
@@ -115,13 +116,13 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return b;
 	}
-    @WebMethod public boolean isRegister(String email, String password, String name, String tIzena, String tZenb, int PIN) {
+    @WebMethod public boolean isRegister(String email, String password, String tIzena, String tZenb, int PIN) {
 		dbManager.open();
-		boolean b = dbManager.isRegister(email, password, name, tIzena, tZenb, PIN);
+		boolean b = dbManager.isRegister(email, password, tIzena, tZenb, PIN);
 		dbManager.close();
 		return b;
 	}
-    @WebMethod public Sale buy(Sale s, String email) {
+    @WebMethod public Sale buy(Sale s, String email) throws NahikoDirurikEzException{
 		dbManager.open();
 		Sale sale = dbManager.buy(s, email);
 		dbManager.close();
@@ -150,5 +151,14 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.close();
     	return boughtSales;
     }
+    
+    @WebMethod 
+    public float getSaldoa(String email){
+    	dbManager.open();
+    	float saldoa = dbManager.getSaldoa(email);
+    	dbManager.close();
+    	return saldoa;
+    }
+    
 }
 

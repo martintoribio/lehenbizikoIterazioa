@@ -16,7 +16,7 @@ public class QueryBoughtGUI extends JFrame {
 	private JScrollPane scrollPanelProducts = new JScrollPane();
 	private JTable tableProducts = new JTable();
 	private DefaultTableModel tableModelProducts;
-	private JButton jButtonClose = new JButton("Itxi");
+	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryBoughtGUI.name"));
 
 	private String[] columnNamesProducts = new String[] { "Izena", "Prezioa", "Data" };
@@ -46,21 +46,16 @@ public class QueryBoughtGUI extends JFrame {
 		tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(3));
 
 		loadBoughtSales(email);
-		/* 
-		 * Oraingoz sale bati klik egiteko aukera kenduko da.
-		 * Beste momentu baten klase berri bat sortu ahal izango zen (ShowBoughtSaleGUI), erosteko botoi gabekoa
-		 * Bestela, berriro erosteko aukera eman ahalko zen
 		tableProducts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent mouseEvent) {
 				if (mouseEvent.getClickCount() == 2) {
 					int row = tableProducts.rowAtPoint(mouseEvent.getPoint());
 					Sale s = (Sale) tableModelProducts.getValueAt(row, 3);
-					new ShowSaleGUI(s,email,aurrekoPantaila);
+					new ShowBoughtSaleGUI(s,email,aurrekoPantaila);
 				}
 			}
 		});
-		*/
 	}
 
 	private void loadBoughtSales(String email) {

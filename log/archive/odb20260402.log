@@ -1,0 +1,59 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-02 20:10:42 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 8007@ubuntu
+
+[2026-04-02 20:10:42 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-02 20:10:42 #3 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-02 20:10:42 #4 type] 
+Type domain.Txartela is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-02 21:09:16 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 15413@ubuntu
+
+[2026-04-02 21:09:17 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-02 21:09:17 #3 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-02 21:09:17 #4 type] 
+Type domain.Txartela is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-02 21:10:44 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' has been recovered (tr. 7-7)
+
+[2026-04-02 21:10:44 #2 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 15531@ubuntu
+
+[2026-04-02 21:10:44 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-04-02 21:10:44 #4 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-02 21:10:44 #5 type] 
+Type domain.Txartela is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-02 21:12:58 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 15832@ubuntu
+
+[2026-04-02 21:12:58 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-02 21:12:59 #3 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-02 21:12:59 #4 type] 
+Type domain.Txartela is not enhanced.
+

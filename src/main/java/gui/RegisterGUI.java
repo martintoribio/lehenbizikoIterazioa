@@ -16,14 +16,13 @@ import java.util.ResourceBundle;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
-public class RegisteredGUI extends JFrame {
+public class RegisterGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel emailText;
 	private JLabel pasahitzaText;
 	private JLabel pasahitza2Text;
-	private JLabel nameText;
 	private JLabel tIzenaText;
 	private JLabel tZenbText;
 	private JLabel PINText;
@@ -31,7 +30,6 @@ public class RegisteredGUI extends JFrame {
 	private JTextField email;
 	private JTextField pasahitza1;
 	private JTextField pasahitza2;
-	private JTextField name;
 	private JTextField tIzena;
 	private JTextField tZenb;
 	private JTextField PIN;
@@ -44,7 +42,7 @@ public class RegisteredGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisteredGUI frame = new RegisteredGUI();
+					RegisterGUI frame = new RegisterGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +51,7 @@ public class RegisteredGUI extends JFrame {
 		});
 	}
 
-	public RegisteredGUI() {
+	public RegisterGUI() {
 		uneko_pantaila = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 320);
@@ -92,49 +90,39 @@ public class RegisteredGUI extends JFrame {
 		contentPane.add(pasahitza2);
 		pasahitza2.setColumns(10);
 		
-		name = new JTextField();
-		name.setText(""); 
-		name.setBounds(168, 94, 130, 20);
-		contentPane.add(name);
-		name.setColumns(10);
-
-		nameText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.name")); 
-		nameText.setBounds(28, 94, 130, 20);
-		contentPane.add(nameText);
-		
 		tIzena = new JTextField();
-		tIzena.setBounds(168, 122, 130, 20);
+		tIzena.setBounds(168, 94, 130, 20);
 		contentPane.add(tIzena);
 		tIzena.setColumns(10);
 		
 		tIzenaText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.txartelIzena"));
-		tIzenaText.setBounds(28, 122, 130, 20);
+		tIzenaText.setBounds(28, 94, 130, 20);
 		tIzenaText.setFont(tIzenaText.getFont().deriveFont(tIzenaText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(tIzenaText);
 		
 		tZenb = new JTextField();
-		tZenb.setBounds(168, 150, 130, 20);
+		tZenb.setBounds(168, 122, 130, 20);
 		contentPane.add(tZenb);
 		tZenb.setColumns(10);
 		
 		tZenbText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.txartelZenbakia"));
-		tZenbText.setBounds(28, 150, 130, 20);
+		tZenbText.setBounds(28, 122, 130, 20);
 		tZenbText.setFont(tZenbText.getFont().deriveFont(tZenbText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(tZenbText);
 		
 		PIN = new JTextField();
-		PIN.setBounds(168, 178, 130, 20);
+		PIN.setBounds(168, 150, 130, 20);
 		contentPane.add(PIN);
 		PIN.setColumns(10);
 		
 		PINText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.PIN"));
-		PINText.setBounds(28, 178, 130, 20);
+		PINText.setBounds(28, 150, 130, 20);
 		PINText.setFont(PINText.getFont().deriveFont(PINText.getFont().getStyle() | Font.BOLD));
 		contentPane.add(PINText);
 		
 
 		erroreMezua = new JLabel("");
-		erroreMezua.setBounds(28, 202, 340, 18);
+		erroreMezua.setBounds(28, 178, 340, 18);
 		contentPane.add(erroreMezua);
 
 		erregistratuBotoia = new JButton(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.Register"));
@@ -143,14 +131,14 @@ public class RegisteredGUI extends JFrame {
 				if (!pasahitza1.getText().equals(pasahitza2.getText())) {
 					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.differentPasswords"));
 					erroreMezua.setForeground(Color.red);
-				} else if (email.getText().trim().isEmpty()||name.getText().trim().isEmpty()||pasahitza1.getText().trim().isEmpty()||pasahitza2.getText().trim().isEmpty()) {
+				} else if (email.getText().trim().isEmpty() || pasahitza1.getText().trim().isEmpty() || pasahitza2.getText().trim().isEmpty() || tIzena.getText().trim().isEmpty() || tZenb.getText().trim().isEmpty() || PIN.getText().trim().isEmpty()){
 					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.blankData"));
 					erroreMezua.setForeground(Color.red);
 				} else {
 					try {
 						erroreMezua.setText("");
 						BLFacade b=MainGUI.getBusinessLogic();
-						boolean ald=b.isRegister(email.getText(),pasahitza1.getText(), name.getText(), tIzena.getText(), tZenb.getText(), Integer.parseInt(PIN.getText()));
+						boolean ald=b.isRegister(email.getText(),pasahitza1.getText(), tIzena.getText(), tZenb.getText(), Integer.parseInt(PIN.getText()));
 						if (ald) {
 							JFrame main_page = new MainGUIErregistratua(email.getText());
 							main_page.setVisible(true);
@@ -165,10 +153,10 @@ public class RegisteredGUI extends JFrame {
 				}
 			}
 		});
-		erregistratuBotoia.setBounds(45, 222, 126, 27);
+		erregistratuBotoia.setBounds(45, 202, 126, 27);
 		contentPane.add(erregistratuBotoia);
 
-		atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.Back"));
+		atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame main = new MainGUI();
@@ -176,7 +164,7 @@ public class RegisteredGUI extends JFrame {
 				uneko_pantaila.setVisible(false);
 			}
 		});
-		atzeraButton.setBounds(185, 222, 115, 27);
+		atzeraButton.setBounds(185, 202, 115, 27);
 		contentPane.add(atzeraButton);
 		
 	}

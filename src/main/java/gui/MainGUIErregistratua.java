@@ -12,6 +12,7 @@ import businessLogic.BLFacade;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Locale;
@@ -50,7 +51,6 @@ public class MainGUIErregistratua extends JFrame {
 	
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	
 	private JFrame nirePantaila;
 	/**
 	 * This is the default constructor
@@ -150,7 +150,6 @@ public class MainGUIErregistratua extends JFrame {
 		jContentPane.add(jButtonViewBought);
 		jContentPane.add(jButtonLogout);
 		jContentPane.add(panel);
-		
 		
 		
 		setContentPane(jContentPane);
