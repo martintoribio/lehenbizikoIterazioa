@@ -21,6 +21,7 @@ import javax.persistence.TypedQuery;
 import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.User;
+import domain.Mugimendua;
 import domain.Sale;
 import domain.Txartela;
 import exceptions.FileNotUploadedException;
@@ -285,13 +286,17 @@ public void open(){
 			db.getTransaction().begin();
 			//Ez da begiratu behar sale erosita dagoen, querySales-en bakarrik erosita ez dauden sale-ak erakusten direlako
 			Sale sale = db.find(Sale.class, s.getSaleNumber());
-			sale.setBought(true);
 			User user = db.find(User.class, email);
 			float saldoa = user.getSaldoa();
 			float prezioa = sale.getPrice();
 			if (saldoa-prezioa>=0) {
-				user.addBought(sale);
+				sale.setBought(true);
 				user.diruaKendu(prezioa);
+				user.addBought(sale);
+				String title = sale.getTitle();
+				Mugimendua mugi = new Mugimendua("Erosketa: " + title, prezioa*(-1), user);
+				user.addMugimendua(mugi);
+				db.persist(mugi);
 				db.getTransaction().commit();
 					return sale;
 			} else {
@@ -353,6 +358,13 @@ public void open(){
 			return saldoa;
 		}
 		return 0;
+	}
+	
+	public List<Mugimendua> getMugimenduak(String email){
+		User user = db.find(User.class, email);
+		List<Mugimendua> mugimenduak = user.getMugimenduak();
+		return mugimenduak;
+		
 	}
 	
 	public void close(){

@@ -10,21 +10,36 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@Entity
 public class Erreklamazioa implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@XmlID
 	@Id 
+	@XmlJavaTypeAdapter(IntegerAdapter.class)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idErreklam;
+	
 	private String deskribapena;
 	private String egoera;
-
+	
+	@XmlIDREF
+	@ManyToOne
+	private User user;
+	
+	@XmlIDREF
+	@ManyToOne
+	private Sale sale;
+	
+	
 	public Erreklamazioa() {
 		super();
 	}
 
-	public Erreklamazioa(String deskribapena, String egoera) {
+	public Erreklamazioa(String deskribapena, String egoera, User user, Sale sale) {
 		this.deskribapena = deskribapena;
 		this.egoera = egoera;
 	}

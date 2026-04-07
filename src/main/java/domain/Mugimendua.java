@@ -10,19 +10,28 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Mugimendua implements Serializable {
 	@XmlID
 	@Id 
+	@XmlJavaTypeAdapter(IntegerAdapter.class)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idMugimendua;
+	
 	private String deskribapena;
-	private int diruAld;
+	private float diruAld;
+	
+	@XmlIDREF
+	@ManyToOne
+	private User user;
 	
 	public Mugimendua () {
 		super();
 	}
-	public Mugimendua(String deskribapena, int diruAld) {
+	public Mugimendua(String deskribapena, float diruAld, User user) {
 		this.deskribapena=deskribapena;
 		this.diruAld=diruAld;
 	}
@@ -32,10 +41,10 @@ public class Mugimendua implements Serializable {
 	public void setDeskribapena(String deskribapena) {
 	    this.deskribapena=deskribapena;
 	}
-	public int getDiruAld() {
+	public float getDiruAld() {
 	    return diruAld;
 	}
-	public void setDiruAld(int diruAld) {
+	public void setDiruAld(float diruAld) {
 	    this.diruAld=diruAld;
 	}
 	public String toString() {

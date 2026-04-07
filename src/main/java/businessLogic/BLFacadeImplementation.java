@@ -7,6 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import dataAccess.DataAccess;
+import domain.Mugimendua;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -158,6 +159,15 @@ public class BLFacadeImplementation  implements BLFacade {
     	float saldoa = dbManager.getSaldoa(email);
     	dbManager.close();
     	return saldoa;
+    }
+    
+    @WebMethod
+    public List<Mugimendua> getMugimenduak(String email){
+    	dbManager.open();
+    	List<Mugimendua> mugimenduak = dbManager.getMugimenduak(email);
+    	dbManager.close();
+    	return mugimenduak;
+    	
     }
     
 }

@@ -24,10 +24,14 @@ public class User implements Serializable {
 	@XmlID
 	@Id 
 	private String email;
+	
 	private String pasahitza;
+	
 	@OneToOne(cascade=CascadeType.PERSIST)
 	private Txartela txartela;
+	
 	private float saldoa;
+	
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
@@ -35,9 +39,20 @@ public class User implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> favorites = new ArrayList<Sale>();
 	@XmlIDREF
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> boughtSales = new ArrayList<Sale>();
-
+	@XmlIDREF
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	private List<Mugimendua> mugimenduak = new ArrayList<Mugimendua>();
+	@XmlIDREF
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	private List<Salaketa> salaketak = new ArrayList<Salaketa>();
+	@XmlIDREF
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	
+	
+	private List<Erreklamazioa> erreklamazioak = new ArrayList<Erreklamazioa>();
+	
 	public User() {
 		super();
 	}
@@ -161,6 +176,14 @@ public class User implements Serializable {
 		} else {
 			return false;
 		}
+	}
+	
+	public void addMugimendua(Mugimendua mugi) {
+		mugimenduak.add(mugi);
+	}
+	
+	public List<Mugimendua> getMugimenduak() {
+		return mugimenduak;
 	}
 	
 }

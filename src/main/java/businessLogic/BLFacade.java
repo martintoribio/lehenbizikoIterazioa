@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+import domain.Mugimendua;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -75,6 +76,6 @@ public interface BLFacade  {
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
 	@WebMethod public float getSaldoa(String email);
-	
+	@WebMethod public List<Mugimendua> getMugimenduak(String email);
 	
 }

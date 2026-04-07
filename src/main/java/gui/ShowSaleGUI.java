@@ -160,8 +160,6 @@ public class ShowSaleGUI extends JFrame{
 	    buyButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		try {
-	    			//JFrame hurrengoPan = new BuyGUI(sale,aurrekoPantaila, email);
-		    		//hurrengoPan.setVisible(true);
 	    			facade.buy(sale, email);
 	    			float prezioa = sale.getPrice();
 	    			unekoSaldoa -= prezioa;
