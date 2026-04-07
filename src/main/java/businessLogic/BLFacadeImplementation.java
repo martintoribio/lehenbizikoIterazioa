@@ -170,5 +170,24 @@ public class BLFacadeImplementation  implements BLFacade {
     	
     }
     
+    @WebMethod 
+    public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException {
+    	dbManager.open();
+    	dbManager.diruaAtera(email, diruKop);
+    	dbManager.close();
+    }
+    @WebMethod 
+    public void diruaGehitu(String email, float diruKop) {
+        dbManager.open();
+        dbManager.diruaGehitu(email, diruKop);
+        dbManager.close();
+    }
+    @WebMethod 
+    public boolean egiaztatuPin(String email, int pin) {
+        dbManager.open();
+        boolean b=dbManager.egiaztatuPin(email, pin);
+        dbManager.close();
+        return b;
+    }
 }
 

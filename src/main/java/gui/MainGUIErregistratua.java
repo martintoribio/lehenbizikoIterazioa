@@ -31,6 +31,7 @@ public class MainGUIErregistratua extends JFrame {
 	private JButton jButtonCreateQuery = null;
 	private JButton jButtonQueryQueries = null;
 	private JButton jButtonLogout = null;
+	private JButton btnDiruaKudeatu = null;
 
     private static BLFacade appFacadeInterface;
 	
@@ -140,6 +141,13 @@ public class MainGUIErregistratua extends JFrame {
 		        a.setVisible(true);
 		    }
 		});
+		btnDiruaKudeatu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
+		btnDiruaKudeatu.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new WalletGUI(sellerMail);
+		        a.setVisible(true);
+		    }
+		});
 		
 		jButtonLogout = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
 		jButtonLogout.addActionListener(new ActionListener() {
@@ -152,13 +160,14 @@ public class MainGUIErregistratua extends JFrame {
 	
 		
 		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(8, 1, 0, 0));
+		jContentPane.setLayout(new GridLayout(9, 1, 0, 0));
 		jContentPane.add(jLabelSelectOption);
 		jContentPane.add(jButtonCreateQuery);
 		jContentPane.add(jButtonQueryQueries);
 		jContentPane.add(jButtonViewFavorites);
 		jContentPane.add(jButtonViewBought);
 		jContentPane.add(jButtonViewMovements);
+		jContentPane.add(btnDiruaKudeatu);
 		jContentPane.add(jButtonLogout);
 		jContentPane.add(panel);
 		
@@ -181,6 +190,7 @@ public class MainGUIErregistratua extends JFrame {
 		jButtonViewFavorites.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryFavorites"));
 		jButtonViewBought.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
 		jButtonViewMovements.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryMovements"));
+		btnDiruaKudeatu.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
 		jButtonLogout.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
 	}

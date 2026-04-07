@@ -20,7 +20,7 @@ public class QueryMugimenduakGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryMugimenduakGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Izena", "Prezioa", "Data" };
+	private String[] columnNamesProducts = new String[] { "Mugimendu mota", "Diru aldaketa"};
 
 	public QueryMugimenduakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);

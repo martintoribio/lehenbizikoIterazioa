@@ -49,9 +49,8 @@ public class User implements Serializable {
 	private List<Salaketa> salaketak = new ArrayList<Salaketa>();
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	
-	
 	private List<Erreklamazioa> erreklamazioak = new ArrayList<Erreklamazioa>();
+	
 	
 	public User() {
 		super();

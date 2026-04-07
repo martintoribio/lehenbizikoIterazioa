@@ -72,10 +72,12 @@ public interface BLFacade  {
 	@WebMethod public boolean isRegister(String login, String password, String tIzena, String tZenb, int PIN);
 	@WebMethod public Sale buy(Sale s, String email) throws NahikoDirurikEzException;
 	@WebMethod public List<Sale> getBoughtSales(String email);
-	
+	@WebMethod public List<Mugimendua> getMugimenduak(String email);
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
 	@WebMethod public float getSaldoa(String email);
-	@WebMethod public List<Mugimendua> getMugimenduak(String email);
+	@WebMethod public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException;
+	@WebMethod public void diruaGehitu(String email, float diruKop);
+	@WebMethod public boolean egiaztatuPin(String email, int pin);
 	
 }
