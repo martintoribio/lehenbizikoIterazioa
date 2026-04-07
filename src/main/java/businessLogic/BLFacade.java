@@ -75,6 +75,8 @@ public interface BLFacade  {
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
 	@WebMethod public float getSaldoa(String email);
-	
+	@WebMethod public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException;
+	@WebMethod public void diruaGehitu(String email, float diruKop);
+	@WebMethod public boolean egiaztatuPin(String email, int pin);
 	
 }

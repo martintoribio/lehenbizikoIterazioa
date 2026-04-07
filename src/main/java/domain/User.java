@@ -37,7 +37,11 @@ public class User implements Serializable {
 	@XmlIDREF
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> boughtSales = new ArrayList<Sale>();
-
+	@XmlIDREF
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	private List<Mugimendua> mugimenduak = new ArrayList<>();
+	
+	
 	public User() {
 		super();
 	}
@@ -161,6 +165,14 @@ public class User implements Serializable {
 		} else {
 			return false;
 		}
+	}
+	
+	public void addMugimendua(Mugimendua m) {
+	    mugimenduak.add(m);
+	}
+
+	public List<Mugimendua> getMugimenduak() {
+	    return mugimenduak;
 	}
 	
 }
