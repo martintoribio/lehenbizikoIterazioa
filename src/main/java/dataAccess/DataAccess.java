@@ -21,6 +21,7 @@ import javax.persistence.TypedQuery;
 import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.User;
+import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Sale;
 import domain.Txartela;
@@ -29,6 +30,7 @@ import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.NahikoDirurikEzException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.TxartelOkerraException;
 
 /**
  * It implements the data access to the objectDb database
@@ -86,6 +88,12 @@ public class DataAccess {
 			User user2 = new User("user2@gmail.com", "aurrera", null);
 			User user3 = new User("user3@gmail.com", "aurrera", null);
 
+			// Create admins
+			Arduraduna admin1 = new Arduraduna("i32546789","1234");
+			Arduraduna admin2 = new Arduraduna("j12345678","1234");
+			Arduraduna admin3 = new Arduraduna("m09876543","1234");
+			Arduraduna admin4 = new Arduraduna("d10293847","1234");
+			
 			// Create products
 			Date today = UtilDate.trim(new Date());
 
@@ -104,6 +112,11 @@ public class DataAccess {
 			db.persist(user2);
 			db.persist(user3);
 
+			db.persist(admin1);
+			db.persist(admin2);
+			db.persist(admin3);
+			db.persist(admin4);
+			
 			db.getTransaction().commit();
 			System.out.println("Db initialized");
 		} catch (Exception e) {
@@ -250,6 +263,18 @@ public class DataAccess {
 	}
 
 	@WebMethod
+	public Arduraduna isLoginArd(String email, String password) {
+
+		TypedQuery<Arduraduna> query = db.createQuery("SELECT a FROM Arduraduna a WHERE a.email =?1 AND a.pasahitza=?2",Arduraduna.class);
+		query.setParameter(1, email);
+		query.setParameter(2, password);
+		if (!query.getResultList().isEmpty()) {
+			return query.getResultList().get(0);
+		}
+		return null;
+	}
+	
+	@WebMethod
 	public User isLogin(String email, String password) {
 
 		TypedQuery<User> query = db.createQuery("SELECT u FROM User u WHERE u.email =?1 AND u.pasahitza=?2",
@@ -362,19 +387,27 @@ public class DataAccess {
 		return 0;
 	}
 
-	public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException{
+	public void diruaAtera(String email, float diruKop, int PIN) throws NahikoDirurikEzException, TxartelOkerraException{
 		db.getTransaction().begin();
 		User user = db.find(User.class, email);
-		
-		if (user.getSaldoa() < diruKop) {
-	        db.getTransaction().rollback();
-	        throw new NahikoDirurikEzException();
+		Txartela t = user.getTxartela();
+		boolean b1 = t.egiaztatuTxartela(PIN);
+		if (b1) {
+			boolean b2 = user.diruaKendu(diruKop);
+			if (b2) {
+				Mugimendua m = new Mugimendua("ATERA", diruKop*(-1), user);
+				db.persist(m);
+				user.addMugimendua(m);
+				db.getTransaction().commit();
+			} else {
+				db.getTransaction().rollback();
+				throw new NahikoDirurikEzException(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.NoMoney"));
+			}
+		} else {
+			throw new TxartelOkerraException(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
 		}
-		user.diruaKendu(diruKop);
-		Mugimendua m = new Mugimendua("ATERA", diruKop, user);
-		db.persist(m);
-		user.addMugimendua(m);
-		db.getTransaction().commit();
+		
+		
 	}
 	
 	public List<Mugimendua> getMugimenduak(String email){
@@ -385,24 +418,21 @@ public class DataAccess {
 	}
 	
 
-	public void diruaGehitu(String email, float diruKop) {
+	public void diruaGehitu(String email, float diruKop, int PIN) throws TxartelOkerraException{
 		db.getTransaction().begin();
 		User user = db.find(User.class, email);
-		user.diruaGehitu(diruKop);
-		Mugimendua m = new Mugimendua("GEHITU", diruKop, user);
-		db.persist(m);
-		user.addMugimendua(m);
-		db.getTransaction().commit();
-	}
-
-	public boolean egiaztatuPin(String email, int pin) {
-		 User user = db.find(User.class, email);
-		 if (user != null && user.getTxartela() != null) {
-			 if(user.getTxartela().getPIN() == pin) {
-				 return true;
-			 }
-		 }
-		 return false;
+		Txartela t = user.getTxartela();
+		boolean b = t.egiaztatuTxartela(PIN);
+		if (b) {
+			user.diruaGehitu(diruKop);
+			Mugimendua m = new Mugimendua("GEHITU", diruKop, user);
+			db.persist(m);
+			user.addMugimendua(m);
+			db.getTransaction().commit();
+		} else {
+			throw new TxartelOkerraException(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
+		}
+		
 	}
 	
 	public void close() {

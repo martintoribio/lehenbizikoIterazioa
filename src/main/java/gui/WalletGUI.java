@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import businessLogic.BLFacade;
 import exceptions.NahikoDirurikEzException;
+import exceptions.TxartelOkerraException;
 
 public class WalletGUI extends JFrame {
 
@@ -77,25 +78,22 @@ public class WalletGUI extends JFrame {
 
 	
 		getContentPane().add(jButtonClose);
-
+		jLabelError.setText("");
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					float kantitatea = Float.parseFloat(textKantitatea.getText());
-					int pin = Integer.parseInt(textPin.getText());
-
-					if (bl.egiaztatuPin(email, pin)) {
-
-						bl.diruaGehitu(email, kantitatea);
-
+					if (kantitatea<=0.0) {
+						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Negative"));
+					} else {
+						jLabelError.setText("");
+						int pin = Integer.parseInt(textPin.getText());
+						bl.diruaGehitu(email, kantitatea, pin);
 						float saldoBerria = bl.getSaldoa(email);
 						jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldoBerria);
-						jLabelError.setText("");
-
-					} else {
-						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
 					}
-
+				} catch (TxartelOkerraException ex) {
+					jLabelError.setText(ex.getMessage());
 				} catch (NumberFormatException ex) {
 					jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.NumberError"));
 				}
@@ -106,19 +104,17 @@ public class WalletGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					float kantitatea = Float.parseFloat(textKantitatea.getText());
-					int pin = Integer.parseInt(textPin.getText());
-
-					if (bl.egiaztatuPin(email, pin)) {
-
-						bl.diruaAtera(email, kantitatea);
-
-						float saldoBerria = bl.getSaldoa(email);
-						jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldoBerria);
-						jLabelError.setText("");
+					if (kantitatea<=0.0) {
+						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Negative"));
 					} else {
-						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
+						jLabelError.setText("");
+						int pin = Integer.parseInt(textPin.getText());
+						bl.diruaAtera(email,  kantitatea, pin);
+						float saldoBerria = bl.getSaldoa(email);
+						jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldoBerria);	
 					}
-
+				} catch (TxartelOkerraException ex) {
+					jLabelError.setText(ex.getMessage());
 				} catch (NumberFormatException ex) {
 					jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.NumberError"));
 				} catch (NahikoDirurikEzException ex) {

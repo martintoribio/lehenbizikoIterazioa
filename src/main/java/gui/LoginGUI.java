@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import businessLogic.BLFacade;
+import domain.Arduraduna;
 import domain.User;
 
 import javax.swing.JLabel;
@@ -37,7 +38,7 @@ public class LoginGUI extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			}	
 		});
 	}
 
@@ -76,14 +77,21 @@ public class LoginGUI extends JFrame {
 		loginBotoia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade = MainGUI.getBusinessLogic();
-				User u = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
-				if (u!=null) {
-					new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
+				Arduraduna a = facade.isLoginArd(emailTextField.getText(), passwordTextField.getText());
+				if (a!=null) {
+					new MainGUIErregistratuaArd(emailTextField.getText()).setVisible(true);
 					nirePantaila.setVisible(false);
 				} else {
-					erroreMezua.setForeground(Color.red);
-					erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.ErroreMezua"));
+					User u = facade.isLogin(emailTextField.getText(), passwordTextField.getText());
+					if (u!=null) {
+						new MainGUIErregistratua(emailTextField.getText()).setVisible(true);
+						nirePantaila.setVisible(false);
+					} else {
+						erroreMezua.setForeground(Color.red);
+						erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("LoginGUI.ErroreMezua"));
+					}
 				}
+				
 			}
 		});
 		loginBotoia.setBounds(91, 189, 126, 27);

@@ -73,8 +73,8 @@ public class Txartela implements Serializable {
 		return true;
 	}
 	
-	public boolean isSameTxartela(String tIzena, String tZenb, int PIN) {
-		return (this.tIzena.equals(tIzena) && this.tZenb.equals(tZenb) && this.PIN==PIN);
+	public boolean egiaztatuTxartela(int PIN) {
+		return (this.PIN==PIN);
 	}
 	
 	

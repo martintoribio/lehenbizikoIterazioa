@@ -26,6 +26,10 @@ public class Arduraduna implements Serializable {
 		
 	}
 	
+	public Arduraduna() {
+		super();
+	}
+	
 	public String getEmail() {
 		return this.email;
 	}

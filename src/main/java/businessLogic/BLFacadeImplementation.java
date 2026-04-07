@@ -7,6 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import dataAccess.DataAccess;
+import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Sale;
 import domain.User;
@@ -14,6 +15,7 @@ import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.TxartelOkerraException;
 import exceptions.NahikoDirurikEzException;
 
 import java.awt.image.BufferedImage;
@@ -117,6 +119,14 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return b;
 	}
+    
+    @WebMethod public Arduraduna isLoginArd(String email, String password) {
+		dbManager.open();
+		Arduraduna b = dbManager.isLoginArd(email, password);
+		dbManager.close();
+		return b;
+	}
+    
     @WebMethod public boolean isRegister(String email, String password, String tIzena, String tZenb, int PIN) {
 		dbManager.open();
 		boolean b = dbManager.isRegister(email, password, tIzena, tZenb, PIN);
@@ -171,23 +181,17 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod 
-    public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException {
+    public void diruaAtera(String email, float diruKop, int PIN) throws NahikoDirurikEzException, TxartelOkerraException {
     	dbManager.open();
-    	dbManager.diruaAtera(email, diruKop);
+    	dbManager.diruaAtera(email, diruKop, PIN);
     	dbManager.close();
     }
     @WebMethod 
-    public void diruaGehitu(String email, float diruKop) {
+    public void diruaGehitu(String email, float diruKop, int PIN) throws TxartelOkerraException{
         dbManager.open();
-        dbManager.diruaGehitu(email, diruKop);
+        dbManager.diruaGehitu(email, diruKop, PIN);
         dbManager.close();
     }
-    @WebMethod 
-    public boolean egiaztatuPin(String email, int pin) {
-        dbManager.open();
-        boolean b=dbManager.egiaztatuPin(email, pin);
-        dbManager.close();
-        return b;
-    }
+
 }
 

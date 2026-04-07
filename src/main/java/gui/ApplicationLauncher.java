@@ -27,7 +27,6 @@ public class ApplicationLauncher {
 
 
 		try {
-			
 			BLFacade appFacadeInterface;
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 			

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Sale;
 import domain.User;
@@ -11,6 +12,7 @@ import domain.Txartela;
 import exceptions.FileNotUploadedException;
 import exceptions.MustBeLaterThanTodayException;
 import exceptions.SaleAlreadyExistException;
+import exceptions.TxartelOkerraException;
 import exceptions.NahikoDirurikEzException;
 
 import javax.jws.WebMethod;
@@ -69,6 +71,7 @@ public interface BLFacade  {
 	@WebMethod public Image downloadImage(String imageName);
 	
 	@WebMethod public User isLogin(String login, String password);
+	@WebMethod public Arduraduna isLoginArd(String login, String password);
 	@WebMethod public boolean isRegister(String login, String password, String tIzena, String tZenb, int PIN);
 	@WebMethod public Sale buy(Sale s, String email) throws NahikoDirurikEzException;
 	@WebMethod public List<Sale> getBoughtSales(String email);
@@ -76,8 +79,7 @@ public interface BLFacade  {
 	@WebMethod public boolean addFavorite(String email, Sale sale);
 	@WebMethod public List<Sale> getFavorites(String email);
 	@WebMethod public float getSaldoa(String email);
-	@WebMethod public void diruaAtera(String email, float diruKop) throws NahikoDirurikEzException;
-	@WebMethod public void diruaGehitu(String email, float diruKop);
-	@WebMethod public boolean egiaztatuPin(String email, int pin);
+	@WebMethod public void diruaAtera(String email, float diruKop, int pin) throws NahikoDirurikEzException, TxartelOkerraException;
+	@WebMethod public void diruaGehitu(String email, float diruKop, int pin) throws TxartelOkerraException;
 	
 }
