@@ -185,4 +185,11 @@ public class User implements Serializable {
 		return mugimenduak;
 	}
 	
+	public void addSalaketa(Salaketa sala) {
+		salaketak.add(sala);
+	}
+	public List<Salaketa> getSalaketak(){
+		return salaketak;
+	}
+	
 }

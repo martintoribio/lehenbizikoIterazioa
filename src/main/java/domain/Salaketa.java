@@ -41,6 +41,8 @@ public class Salaketa implements Serializable {
 	public Salaketa(String deskribapena, String egoera, User user, Sale sale) {
 		this.deskribapena=deskribapena;
 		this.egoera=egoera;
+		this.user = user;
+		this.sale = sale;
 	}
 	public String getDeskribapena() {
 		return deskribapena;
@@ -54,9 +56,18 @@ public class Salaketa implements Serializable {
 	public void setEgoera(String egoera) {
 		this.egoera=egoera;
 	}
+	
+	public Sale getSale() {
+		return sale;
+	}
+	public User getUser() {
+		return user;
+	}
+	
 	public String toString() {
 		return deskribapena+";"+egoera+";";
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {

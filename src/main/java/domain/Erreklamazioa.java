@@ -42,6 +42,8 @@ public class Erreklamazioa implements Serializable {
 	public Erreklamazioa(String deskribapena, String egoera, User user, Sale sale) {
 		this.deskribapena = deskribapena;
 		this.egoera = egoera;
+		this.user = user;
+		this.sale = sale;
 	}
 
 	public String getDeskribapena() {

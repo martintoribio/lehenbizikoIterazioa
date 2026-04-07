@@ -49,8 +49,10 @@ public class ShowSaleGUI extends JFrame{
 	private JLabel statusField=new JLabel();
 	private JFrame thisFrame;
 	private JButton buyButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleGUI.buy")); 
+	private JButton reportButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("OfertaSalatuGUI.report"));
 	private JLabel saldoa = new JLabel();
 	private float unekoSaldoa;
+
 	
 	public ShowSaleGUI(Sale sale, String email,JFrame aurrekoPantaila) { 
 		thisFrame=this; 
@@ -58,7 +60,6 @@ public class ShowSaleGUI extends JFrame{
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(604, 370));
 		//this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateProductGUI.CreateProduct"));
-
 		fieldTitle.setText(sale.getTitle());
 		fieldDescription.setText(sale.getDescription());
 
@@ -74,13 +75,13 @@ public class ShowSaleGUI extends JFrame{
 
 		
 		scrollPaneEvents.setBounds(new Rectangle(25, 44, 346, 116));
-		jButtonClose.setBounds(new Rectangle(16, 268, 114, 30));
+		jButtonClose.setBounds(new Rectangle(16, 268, 100, 30));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.setVisible(false);			}
 		});
 
-		btnFavorite.setBounds(new Rectangle(137, 214, 168, 37));
+		btnFavorite.setBounds(new Rectangle(236, 268, 100, 30));
 		btnFavorite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BLFacade facade = MainGUI.getBusinessLogic();
@@ -132,7 +133,7 @@ public class ShowSaleGUI extends JFrame{
 		fieldDescription.setColumns(10);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(318, 166, 180, 160);
+		panel_1.setBounds(400, 80, 180, 160);
 		getContentPane().add(panel_1);
 		
 		labelStatus.setFont(new Font("Lucida Grande", Font.BOLD, 13));
@@ -172,10 +173,22 @@ public class ShowSaleGUI extends JFrame{
 	    	}
 	    });
 	    buyButton.setVisible(true);
-	    buyButton.setBounds(140, 262, 168, 33);
+	    buyButton.setBounds(new Rectangle(126, 268, 100, 30));
 	    getContentPane().add(buyButton);
 		
+	    reportButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		JFrame hurrengoPantaila = new OfertaSalatuGUI(email, thisFrame, sale.getSaleNumber());
+	    		hurrengoPantaila.setVisible(true);
+	    	}
+	    });
+	    reportButton.setVisible(true);
+	    reportButton.setBounds(new Rectangle(356, 268, 100, 30));
+	    getContentPane().add(reportButton);
 		this.setVisible(true);
+		
+		
+		
 	}	 
 	public BufferedImage rescale(BufferedImage originalImage)
     {

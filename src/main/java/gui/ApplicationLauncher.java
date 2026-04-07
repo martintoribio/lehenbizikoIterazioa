@@ -36,7 +36,7 @@ public class ApplicationLauncher {
 			}
 			else { //If remote
 				
-				 String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";	 
+				 String serviceName= "http://"+c.getBusinessLogicNode() 	+":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";	 
 				 URL url = new URL(serviceName);
 
 		 

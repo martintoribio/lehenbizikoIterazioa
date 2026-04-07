@@ -23,6 +23,7 @@ import configuration.UtilDate;
 import domain.User;
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Salaketa;
 import domain.Sale;
 import domain.Txartela;
 import domain.User;
@@ -433,6 +434,33 @@ public class DataAccess {
 			throw new TxartelOkerraException(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
 		}
 		
+	}
+	
+	public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber) {
+		db.getTransaction().begin();
+		Sale sale = db.find(Sale.class, saleNumber);
+		User user = db.find(User.class, email);
+		if (sale!=null && user!=null) {
+			Salaketa salaketa = new Salaketa(deskribapena, "aztertzeko", user, sale);
+			user.addSalaketa(salaketa);
+			db.persist(salaketa);
+			db.getTransaction().commit();
+			return salaketa;
+		} else {
+			db.getTransaction().rollback();
+			return null;
+		}
+	}
+	
+	public List<Salaketa> getSalaketak(String email) {
+		TypedQuery <Salaketa> query = db.createQuery("SELECT s FROM Salaketa s WHERE s.user.email=:email", Salaketa.class);
+		query.setParameter("email", email);
+		List<Salaketa> salaketak = query.getResultList();
+		if (!salaketak.isEmpty()) {
+			return query.getResultList();
+		} else {
+			return new ArrayList<Salaketa>();
+		}
 	}
 	
 	public void close() {

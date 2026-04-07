@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import dataAccess.DataAccess;
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Salaketa;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -191,6 +192,22 @@ public class BLFacadeImplementation  implements BLFacade {
         dbManager.open();
         dbManager.diruaGehitu(email, diruKop, PIN);
         dbManager.close();
+    }
+    
+    @WebMethod
+    public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber) {
+    	dbManager.open();
+    	Salaketa salaketa = dbManager.sortuSalaketa(email, deskribapena, saleNumber);
+    	dbManager.close();
+    	return salaketa;
+    }
+    
+    @WebMethod
+    public List<Salaketa> getSalaketak(String email) {
+    	dbManager.open();
+    	List<Salaketa> salaketak = dbManager.getSalaketak(email);
+    	dbManager.close();
+    	return salaketak;
     }
 
 }

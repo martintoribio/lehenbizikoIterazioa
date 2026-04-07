@@ -6,6 +6,7 @@ import java.util.List;
 
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Salaketa;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -81,5 +82,6 @@ public interface BLFacade  {
 	@WebMethod public float getSaldoa(String email);
 	@WebMethod public void diruaAtera(String email, float diruKop, int pin) throws NahikoDirurikEzException, TxartelOkerraException;
 	@WebMethod public void diruaGehitu(String email, float diruKop, int pin) throws TxartelOkerraException;
-	
+	@WebMethod public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber); 
+	@WebMethod public List<Salaketa> getSalaketak(String email);
 }
