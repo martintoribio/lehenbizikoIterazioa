@@ -84,4 +84,7 @@ public interface BLFacade  {
 	@WebMethod public void diruaGehitu(String email, float diruKop, int pin) throws TxartelOkerraException;
 	@WebMethod public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber); 
 	@WebMethod public List<Salaketa> getSalaketak(String email);
+	@WebMethod public List<Salaketa> getAztertzekoSalaketak ();
+	@WebMethod public boolean salaketaOnartu(Integer idSalaketa);
+	@WebMethod public boolean salaketaEzeztatu(Integer idSalaketa);	
 }

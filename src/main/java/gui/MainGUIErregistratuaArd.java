@@ -42,8 +42,15 @@ public class MainGUIErregistratuaArd extends JFrame {
 		getContentPane().setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JButton salaketaBut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratuaArd.Complaint"));
+		salaketaBut.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new QueryAztertzekoSalaketakGUI(nirePantaila, mail,nirePantaila);
+		        a.setVisible(true);
+		    }
+		});
 		getContentPane().add(salaketaBut);
 		
+	
 		JButton errekBut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratuaArd.Claim"));
 		getContentPane().add(errekBut);
 		

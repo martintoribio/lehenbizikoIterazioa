@@ -457,10 +457,42 @@ public class DataAccess {
 		query.setParameter("email", email);
 		List<Salaketa> salaketak = query.getResultList();
 		if (!salaketak.isEmpty()) {
-			return query.getResultList();
+			return salaketak;
 		} else {
 			return new ArrayList<Salaketa>();
 		}
+	}
+	
+	public List<Salaketa> getAztertzekoSalaketak() {
+		TypedQuery <Salaketa> query = db.createQuery("SELECT s FROM Salaketa s WHERE s.egoera='aztertzeko'", Salaketa.class);	
+		List<Salaketa> salaketak = query.getResultList();
+		if(!salaketak.isEmpty()) {
+			return salaketak;
+		} else {
+			return new ArrayList<Salaketa>();
+		}
+	}
+	
+	public boolean salaketaOnartu(Integer idSalaketa) {
+		
+		Salaketa salaketa = db.find(Salaketa.class, idSalaketa);
+		salaketa.setEgoera("onartua");
+		Sale sale = salaketa.getSale();
+		if (sale!=null) {
+			db.getTransaction().begin();
+			db.remove(sale);
+			db.getTransaction().commit();
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public boolean salaketaEzeztatu(Integer idSalaketa) {
+		Salaketa salaketa = db.find(Salaketa.class, idSalaketa);
+		salaketa.setEgoera("ezeztatua");
+		return true;
 	}
 	
 	public void close() {

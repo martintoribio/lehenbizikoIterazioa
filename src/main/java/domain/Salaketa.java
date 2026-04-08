@@ -44,6 +44,10 @@ public class Salaketa implements Serializable {
 		this.user = user;
 		this.sale = sale;
 	}
+	
+	public Integer getIdSalaketa() {
+		return idSalaketa;
+	}
 	public String getDeskribapena() {
 		return deskribapena;
 	}

@@ -209,6 +209,30 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.close();
     	return salaketak;
     }
+    
+    @WebMethod
+    public List<Salaketa> getAztertzekoSalaketak() {
+    	dbManager.open();
+    	List<Salaketa> salaketak = dbManager.getAztertzekoSalaketak();
+    	dbManager.close();
+    	return salaketak;
+    }
+    
+    @WebMethod
+    public boolean salaketaOnartu(Integer idSalaketa) {
+    	dbManager.open();
+    	boolean b = dbManager.salaketaOnartu(idSalaketa);
+    	dbManager.close();
+    	return b;
+    }
+    
+    @WebMethod
+    public boolean salaketaEzeztatu(Integer idSalaketa) {
+    	dbManager.open();
+    	boolean b = dbManager.salaketaEzeztatu(idSalaketa);
+    	dbManager.close();
+    	return b;
+    }
 
 }
 
