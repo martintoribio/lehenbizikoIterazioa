@@ -83,12 +83,15 @@ public interface BLFacade  {
 	@WebMethod public float getSaldoa(String email);
 	@WebMethod public void diruaAtera(String email, float diruKop, int pin) throws NahikoDirurikEzException, TxartelOkerraException;
 	@WebMethod public void diruaGehitu(String email, float diruKop, int pin) throws TxartelOkerraException;
-	@WebMethod public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber); 
+	@WebMethod public Salaketa sortuSalaketa(String email, String titulua, String deskribapena, int saleNumber); 
 	@WebMethod public List<Salaketa> getSalaketak(String email);
 	@WebMethod public List<Salaketa> getAztertzekoSalaketak ();
 	@WebMethod public boolean salaketaOnartu(Integer idSalaketa);
 	@WebMethod public boolean salaketaEzeztatu(Integer idSalaketa);	
-	@WebMethod public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber); 
+	@WebMethod public Erreklamazioa sortuErreklamazioa(String email, String titulua, String deskribapena, int saleNumber); 
 	@WebMethod public List<Erreklamazioa> getErreklamazioak(String email);
+	@WebMethod public boolean erreklamazioaOnartu(Integer idErreklam);
+	@WebMethod public void erreklamazioaEzeztatu(Integer idErreklam);
+	@WebMethod public List<Erreklamazioa> getAztertzekoErreklamazioak();
 }
 

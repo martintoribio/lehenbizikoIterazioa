@@ -148,6 +148,10 @@ public class User implements Serializable {
 		return boughtSales;
 	}
 	
+	public void removeBoughtSale(Sale sale) {
+		boughtSales.remove(sale);
+	}
+	
 	public void addBought(Sale s) {
 		boughtSales.add(s);
 	}

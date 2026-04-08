@@ -1,4 +1,4 @@
-package dataAccess;
+	package dataAccess;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -442,12 +442,12 @@ public class DataAccess {
 		
 	}
 	
-	public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber) {
+	public Salaketa sortuSalaketa(String email, String titulua, String deskribapena, int saleNumber) {
 		db.getTransaction().begin();
 		Sale sale = db.find(Sale.class, saleNumber);
 		User user = db.find(User.class, email);
 		if (sale!=null && user!=null) {
-			Salaketa salaketa = new Salaketa(deskribapena, "aztertzeko", user, sale);
+			Salaketa salaketa = new Salaketa(titulua, deskribapena, "aztertzeko", user, sale);
 			user.addSalaketa(salaketa);
 			db.persist(salaketa);
 			db.getTransaction().commit();
@@ -480,33 +480,35 @@ public class DataAccess {
 	}
 	
 	public boolean salaketaOnartu(Integer idSalaketa) {
-		
+		db.getTransaction().begin();
 		Salaketa salaketa = db.find(Salaketa.class, idSalaketa);
 		salaketa.setEgoera("onartua");
 		Sale sale = salaketa.getSale();
 		if (sale!=null) {
-			db.getTransaction().begin();
 			db.remove(sale);
 			db.getTransaction().commit();
 			return true;
 		} else {
+			db.getTransaction().rollback();
 			return false;
 		}
 
 	}
 	
 	public boolean salaketaEzeztatu(Integer idSalaketa) {
+		db.getTransaction().begin();
 		Salaketa salaketa = db.find(Salaketa.class, idSalaketa);
 		salaketa.setEgoera("ezeztatua");
+		db.getTransaction().commit();
 		return true;
 	}
 	
-	public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber) {
+	public Erreklamazioa sortuErreklamazioa(String email, String titulua, String deskribapena, int saleNumber) {
 		db.getTransaction().begin();
 		Sale sale = db.find(Sale.class, saleNumber);
 		User user = db.find(User.class, email);
 		if (sale!=null && user!=null) {
-			Erreklamazioa errek = new Erreklamazioa(deskribapena, "aztertzeko", user, sale);
+			Erreklamazioa errek = new Erreklamazioa(titulua, deskribapena, "aztertzeko", user, sale);
 			user.addErreklamazioa(errek);
 			db.persist(errek);
 			db.getTransaction().commit();
@@ -527,6 +529,53 @@ public class DataAccess {
 			return new ArrayList<Erreklamazioa>();
 		}
 	}
+	
+public boolean erreklamazioaOnartu(Integer idErreklam) {
+		db.getTransaction().begin();
+		Erreklamazioa erreklamazioa = db.find(Erreklamazioa.class, idErreklam);
+		erreklamazioa.setEgoera("onartua");
+		Sale sale = erreklamazioa.getSale();
+		if (sale!=null) {
+			User buyer = erreklamazioa.getUser();
+			User seller = sale.getSeller();
+			float prezioa = sale.getPrice();
+			String title = sale.getTitle();
+			buyer.diruaGehitu(prezioa);
+			Mugimendua mugi = new Mugimendua("Erreklamazioa: " + title, prezioa, buyer);
+			buyer.addMugimendua(mugi);
+			db.persist(mugi);
+			buyer.removeBoughtSale(sale);
+			seller.diruaKendu(prezioa);
+			Mugimendua mugi2 = new Mugimendua("Erreklamazioa: " + title, prezioa*(-1), seller);
+			seller.addMugimendua(mugi2);
+			db.persist(mugi2);
+			db.getTransaction().commit();
+			return true;
+		} else {
+			db.getTransaction().rollback();
+			return false;
+		}
+
+	}
+	
+	public boolean erreklamazioaEzeztatu(Integer idErreklam) {
+		db.getTransaction().begin();
+		Erreklamazioa erreklamazioa = db.find(Erreklamazioa.class, idErreklam);
+		erreklamazioa.setEgoera("ezeztatua");
+		db.getTransaction().commit();
+		return true;
+	}
+	
+	public List<Erreklamazioa> getAztertzekoErreklamazioak() {
+		TypedQuery <Erreklamazioa> query = db.createQuery("SELECT e FROM Erreklamazioa e WHERE e.egoera='aztertzeko'", Erreklamazioa.class);	
+		List<Erreklamazioa> erreklamazioak = query.getResultList();
+		if(!erreklamazioak.isEmpty()) {
+			return erreklamazioak;
+		} else {
+			return new ArrayList<Erreklamazioa>();
+		}
+	}
+	
 	public void close() {
 		db.close();
 		System.out.println("DataAcess closed");

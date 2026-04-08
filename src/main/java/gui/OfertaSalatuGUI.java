@@ -35,14 +35,23 @@ public class OfertaSalatuGUI extends JFrame {
 		nirePantaila = this;
 		JLabel erroreMezua = new JLabel(""); //$NON-NLS-1$ //$NON-NLS-2$
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 330);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
+		JLabel salaketaTituluaText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("OfertaSalatuGUI.title"));
+		salaketaTituluaText.setBounds(30, 20, 90, 25);
+		contentPane.add(salaketaTituluaText);
+		
+		JTextField salaketaTitulua = new JTextField();
+		salaketaTitulua.setBounds(120, 20, 280, 25);
+		contentPane.add(salaketaTitulua);
+		
+		
 		JLabel deskribapenaText = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("OfertaSalatuGUI.description"));
-		deskribapenaText.setBounds(30, 30, 141, 14);
+		deskribapenaText.setBounds(30, 60, 141, 14);
 		contentPane.add(deskribapenaText);
 
 
@@ -50,7 +59,7 @@ public class OfertaSalatuGUI extends JFrame {
 		deskribapenaTextArea.setLineWrap(true);
 		deskribapenaTextArea.setWrapStyleWord(true);;
 		JScrollPane scrollPane = new JScrollPane(deskribapenaTextArea);
-		scrollPane.setBounds(30, 45, 370, 100);
+		scrollPane.setBounds(30, 85, 370, 100);
 		contentPane.add(scrollPane);
 
 		
@@ -61,7 +70,8 @@ public class OfertaSalatuGUI extends JFrame {
 				BLFacade facade = MainGUI.getBusinessLogic();
 				if (!deskribapenaTextArea.getText().trim().isEmpty()) {
 					String deskribapena = deskribapenaTextArea.getText();
-					Salaketa salaketa = facade.sortuSalaketa(email, deskribapena, saleNumber);
+					String titulua = salaketaTitulua.getText();
+					Salaketa salaketa = facade.sortuSalaketa(email, titulua, deskribapena, saleNumber);
 					if (salaketa==null) {
 						erroreMezua.setText("Error");
 					} else {
@@ -76,7 +86,7 @@ public class OfertaSalatuGUI extends JFrame {
 				
 			}
 		});
-		salatuBotoia.setBounds(91, 200, 126, 27);
+		salatuBotoia.setBounds(91, 230, 126, 27);
 		contentPane.add(salatuBotoia);
 
 		JButton atzeraButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
@@ -85,11 +95,11 @@ public class OfertaSalatuGUI extends JFrame {
 				nirePantaila.setVisible(false);
 			}
 		});
-		atzeraButton.setBounds(242, 200, 115, 27);
+		atzeraButton.setBounds(242, 230, 115, 27);
 		contentPane.add(atzeraButton);
 		
 		
-		erroreMezua.setBounds(118, 175, 246, 20);
+		erroreMezua.setBounds(30, 200, 370, 20);
 		contentPane.add(erroreMezua);
 
 	}

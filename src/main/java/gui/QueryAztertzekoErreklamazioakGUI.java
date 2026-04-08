@@ -1,6 +1,7 @@
 package gui;
 
 import businessLogic.BLFacade;
+import domain.Erreklamazioa;
 import domain.Mugimendua;
 import domain.Salaketa;
 import domain.Sale;
@@ -13,20 +14,20 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-public class QueryAztertzekoSalaketakGUI extends JFrame {
+public class QueryAztertzekoErreklamazioakGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPanelProducts = new JScrollPane();
 	private JTable tableProducts = new JTable();
 	private DefaultTableModel tableModelProducts;
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
-	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QuerySalaketakGUI.name"));
+	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryErreklamazioakGUI.name"));
 	private JFrame unekoPantaila = this;
-	private String[] columnNamesProducts = new String[] { "Salaketa","Produktua", "Erabiltzailea"};
+	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua", "Erabiltzailea"};
 
-	public QueryAztertzekoSalaketakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QueryAztertzekoErreklamazioakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(750, 300));
-		this.setTitle("Salaketak");
+		this.setTitle("Erreklamazioak");
 		
 		jLabelTitle.setBounds(50, 20, 400, 20);
 		this.getContentPane().add(jLabelTitle);
@@ -56,28 +57,27 @@ public class QueryAztertzekoSalaketakGUI extends JFrame {
 			        JTable table =(JTable) mouseEvent.getSource();
 	            	Point point = mouseEvent.getPoint();
 			        int row = table.rowAtPoint(point);
-	            	Salaketa s=(Salaketa) tableModelProducts.getValueAt(row, 3);
-		            new SalaketaIkusiGUI(s, pantaila, email);
+	            	Erreklamazioa e=(Erreklamazioa) tableModelProducts.getValueAt(row, 3);
+		            new ErreklamazioaIkusiGUI(e, pantaila, email);
 		            unekoPantaila.setVisible(false);
 	            }
 	        }
 	 });
 	}
 
-	
 	private void loadReports(String email) {
 		try {
 			BLFacade facade = MainGUI.getBusinessLogic();
-			List<Salaketa> salaketak = facade.getAztertzekoSalaketak();
+			List<Erreklamazioa> erreklamazioak = facade.getAztertzekoErreklamazioak();
 			
-			for (Salaketa salaketa : salaketak) {
-				Sale sale = salaketa.getSale();
-				if (sale!=null) {
+			for (Erreklamazioa erreklamazioa : erreklamazioak) {
+				Sale sale = erreklamazioa.getSale();
+				if (sale.getTitle().isEmpty() && sale!=null) {
 					Vector<Object> row = new Vector<Object>();
-					row.add(salaketa.getTitulua());
+					row.add(erreklamazioa.getTitulua());
 					row.add(sale.getTitle());
-					row.add(salaketa.getUser().getEmail());
-					row.add(salaketa);
+					row.add(erreklamazioa.getUser().getEmail());
+					row.add(erreklamazioa);
 					tableModelProducts.addRow(row);
 				}
 				

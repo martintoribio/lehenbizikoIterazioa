@@ -21,7 +21,7 @@ public class QuerySalaketakGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QuerySalaketakGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Salaketa", "Egoera"};
+	private String[] columnNamesProducts = new String[] { "Salaketa", "Produktua", "Egoera"};
 
 	public QuerySalaketakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);
@@ -41,7 +41,7 @@ public class QuerySalaketakGUI extends JFrame {
 		scrollPanelProducts.setBounds(new Rectangle(50, 60, 480, 200));
 		tableModelProducts = new DefaultTableModel(null, columnNamesProducts);
 		tableProducts.setModel(tableModelProducts);
-		tableModelProducts.setColumnCount(2);
+		tableModelProducts.setColumnCount(3);
 		scrollPanelProducts.setViewportView(tableProducts);
 		this.getContentPane().add(scrollPanelProducts, null);
 
@@ -54,8 +54,9 @@ public class QuerySalaketakGUI extends JFrame {
 			List<Salaketa> salaketak = facade.getSalaketak(email);
 			
 			for (Salaketa salaketa : salaketak) {
-				Vector<Object> row = new Vector<Object>();
 				Sale sale = salaketa.getSale();
+				Vector<Object> row = new Vector<Object>();
+				row.add(salaketa.getTitulua());
 				row.add(sale.getTitle());
 				row.add(salaketa.getEgoera());
 				tableModelProducts.addRow(row);

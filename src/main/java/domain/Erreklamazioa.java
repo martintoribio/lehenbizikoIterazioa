@@ -23,6 +23,7 @@ public class Erreklamazioa implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idErreklam;
 	
+	private String titulua;
 	private String deskribapena;
 	private String egoera;
 	
@@ -39,13 +40,22 @@ public class Erreklamazioa implements Serializable {
 		super();
 	}
 
-	public Erreklamazioa(String deskribapena, String egoera, User user, Sale sale) {
+	public Erreklamazioa(String titulua, String deskribapena, String egoera, User user, Sale sale) {
+		this.titulua = titulua;
 		this.deskribapena = deskribapena;
 		this.egoera = egoera;
 		this.user = user;
 		this.sale = sale;
 	}
 
+	public Integer getIdErreklamazioa() {
+		return idErreklam;
+	}
+	
+	public String getTitulua() {
+		return titulua;
+	}
+	
 	public String getDeskribapena() {
 		return deskribapena;
 	}

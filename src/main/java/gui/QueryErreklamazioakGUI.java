@@ -21,7 +21,7 @@ public class QueryErreklamazioakGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryErreklamazioakGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Egoera"};
+	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua", "Egoera"};
 
 	public QueryErreklamazioakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);
@@ -41,7 +41,7 @@ public class QueryErreklamazioakGUI extends JFrame {
 		scrollPanelProducts.setBounds(new Rectangle(50, 60, 480, 200));
 		tableModelProducts = new DefaultTableModel(null, columnNamesProducts);
 		tableProducts.setModel(tableModelProducts);
-		tableModelProducts.setColumnCount(2);
+		tableModelProducts.setColumnCount(3);
 		scrollPanelProducts.setViewportView(tableProducts);
 		this.getContentPane().add(scrollPanelProducts, null);
 
@@ -54,8 +54,9 @@ public class QueryErreklamazioakGUI extends JFrame {
 			List<Erreklamazioa> erreklamazioak = facade.getErreklamazioak(email);
 			
 			for (Erreklamazioa errek : erreklamazioak) {
-				Vector<Object> row = new Vector<Object>();
 				Sale sale = errek.getSale();
+				Vector<Object> row = new Vector<Object>();
+				row.add(errek.getTitulua());
 				row.add(sale.getTitle());
 				row.add(errek.getEgoera());
 				tableModelProducts.addRow(row);

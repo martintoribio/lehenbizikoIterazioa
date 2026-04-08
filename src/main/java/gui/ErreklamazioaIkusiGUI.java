@@ -11,12 +11,13 @@ import java.text.SimpleDateFormat;
 import java.awt.image.BufferedImage;
 
 import businessLogic.BLFacade;
+import domain.Erreklamazioa;
 import domain.Salaketa;
 import domain.Sale;
 import exceptions.NahikoDirurikEzException;
 
 
-public class SalaketaIkusiGUI extends JFrame{
+public class ErreklamazioaIkusiGUI extends JFrame{
 	
     File targetFile;
     BufferedImage targetImg;
@@ -29,7 +30,7 @@ public class SalaketaIkusiGUI extends JFrame{
 	private JTextField fieldTitle=new JTextField();
 	private JTextField fieldDescription=new JTextField();
 	private JTextArea deskribapenaTextArea;
-	
+
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleGUI.Title"));
 	private JLabel jLabelDescription = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Description")); 
 	private JLabel jLabelPrice = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Price"));
@@ -47,13 +48,13 @@ public class SalaketaIkusiGUI extends JFrame{
 	private JFrame thisFrame;
 
 	
-	public SalaketaIkusiGUI(Salaketa salaketa, JFrame aurrekoPantaila, String email) { 
+	public ErreklamazioaIkusiGUI(Erreklamazioa erreklamazioa, JFrame aurrekoPantaila, String email) { 
 		thisFrame=this; 
 		this.setVisible(true);
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(604, 520));
-		Sale sale = salaketa.getSale();
-		Integer idSalaketa = salaketa.getIdSalaketa();
+		Sale sale = erreklamazioa.getSale();
+		Integer idErreklam = erreklamazioa.getIdErreklamazioa();
 		BLFacade facade = MainGUI.getBusinessLogic();
 		//this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateProductGUI.CreateProduct"));
 		fieldTitle.setText(sale.getTitle());
@@ -77,20 +78,19 @@ public class SalaketaIkusiGUI extends JFrame{
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.dispose();
-				new QueryAztertzekoSalaketakGUI(aurrekoPantaila, email, aurrekoPantaila).setVisible(true);
-				}
+				new QueryAztertzekoSalaketakGUI(aurrekoPantaila, email, aurrekoPantaila).setVisible(true);			}
 		});
 		
 		
 		jButtonOnartu.setBounds(new Rectangle(20, 300, 130, 30));
 		jButtonOnartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean b = facade.salaketaOnartu(idSalaketa);
+				boolean b = facade.erreklamazioaOnartu(idErreklam);
 				if (b) {
-					jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("SalaketaIkusiGUI.accepted"));
+					jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("ErreklamazioaIkusiGUI.accepted"));
 					jLabelError.setText("");
 				} else {
-					jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("SalaketaIkusiGUI.alreadyDeleted"));
+					jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("ErreklamazioaIkusiGUI.alreadyDeleted"));
 					jLabelMsg.setText("");
 				}
 			}
@@ -100,15 +100,9 @@ public class SalaketaIkusiGUI extends JFrame{
 		jButtonEzeztatu.setBounds(new Rectangle(160, 300, 130, 30));
 		jButtonEzeztatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean b = facade.salaketaEzeztatu(idSalaketa);
-				if (b) {
-					jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("SalaketaIkusiGUI.rejected"));
-					jLabelError.setText("");
-				} else {
-					jLabelError.setText("error");
-					jLabelMsg.setText("");
-					
-				}
+				facade.erreklamazioaEzeztatu(idErreklam);
+				jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("ErreklamazioaIkusiGUI.rejected"));
+				jLabelError.setText("");
 			}
 		});
 		this.getContentPane().add(jButtonEzeztatu);
@@ -150,7 +144,7 @@ public class SalaketaIkusiGUI extends JFrame{
 		deskribapenaTextArea = new JTextArea();
 		deskribapenaTextArea.setEditable(false);
 		deskribapenaTextArea.setLineWrap(true);
-		deskribapenaTextArea.setText(salaketa.getDeskribapena());
+		deskribapenaTextArea.setText(erreklamazioa.getDeskribapena());
 		deskribapenaTextArea.setWrapStyleWord(true);
 		
 		JScrollPane scrollPane = new JScrollPane(deskribapenaTextArea);

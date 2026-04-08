@@ -196,9 +196,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod
-    public Salaketa sortuSalaketa(String email, String deskribapena, int saleNumber) {
+    public Salaketa sortuSalaketa(String email, String titulua, String deskribapena, int saleNumber) {
     	dbManager.open();
-    	Salaketa salaketa = dbManager.sortuSalaketa(email, deskribapena, saleNumber);
+    	Salaketa salaketa = dbManager.sortuSalaketa(email, titulua, deskribapena, saleNumber);
     	dbManager.close();
     	return salaketa;
     }
@@ -235,9 +235,9 @@ public class BLFacadeImplementation  implements BLFacade {
     	return b;
     }
     @WebMethod
-    public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber) {
+    public Erreklamazioa sortuErreklamazioa(String email, String titulua, String deskribapena, int saleNumber) {
     	dbManager.open();
-    	Erreklamazioa erreklamazio = dbManager.sortuErreklamazioa(email, deskribapena, saleNumber);
+    	Erreklamazioa erreklamazio = dbManager.sortuErreklamazioa(email, titulua, deskribapena, saleNumber);
     	dbManager.close();
     	return erreklamazio;
     }
@@ -249,6 +249,28 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.close();
     	return erreklamazioak;
     }
+    
+    @WebMethod
+    public boolean erreklamazioaOnartu(Integer idErreklam) {
+    	dbManager.open();
+    	boolean b = dbManager.erreklamazioaOnartu(idErreklam);
+    	dbManager.close();
+    	return b;
+    }
+    
+    @WebMethod
+    public void erreklamazioaEzeztatu(Integer idErreklam) {
+    	dbManager.open();
+    	dbManager.erreklamazioaEzeztatu(idErreklam);
+    	dbManager.close();
+    }
+	@WebMethod 
+	public List<Erreklamazioa> getAztertzekoErreklamazioak(){
+		dbManager.open();
+		List<Erreklamazioa> erreklamazioak = dbManager.getAztertzekoErreklamazioak();
+		dbManager.close();
+		return erreklamazioak;
+	}
 
 }
 

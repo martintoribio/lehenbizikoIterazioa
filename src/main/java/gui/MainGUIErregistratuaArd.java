@@ -52,6 +52,12 @@ public class MainGUIErregistratuaArd extends JFrame {
 		
 	
 		JButton errekBut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratuaArd.Claim"));
+		errekBut.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new QueryAztertzekoErreklamazioakGUI(nirePantaila, mail,nirePantaila);
+		        a.setVisible(true);
+		    }
+		});
 		getContentPane().add(errekBut);
 		
 		
