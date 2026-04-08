@@ -191,5 +191,11 @@ public class User implements Serializable {
 	public List<Salaketa> getSalaketak(){
 		return salaketak;
 	}
+	public void addErreklamazioa(Erreklamazioa errek) {
+		erreklamazioak.add(errek);
+	}
+	public List<Erreklamazioa> getErreklamazioak(){
+		return erreklamazioak;
+	}
 	
 }

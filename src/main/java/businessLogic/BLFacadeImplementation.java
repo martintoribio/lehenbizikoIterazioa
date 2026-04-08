@@ -10,6 +10,7 @@ import dataAccess.DataAccess;
 import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Salaketa;
+import domain.Erreklamazioa;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -208,6 +209,21 @@ public class BLFacadeImplementation  implements BLFacade {
     	List<Salaketa> salaketak = dbManager.getSalaketak(email);
     	dbManager.close();
     	return salaketak;
+    }
+    @WebMethod
+    public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber) {
+    	dbManager.open();
+    	Erreklamazioa erreklamazio = dbManager.sortuErreklamazioa(email, deskribapena, saleNumber);
+    	dbManager.close();
+    	return erreklamazio;
+    }
+    
+    @WebMethod
+    public List<Erreklamazioa> getErreklamazioak(String email) {
+    	dbManager.open();
+    	List<Erreklamazioa> erreklamazioak = dbManager.getErreklamazioak(email);
+    	dbManager.close();
+    	return erreklamazioak;
     }
 
 }

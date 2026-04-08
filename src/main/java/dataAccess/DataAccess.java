@@ -24,6 +24,7 @@ import domain.User;
 import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Salaketa;
+import domain.Erreklamazioa;
 import domain.Sale;
 import domain.Txartela;
 import domain.User;
@@ -463,6 +464,33 @@ public class DataAccess {
 		}
 	}
 	
+	
+	public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber) {
+		db.getTransaction().begin();
+		Sale sale = db.find(Sale.class, saleNumber);
+		User user = db.find(User.class, email);
+		if (sale!=null && user!=null) {
+			Erreklamazioa errek = new Erreklamazioa(deskribapena, "aztertzeko", user, sale);
+			user.addErreklamazioa(errek);
+			db.persist(errek);
+			db.getTransaction().commit();
+			return errek;
+		} else {
+			db.getTransaction().rollback();
+			return null;
+		}
+	}
+	
+	public List<Erreklamazioa> getErreklamazioak(String email) {
+		TypedQuery <Erreklamazioa> query = db.createQuery("SELECT e FROM Erreklamazioa e WHERE e.user.email=:email", Erreklamazioa.class);
+		query.setParameter("email", email);
+		List<Erreklamazioa> erreklamazioak = query.getResultList();
+		if (!erreklamazioak.isEmpty()) {
+			return query.getResultList();
+		} else {
+			return new ArrayList<Erreklamazioa>();
+		}
+	}
 	public void close() {
 		db.close();
 		System.out.println("DataAcess closed");
