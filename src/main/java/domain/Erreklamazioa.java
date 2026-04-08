@@ -62,6 +62,13 @@ public class Erreklamazioa implements Serializable {
 		this.egoera = egoera;
 	}
 
+	public Sale getSale() {
+		return sale;
+	}
+	public User getUser() {
+		return user;
+	}
+	
 	public String toString() {
 		return deskribapena + ";" + egoera + ";";
 	}

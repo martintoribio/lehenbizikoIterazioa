@@ -151,8 +151,8 @@ public class ShowBoughtSaleGUI extends JFrame {
 		getContentPane().add(statusField);
 	    claimButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		//claimGUI-ra eraman
-	    		dispose();
+	    		JFrame hurrengoPantaila = new ErreklamatuGUI(email, thisFrame, sale.getSaleNumber());
+	    		hurrengoPantaila.setVisible(true);
 	    	}
 	    });
 	    claimButton.setVisible(true);

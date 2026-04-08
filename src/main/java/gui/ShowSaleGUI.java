@@ -183,7 +183,7 @@ public class ShowSaleGUI extends JFrame{
 	    	}
 	    });
 	    reportButton.setVisible(true);
-	    reportButton.setBounds(new Rectangle(356, 268, 100, 30));
+	    reportButton.setBounds(new Rectangle(346, 268, 100, 30));
 	    getContentPane().add(reportButton);
 		this.setVisible(true);
 		
@@ -198,8 +198,5 @@ public class ShowSaleGUI extends JFrame{
         g.dispose();
         return resizedImage;
     }
-	
-	
-	
 }
 

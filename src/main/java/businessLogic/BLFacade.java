@@ -7,6 +7,7 @@ import java.util.List;
 import domain.Arduraduna;
 import domain.Mugimendua;
 import domain.Salaketa;
+import domain.Erreklamazioa;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -87,4 +88,7 @@ public interface BLFacade  {
 	@WebMethod public List<Salaketa> getAztertzekoSalaketak ();
 	@WebMethod public boolean salaketaOnartu(Integer idSalaketa);
 	@WebMethod public boolean salaketaEzeztatu(Integer idSalaketa);	
+	@WebMethod public Erreklamazioa sortuErreklamazioa(String email, String deskribapena, int saleNumber); 
+	@WebMethod public List<Erreklamazioa> getErreklamazioak(String email);
 }
+
