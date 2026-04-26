@@ -72,7 +72,7 @@ public class ErreklamatuGUI extends JFrame {
 					String deskribapena = deskribapenaTextArea.getText();
 					Erreklamazioa erreklamazioa = facade.sortuErreklamazioa(email, titulua, deskribapena, saleNumber);
 					if (erreklamazioa==null) {
-						erroreMezua.setText("Error");
+						erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("ErreklamatuGUI.error"));
 					} else {
 						erroreMezua.setText("");
 						nirePantaila.dispose();

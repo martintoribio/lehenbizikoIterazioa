@@ -2,7 +2,9 @@ package domain;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.persistence.*;
@@ -31,6 +33,12 @@ public class Sale implements Serializable {
 	@ManyToOne
 	private User user;  
 	
+	@OneToOne
+	private Erreklamazioa erreklamazioa;
+	
+	@OneToMany
+	private List<Salaketa> salaketak = new ArrayList<Salaketa>();
+	
 	public Sale(){
 		super();
 	}
@@ -56,7 +64,7 @@ public class Sale implements Serializable {
 
 			} catch(IOException ex) {
 				//System.out.println("Write error for " + outputfile.getPath()  ": " + ex.getMessage());
-		}
+			}
 		}
 
 		this.user = seller;
@@ -223,6 +231,20 @@ public class Sale implements Serializable {
 	}
 
 
-
+	public boolean hasErreklam() {
+		if (erreklamazioa != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void addErreklamazioa(Erreklamazioa erreklam) {
+		this.erreklamazioa = erreklam;
+	}
+	
+	public void addSalaketa(Salaketa salaketa) {
+		salaketak.add(salaketa);
+	}
 	
 }

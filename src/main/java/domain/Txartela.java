@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
@@ -27,14 +26,19 @@ public class Txartela implements Serializable {
 	private String tIzena;
 	private int PIN;
 	
+	@OneToOne(cascade=CascadeType.PERSIST)
+	private User user;
+	
 	public Txartela() {
 		super();
 	}
 
-	public Txartela(String tIzena, String tZenb, int PIN) {
+	public Txartela(String tIzena, String tZenb, int PIN, User user) {
 		this.tIzena = tIzena;
 		this.tZenb = tZenb;
 		this.PIN = PIN;
+		this.user = user;
+		
 	}
 	
 	

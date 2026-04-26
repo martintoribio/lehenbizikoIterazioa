@@ -86,9 +86,9 @@ public class DataAccess {
 		try {
 
 			// Create users
-			User user1 = new User("user1@gmail.com", "aurrera", null);
-			User user2 = new User("user2@gmail.com", "aurrera", null);
-			User user3 = new User("user3@gmail.com", "aurrera", null);
+			User user1 = new User("user1@gmail.com", "aurrera");
+			User user2 = new User("user2@gmail.com", "aurrera");
+			User user3 = new User("user3@gmail.com", "aurrera");
 
 			// Create admins
 			Arduraduna admin1 = new Arduraduna("i32546789","1234");
@@ -298,8 +298,8 @@ public class DataAccess {
 		query2.setParameter("tZenb", tZenb);
 		if (query.getResultList().isEmpty() && query2.getResultList().isEmpty()) {
 			db.getTransaction().begin();
-			Txartela txartela = new Txartela(tIzena, tZenb, PIN);
-			User u = new User(email, password, txartela);
+			User u = new User(email, password);
+			u.addTxartela(tIzena, tZenb, PIN);
 			db.persist(u);
 			db.getTransaction().commit();
 			return true;
@@ -322,14 +322,10 @@ public class DataAccess {
 				user.diruaKendu(prezioa);
 				user.addBought(sale);
 				String title = sale.getTitle();
-				Mugimendua mugi = new Mugimendua("Erosketa: " + title, prezioa*(-1), user);
-				user.addMugimendua(mugi);
+				Mugimendua mugi = user.addMugimendua("Erosketa: " + title, prezioa*(-1));
 				User seller = sale.getSeller();
 				seller.diruaGehitu(prezioa);
-				Mugimendua mugi2 = new Mugimendua("Salmenta: " + title, prezioa, seller);
-				seller.addMugimendua(mugi2);
-				db.persist(mugi);
-				db.persist(mugi2);
+				Mugimendua mugi2 = seller.addMugimendua("Salmenta: " + title, prezioa);
 				db.getTransaction().commit();
 				return sale;
 			} else {
@@ -402,9 +398,7 @@ public class DataAccess {
 		if (b1) {
 			boolean b2 = user.diruaKendu(diruKop);
 			if (b2) {
-				Mugimendua m = new Mugimendua("ATERA", diruKop*(-1), user);
-				db.persist(m);
-				user.addMugimendua(m);
+				user.addMugimendua("ATERA", diruKop*(-1));
 				db.getTransaction().commit();
 			} else {
 				db.getTransaction().rollback();
@@ -432,9 +426,8 @@ public class DataAccess {
 		boolean b = t.egiaztatuTxartela(PIN);
 		if (b) {
 			user.diruaGehitu(diruKop);
-			Mugimendua m = new Mugimendua("GEHITU", diruKop, user);
-			db.persist(m);
-			user.addMugimendua(m);
+			user.addMugimendua("GEHITU", diruKop);
+			
 			db.getTransaction().commit();
 		} else {
 			throw new TxartelOkerraException(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.PinError"));
@@ -447,9 +440,8 @@ public class DataAccess {
 		Sale sale = db.find(Sale.class, saleNumber);
 		User user = db.find(User.class, email);
 		if (sale!=null && user!=null) {
-			Salaketa salaketa = new Salaketa(titulua, deskribapena, "aztertzeko", user, sale);
-			user.addSalaketa(salaketa);
-			db.persist(salaketa);
+			Salaketa salaketa = user.addSalaketa(titulua, deskribapena, sale);
+			sale.addSalaketa(salaketa);
 			db.getTransaction().commit();
 			return salaketa;
 		} else {
@@ -508,11 +500,15 @@ public class DataAccess {
 		Sale sale = db.find(Sale.class, saleNumber);
 		User user = db.find(User.class, email);
 		if (sale!=null && user!=null) {
-			Erreklamazioa errek = new Erreklamazioa(titulua, deskribapena, "aztertzeko", user, sale);
-			user.addErreklamazioa(errek);
-			db.persist(errek);
-			db.getTransaction().commit();
-			return errek;
+			boolean b = sale.hasErreklam();
+			if (b) {
+				return null;
+			} else {
+				Erreklamazioa erreklam = user.addErreklamazioa(titulua, deskribapena, sale);
+				sale.addErreklamazioa(erreklam);
+				db.getTransaction().commit();
+				return erreklam;
+			}
 		} else {
 			db.getTransaction().rollback();
 			return null;
@@ -541,14 +537,10 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 			float prezioa = sale.getPrice();
 			String title = sale.getTitle();
 			buyer.diruaGehitu(prezioa);
-			Mugimendua mugi = new Mugimendua("Erreklamazioa: " + title, prezioa, buyer);
-			buyer.addMugimendua(mugi);
-			db.persist(mugi);
+			Mugimendua mugi = buyer.addMugimendua("Erreklamazioa: " + title, prezioa);
 			buyer.removeBoughtSale(sale);
 			seller.diruaKendu(prezioa);
-			Mugimendua mugi2 = new Mugimendua("Erreklamazioa: " + title, prezioa*(-1), seller);
-			seller.addMugimendua(mugi2);
-			db.persist(mugi2);
+			Mugimendua mugi2 = seller.addMugimendua("Erreklamazioa: " + title, prezioa*(-1));
 			db.getTransaction().commit();
 			return true;
 		} else {

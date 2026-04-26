@@ -72,7 +72,7 @@ public class QueryAztertzekoErreklamazioakGUI extends JFrame {
 			
 			for (Erreklamazioa erreklamazioa : erreklamazioak) {
 				Sale sale = erreklamazioa.getSale();
-				if (sale.getTitle().isEmpty() && sale!=null) {
+				if (!sale.getTitle().isEmpty() && sale!=null) {
 					Vector<Object> row = new Vector<Object>();
 					row.add(erreklamazioa.getTitulua());
 					row.add(sale.getTitle());

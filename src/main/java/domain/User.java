@@ -24,7 +24,6 @@ public class User implements Serializable {
 	@XmlID
 	@Id 
 	private String email;
-	
 	private String pasahitza;
 	
 	@OneToOne(cascade=CascadeType.PERSIST)
@@ -56,10 +55,9 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(String email, String pasahitza, Txartela txartela) {
+	public User(String email, String pasahitza) {
 		this.email = email;
 		this.pasahitza=pasahitza;
-		this.txartela = txartela;
 		saldoa = 50;
 	}
 	
@@ -181,25 +179,35 @@ public class User implements Serializable {
 		}
 	}
 	
-	public void addMugimendua(Mugimendua mugi) {
+	public Mugimendua addMugimendua(String title, float diruKop) {
+		Mugimendua mugi = new Mugimendua(title, diruKop, this);
 		mugimenduak.add(mugi);
+		return mugi;
 	}
 	
 	public List<Mugimendua> getMugimenduak() {
 		return mugimenduak;
 	}
 	
-	public void addSalaketa(Salaketa sala) {
-		salaketak.add(sala);
+	public Salaketa addSalaketa(String titulua, String deskribapena, Sale sale) {
+		Salaketa salaketa = new Salaketa(titulua, deskribapena, "aztertzeko", this, sale);
+		salaketak.add(salaketa);
+		return salaketa;
 	}
 	public List<Salaketa> getSalaketak(){
 		return salaketak;
 	}
-	public void addErreklamazioa(Erreklamazioa errek) {
-		erreklamazioak.add(errek);
+	public Erreklamazioa addErreklamazioa(String titulua, String deskribapena, Sale sale) {
+		Erreklamazioa erreklam = new Erreklamazioa(titulua, deskribapena, "aztertzeko", this, sale);
+		erreklamazioak.add(erreklam);
+		return erreklam;
 	}
 	public List<Erreklamazioa> getErreklamazioak(){
 		return erreklamazioak;
+	}
+	
+	public void addTxartela(String tIzena, String tZenb, int PIN) {
+		this.txartela = new Txartela(tIzena, tZenb, PIN, this);
 	}
 	
 }
