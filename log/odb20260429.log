@@ -1,0 +1,107 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-29 17:46:10 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 14540@ubuntu
+
+[2026-04-29 17:46:10 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-29 17:46:10 #3 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-04-29 17:46:10 #4 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-04-29 17:46:10 #5 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-04-29 17:46:10 #6 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-29 17:46:10 #7 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-04-29 17:46:10 #8 type] 
+Type domain.Arduraduna is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-29 17:50:52 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' has been recovered (tr. 11-12)
+
+[2026-04-29 17:50:52 #2 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 14905@ubuntu
+
+[2026-04-29 17:50:52 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-04-29 17:50:52 #4 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-04-29 17:50:52 #5 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-04-29 17:50:52 #6 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-04-29 17:50:52 #7 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-29 17:50:52 #8 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-04-29 17:50:52 #9 type] 
+Type domain.Arduraduna is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-29 17:52:21 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 15101@ubuntu
+
+[2026-04-29 17:52:22 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-29 17:52:22 #3 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-04-29 17:52:22 #4 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-04-29 17:52:22 #5 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-04-29 17:52:22 #6 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-29 17:52:22 #7 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-04-29 17:52:22 #8 type] 
+Type domain.Arduraduna is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-04-29 17:54:48 #1 store] 
+Database '/home/bolo/git/lehenbizikoIterazioa/src/main/resources/products.temp' is opened by 15310@ubuntu
+
+[2026-04-29 17:54:48 #2 type] 
+Type domain.User is not enhanced.
+
+[2026-04-29 17:54:48 #3 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-04-29 17:54:48 #4 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-04-29 17:54:48 #5 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-04-29 17:54:48 #6 type] 
+Type domain.Sale is not enhanced.
+
+[2026-04-29 17:54:48 #7 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-04-29 17:54:48 #8 type] 
+Type domain.Arduraduna is not enhanced.
+

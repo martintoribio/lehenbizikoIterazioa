@@ -51,9 +51,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * {@inheritDoc}
 	 */
    @WebMethod
-	public Sale createSale(String title, String description,int status, float price, Date pubDate, String userEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
+	public Sale createSale(String title, String description, String kategoria, int status, float price, Date pubDate, String userEmail, File file) throws  FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
 		dbManager.open();
-		Sale product=dbManager.createSale(title, description, status, price, pubDate, userEmail, file);		
+		Sale product=dbManager.createSale(title, description, kategoria, status, price, pubDate, userEmail, file);		
 		dbManager.close();
 		return product;
    };

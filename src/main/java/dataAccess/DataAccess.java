@@ -99,16 +99,16 @@ public class DataAccess {
 			// Create products
 			Date today = UtilDate.trim(new Date());
 
-			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", 2, 10, today, null);
-			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi", 2, 20, today, null);
-			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", 1, 175, today, null);
+			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", "Kirolak", 2, 10, today, null);
+			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi", "Moda", 2, 20, today, null);
+			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
 
-			user2.addSale("imac 27", "7 urte, dena ondo dabil", 1, 200, today, null);
-			user2.addSale("iphone 17", "oso gutxi erabilita", 2, 400, today, null);
-			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", 3, 225, today, null);
-			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", 3, 30, today, null);
+			user2.addSale("imac 27", "7 urte, dena ondo dabil", "Elektronika", 1, 200, today, null);
+			user2.addSale("iphone 17", "oso gutxi erabilita", "Elektronika", 2, 400, today, null);
+			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", "Kirolak", 3, 225, today, null);
+			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", "Moda",  3, 30, today, null);
 
-			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", 3, 45, today, null);
+			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", "Altzariak", 3, 45, today, null);
 
 			db.persist(user1);
 			db.persist(user2);
@@ -139,7 +139,7 @@ public class DataAccess {
 	 * @throws SaleAlreadyExistException if the same product already exists for the
 	 *                                   user
 	 */
-	public Sale createSale(String title, String description, int status, float price, Date pubDate, String userEmail,
+	public Sale createSale(String title, String description, String kategoria, int status, float price, Date pubDate, String userEmail,
 			File file) throws FileNotUploadedException, MustBeLaterThanTodayException, SaleAlreadyExistException {
 
 		System.out.println(">> DataAccess: createProduct=> title= " + title + " user=" + userEmail);
@@ -162,7 +162,7 @@ public class DataAccess {
 						ResourceBundle.getBundle("Etiquetas").getString("DataAccess.SaleAlreadyExist"));
 			}
 
-			Sale sale = user.addSale(title, description, status, price, pubDate, file);
+			Sale sale = user.addSale(title, description, kategoria, status, price, pubDate, file);
 			// next instruction can be obviated
 
 			db.persist(user);

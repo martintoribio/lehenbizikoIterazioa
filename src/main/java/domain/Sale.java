@@ -25,6 +25,7 @@ public class Sale implements Serializable {
 	private Integer saleNumber;
 	private String title;
 	private String description;
+	private String kategoria;
 	private int  status;
 	private float price;
 	private Date pubDate;
@@ -43,7 +44,7 @@ public class Sale implements Serializable {
 		super();
 	}
 		
-	public Sale(String title, String description, int status, float price, Date pubDate, File file, User seller) {
+	public Sale(String title, String description, String kategoria, int status, float price, Date pubDate, File file, User seller) {
 		super();
 
 		this.title = title;
@@ -218,6 +219,15 @@ public class Sale implements Serializable {
 	 * 
 	 * @return the associated file
 	 */
+	
+	public String getKategoria() {
+		return kategoria;
+	}
+	
+	public void setKategoria(String kategoria) {
+		this.kategoria = kategoria;
+	}
+	
 	public String getFile() {
 		return fileName;
 	}

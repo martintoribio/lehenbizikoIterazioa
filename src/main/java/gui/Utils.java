@@ -19,4 +19,14 @@ public class Utils {
 		ArrayList<String> status=getStatus();
 		return status.get(t);
 	}
+	public static ArrayList<String> getKategoriak() {
+		String lang=Locale.getDefault().toString();
+		if (lang.compareTo("en")==0) 
+			return new ArrayList<String>(Arrays.asList("Sports","Fashion","Furniture","Electronics", "Toys"));
+		if (lang.compareTo("es")==0) 
+			return new ArrayList<String>(Arrays.asList("Deportes","Moda","Muebles","Electronica", "Juguetes"));
+		if (lang.compareTo("eus")==0) 
+			return new ArrayList<String>(Arrays.asList("Kirolak","Moda","Altzairuak","Elektronika", "Jostailuak"));
+		return null;
+	}
 }

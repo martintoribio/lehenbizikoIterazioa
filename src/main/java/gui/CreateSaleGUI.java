@@ -44,6 +44,7 @@ public class CreateSaleGUI extends JFrame {
 	private JLabel jLabelDescription = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Description")); 
 	private JLabel jLabelProductStatus = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Status"));
 	private JLabel jLabelPrice = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Price"));
+	private JLabel jLabelKategoria = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Category"));
 	private JTextField jTextFieldPrice = new JTextField();
 
 	private JCalendar jCalendar = new JCalendar();
@@ -55,6 +56,10 @@ public class CreateSaleGUI extends JFrame {
 	JComboBox<String> jComboBoxStatus = new JComboBox<String>();
 	DefaultComboBoxModel<String> statusOptions = new DefaultComboBoxModel<String>();
 	List<String> status;
+	JComboBox<String> jComboBoxKategoria = new JComboBox<String>();
+	DefaultComboBoxModel<String> kategoriaOptions = new DefaultComboBoxModel<String>();
+	List<String> kategoriak;
+	
 
 
 	private JButton jButtonCreate = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.CreateProduct"));
@@ -62,7 +67,7 @@ public class CreateSaleGUI extends JFrame {
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	private JFrame thisFrame;
-	private final JButton btnNewButton_2 = new JButton("grabar Imagen"); //$NON-NLS-1$ //$NON-NLS-2$
+//	private final JButton btnNewButton_2 = new JButton("grabar Imagen"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	public CreateSaleGUI(String mail,JFrame pantaila) {
 		jasotakoPantaila=pantaila;
@@ -81,7 +86,7 @@ public class CreateSaleGUI extends JFrame {
 		scrollPaneEvents.setBounds(new Rectangle(25, 44, 346, 116));
 		jButtonCreate.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 
-		jButtonCreate.setBounds(new Rectangle(100, 222, 216, 41));
+		jButtonCreate.setBounds(new Rectangle(100, 270, 216, 41));
 
 		jButtonCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -94,10 +99,11 @@ public class CreateSaleGUI extends JFrame {
 						BLFacade facade = MainGUI.getBusinessLogic();
 						float price = Float.parseFloat(jTextFieldPrice.getText());
 						String s=(String)jComboBoxStatus.getSelectedItem();
+						String kategoriaSelected = (String) jComboBoxKategoria.getSelectedItem();
 						int numStatus=status.indexOf(s);
-						facade.createSale(fieldTitle.getText(), fieldDescription.getText(), numStatus, price,  UtilDate.trim(jCalendar.getDate()), sellerMail, targetFile);
+						facade.createSale(fieldTitle.getText(), fieldDescription.getText(), kategoriaSelected, numStatus, price,  UtilDate.trim(jCalendar.getDate()), sellerMail, targetFile);
 						jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.ProductCreated"));
-					
+						
 					} catch (Exception e1) {
 
 						// TODO Auto-generated catch block
@@ -112,14 +118,17 @@ public class CreateSaleGUI extends JFrame {
 				jasotakoPantaila.setVisible(true);}
 		});
 
-		jLabelMsg.setBounds(new Rectangle(26, 275, 377, 20));
+		jLabelMsg.setBounds(new Rectangle(26, 320, 377, 20));
 		jLabelMsg.setForeground(Color.red);
 
-		jLabelError.setBounds(new Rectangle(16, 275, 384, 20));
+		jLabelError.setBounds(new Rectangle(16, 320, 384, 20));
 		jLabelError.setForeground(Color.red);
 		
 	    status=Utils.getStatus();
 		for(String s:status) statusOptions.addElement(s);
+		
+		kategoriak=Utils.getKategoriak();
+		for(String k:kategoriak) kategoriaOptions.addElement(k);
 
 		this.getContentPane().add(jLabelMsg, null);
 		this.getContentPane().add(jLabelError, null);
@@ -144,6 +153,8 @@ public class CreateSaleGUI extends JFrame {
 		getContentPane().add(fieldTitle);
 		fieldTitle.setColumns(10);
 		
+		jLabelKategoria.setBounds(6, 215, 140, 25);
+		getContentPane().add(jLabelKategoria);
 		
 		fieldDescription.setBounds(98, 56, 250, 73);
 		getContentPane().add(fieldDescription);
@@ -152,6 +163,11 @@ public class CreateSaleGUI extends JFrame {
 		jComboBoxStatus.setModel(statusOptions);
 		jComboBoxStatus.setBounds(90, 183, 114, 27);
 		getContentPane().add(jComboBoxStatus);
+		
+
+		jComboBoxKategoria.setModel(kategoriaOptions);
+		jComboBoxKategoria.setBounds(90, 213, 114, 27);
+		getContentPane().add(jComboBoxKategoria);
 		
 		JButton btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.LoadPicture")); //$NON-NLS-1$ //$NON-NLS-2$
 		btnNewButton.addActionListener(new ActionListener() {
@@ -188,7 +204,7 @@ public class CreateSaleGUI extends JFrame {
 		panel_1 = new JPanel();
 		panel_1.setBounds(461, 209, 124, 86);
 		getContentPane().add(panel_1);
-		
+/**		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -208,7 +224,7 @@ public class CreateSaleGUI extends JFrame {
 		btnNewButton_2.setBounds(137, 350, 117, 29);
 		
 		getContentPane().add(btnNewButton_2);
-		
+*/		
 		jCalendar.setBounds(new Rectangle(360, 50, 225, 150));
 		this.getContentPane().add(jCalendar, null);
 		
