@@ -140,8 +140,8 @@ public class RegisterGUI extends JFrame {
 						BLFacade b=MainGUI.getBusinessLogic();
 						boolean ald=b.isRegister(email.getText(),pasahitza1.getText(), tIzena.getText(), tZenb.getText(), Integer.parseInt(PIN.getText()));
 						if (ald) {
-							JFrame main_page = new MainGUIErregistratua(email.getText());
-							main_page.setVisible(true);
+							JFrame kategor = new KategoriakGUI(email.getText());
+							kategor.setVisible(true);
 							uneko_pantaila.setVisible(false);
 						}else {
 							erroreMezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.registError"));

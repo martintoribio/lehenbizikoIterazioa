@@ -31,6 +31,8 @@ public class User implements Serializable {
 	
 	private float saldoa;
 	
+	private List<String> gustokoKategoriak= new ArrayList<String>();
+	
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Sale> sales=new ArrayList<Sale>();
@@ -78,6 +80,9 @@ public class User implements Serializable {
 		this.pasahitza = pasahitza;
 	}
 	
+	public  List<String> getGustokoKategoriak(){
+		return gustokoKategoriak;
+	}
 	
 	public String toString(){
 		return email+";"+sales;
@@ -176,6 +181,18 @@ public class User implements Serializable {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	public void gustokoKategoriaGehitu(String kat) {
+		if(!gustokoKategoriak.contains(kat)) {
+			gustokoKategoriak.add(kat);
+		}
+	}
+	
+	public void gustokoKategoriaKendu(String Kat) {
+		if(gustokoKategoriak.contains(Kat)) {
+			gustokoKategoriak.remove(Kat);
 		}
 	}
 	

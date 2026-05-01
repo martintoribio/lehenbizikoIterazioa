@@ -93,5 +93,6 @@ public interface BLFacade  {
 	@WebMethod public boolean erreklamazioaOnartu(Integer idErreklam);
 	@WebMethod public void erreklamazioaEzeztatu(Integer idErreklam);
 	@WebMethod public List<Erreklamazioa> getAztertzekoErreklamazioak();
+	@WebMethod public List<String> kategoriakAldatu(String email, List<String> kategoriak);
 }
 

@@ -568,6 +568,15 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		}
 	}
 	
+	public List<String> kategoriakAldatu(String email, List<String> kategoriak) {
+	    db.getTransaction().begin();
+		User u = db.find(User.class, email); 
+	    u.getGustokoKategoriak().clear();
+	    u.getGustokoKategoriak().addAll(kategoriak);
+	    db.persist(u);
+	    return kategoriak;
+	}
+	
 	public void close() {
 		db.close();
 		System.out.println("DataAcess closed");
