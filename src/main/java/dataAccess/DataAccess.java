@@ -570,9 +570,14 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	
 	public List<String> kategoriakAldatu(String email, List<String> kategoriak) {
 	    db.getTransaction().begin();
-		User u = db.find(User.class, email); 
-	    u.getGustokoKategoriak().clear();
-	    u.getGustokoKategoriak().addAll(kategoriak);
+		User u = db.find(User.class, email);
+		
+	    for (int i=0; i <= u.getGustokoKategoriak().size(); i++){
+	    	u.gustokoKategoriaKendu(kategoriak.get(i));
+	    }
+	    for (int i=0; i <= kategoriak.size(); i++){
+	    	u.gustokoKategoriaGehitu(kategoriak.get(i));
+	    }
 	    db.persist(u);
 	    return kategoriak;
 	}
