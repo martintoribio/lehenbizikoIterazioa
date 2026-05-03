@@ -6,6 +6,7 @@ import java.util.List;
 
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Sale;
@@ -94,5 +95,6 @@ public interface BLFacade  {
 	@WebMethod public void erreklamazioaEzeztatu(Integer idErreklam);
 	@WebMethod public List<Erreklamazioa> getAztertzekoErreklamazioak();
 	@WebMethod public List<String> kategoriakAldatu(String email, List<String> kategoriak);
+	@WebMethod public List<Notifikazioa> getNotifikazioak(String email);
 }
 

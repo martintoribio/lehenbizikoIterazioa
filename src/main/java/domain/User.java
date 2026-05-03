@@ -184,15 +184,11 @@ public class User implements Serializable {
 		}
 	}
 	
-	public void gustokoKategoriaGehitu(String kat) {
-		if(!gustokoKategoriak.contains(kat)) {
-			gustokoKategoriak.add(kat);
-		}
-	}
-	
-	public void gustokoKategoriaKendu(String Kat) {
-		if(gustokoKategoriak.contains(Kat)) {
-			gustokoKategoriak.remove(Kat);
+	public void gustokoKategoriakGehitu(List <String> kategoriak) {
+		for (String kategoria : kategoriak) {
+			if (!gustokoKategoriak.contains(kategoria)) {
+				gustokoKategoriak.add(kategoria);
+			}
 		}
 	}
 	

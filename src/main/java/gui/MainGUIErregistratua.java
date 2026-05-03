@@ -30,7 +30,7 @@ public class MainGUIErregistratua extends JFrame {
 	private JPanel jContentPane = null;
 	private JButton jButtonCreateQuery = null;
 	private JButton jButtonQueryQueries = null;
-	private JButton jButtonLogout = null;
+	private JButton jButtonLogout = null;	
 	private JButton btnDiruaKudeatu = null;
 
     private static BLFacade appFacadeInterface;
@@ -52,6 +52,7 @@ public class MainGUIErregistratua extends JFrame {
 	private JButton jButtonViewMovements = null;
 	private JButton jButtonViewReports = null;
 	private JButton viewErreklamazioak = null;
+	private JButton jButtonViewNotifikazioak = null;
 	
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -60,7 +61,7 @@ public class MainGUIErregistratua extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public MainGUIErregistratua( String mail) {
+	public MainGUIErregistratua(String mail) {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		nirePantaila=this;
@@ -159,10 +160,18 @@ public class MainGUIErregistratua extends JFrame {
 		    }
 		});
 		
-		viewErreklamazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryErreklamazioak")); //$NON-NLS-1$ //$NON-NLS-2$
+		viewErreklamazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryErreklamazioak")); 
 		viewErreklamazioak.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        JFrame a = new QueryErreklamazioakGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
+		        a.setVisible(true);
+		    }
+		});
+		
+		jButtonViewNotifikazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryNotifikazioak")); 
+		jButtonViewNotifikazioak.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new QueryNotifikazioakGUI(sellerMail, nirePantaila);
 		        a.setVisible(true);
 		    }
 		});
@@ -178,7 +187,7 @@ public class MainGUIErregistratua extends JFrame {
 	
 		
 		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(0, 1, 0, 0));
+		jContentPane.setLayout(new GridLayout(12, 1, 0, 0));
 		jContentPane.add(jLabelSelectOption);
 		jContentPane.add(jButtonCreateQuery);
 		jContentPane.add(jButtonQueryQueries);
@@ -188,6 +197,7 @@ public class MainGUIErregistratua extends JFrame {
 		jContentPane.add(btnDiruaKudeatu);
 		jContentPane.add(jButtonViewReports);
 		jContentPane.add(viewErreklamazioak);
+		jContentPane.add(jButtonViewNotifikazioak);
 		jContentPane.add(jButtonLogout);
 		jContentPane.add(panel);
 		
@@ -213,6 +223,7 @@ public class MainGUIErregistratua extends JFrame {
 		btnDiruaKudeatu.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
 		jButtonViewReports.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryReports"));
 		viewErreklamazioak.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryErreklamazioak"));
+		jButtonViewNotifikazioak.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryNotifikazioak"));
 		jButtonLogout.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
 	}

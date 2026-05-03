@@ -122,18 +122,18 @@ public class ShowSaleGUI extends JFrame{
 		fieldTitle.setEditable(false);
 		
 		
-		fieldTitle.setBounds(128, 53, 370, 26);
+		fieldTitle.setBounds(128, 53, 200, 26);
 		getContentPane().add(fieldTitle);
 		fieldTitle.setColumns(10);
 		fieldDescription.setEditable(false);
 		
 		
-		fieldDescription.setBounds(127, 81, 371, 73);
+		fieldDescription.setBounds(127, 81, 200, 73);
 		getContentPane().add(fieldDescription);
 		fieldDescription.setColumns(10);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(400, 80, 180, 160);
+		panel_1.setBounds(340, 44, 220, 200);
 		getContentPane().add(panel_1);
 		
 		labelStatus.setFont(new Font("Lucida Grande", Font.BOLD, 13));

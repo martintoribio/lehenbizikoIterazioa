@@ -40,6 +40,9 @@ public class Sale implements Serializable {
 	@OneToMany
 	private List<Salaketa> salaketak = new ArrayList<Salaketa>();
 	
+	@OneToOne (cascade = CascadeType.PERSIST)
+	private Notifikazioa notif;
+	
 	public Sale(){
 		super();
 	}
@@ -49,6 +52,7 @@ public class Sale implements Serializable {
 
 		this.title = title;
 		this.description = description;
+		this.kategoria = kategoria;
 		this.status = status;
 		this.price=price;
 		this.pubDate=pubDate;
@@ -255,6 +259,14 @@ public class Sale implements Serializable {
 	
 	public void addSalaketa(Salaketa salaketa) {
 		salaketak.add(salaketa);
+	}
+	
+	public void addNotif() {
+		notif = new Notifikazioa(kategoria, "Ikus ezazu " + this.title + "!", this);
+	}
+	
+	public Notifikazioa getNotifikazioa() {
+		return notif;
 	}
 	
 }

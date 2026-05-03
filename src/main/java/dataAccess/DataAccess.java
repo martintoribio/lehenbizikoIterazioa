@@ -23,6 +23,7 @@ import configuration.UtilDate;
 import domain.User;
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Sale;
@@ -107,9 +108,9 @@ public class DataAccess {
 			user2.addSale("iphone 17", "oso gutxi erabilita", "Elektronika", 2, 400, today, null);
 			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", "Kirolak", 3, 225, today, null);
 			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", "Moda",  3, 30, today, null);
-
+			
 			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", "Altzariak", 3, 45, today, null);
-
+			
 			db.persist(user1);
 			db.persist(user2);
 			db.persist(user3);
@@ -164,12 +165,17 @@ public class DataAccess {
 
 			Sale sale = user.addSale(title, description, kategoria, status, price, pubDate, file);
 			// next instruction can be obviated
-
+			sale.addNotif();
 			db.persist(user);
 			db.getTransaction().commit();
+			
 			System.out.println("sale stored " + sale + " " + user);
 
 			System.out.println("hasta aqui");
+			
+			//Borrar esto despues
+			TypedQuery<Notifikazioa> check = db.createQuery("SELECT n FROM Notifikazioa n", Notifikazioa.class);
+			System.out.println("Notifikazioa guztiak: " + check.getResultList().size());
 
 			return sale;
 		} catch (NullPointerException e) {
@@ -571,10 +577,22 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	public List<String> kategoriakAldatu(String email, List<String> kategoriak) {
 	    db.getTransaction().begin();
 		User u = db.find(User.class, email); 
-	    u.getGustokoKategoriak().clear();
-	    u.getGustokoKategoriak().addAll(kategoriak);
-	    db.persist(u);
+		u.gustokoKategoriakGehitu(kategoriak);
+		db.getTransaction().commit();
 	    return kategoriak;
+	}
+	
+	public List<Notifikazioa> getNotifikazioak(String email){
+		User user = db.find(User.class, email);
+		TypedQuery<Notifikazioa> query = db.createQuery("SELECT n FROM Notifikazioa n WHERE n.kategoria IN :kategoriak AND n.sale.bought=false", Notifikazioa.class);
+		query.setParameter("kategoriak", user.getGustokoKategoriak());
+		System.out.println(user.getGustokoKategoriak());
+		
+		//Borrar esto
+		System.out.println("Kategoriak: " + user.getGustokoKategoriak());
+		List<Notifikazioa> result = query.getResultList();
+	    System.out.println("Notifikazioak aurkituta: " + result.size());
+		return query.getResultList();
 	}
 	
 	public void close() {

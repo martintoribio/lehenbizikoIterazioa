@@ -27,18 +27,18 @@ public class Notifikazioa implements Serializable {
 	private String mezua;
 	
 	@XmlIDREF
-	@ManyToOne
-	private User user;
+	@OneToOne
+	private Sale sale;
 	
 	
 	public Notifikazioa() {
 		super();
 	}
 
-	public Notifikazioa(String kategoria, String mezua, User user) {
+	public Notifikazioa(String kategoria, String mezua, Sale sale) {
 		this.kategoria = kategoria;
 		this.mezua = mezua;
-		this.user = user;
+		this.sale = sale;
 	}
 
 	public Integer getIdNotifikazioa() {
@@ -57,8 +57,8 @@ public class Notifikazioa implements Serializable {
 		this.mezua = mezua;
 	}
 
-	public User getUser() {
-		return user;
+	public Sale getSale() {
+		return sale;
 	}
 	
 	public String toString() {

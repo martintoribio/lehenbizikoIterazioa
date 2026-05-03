@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import dataAccess.DataAccess;
 import domain.Arduraduna;
 import domain.Mugimendua;
+import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Sale;
@@ -278,6 +279,14 @@ public class BLFacadeImplementation  implements BLFacade {
 		List<String> kategorik = dbManager.kategoriakAldatu(email, kategoriak);
 		dbManager.close();
 		return kategorik;
+	}
+	
+	@WebMethod
+	public List<Notifikazioa> getNotifikazioak(String email){
+		dbManager.open();
+		List<Notifikazioa> notifikazioak = dbManager.getNotifikazioak(email);
+		dbManager.close();
+		return notifikazioak;
 	}
 
 }
