@@ -171,11 +171,7 @@ public class DataAccess {
 			
 			System.out.println("sale stored " + sale + " " + user);
 
-			System.out.println("hasta aqui");
 			
-			//Borrar esto despues
-			TypedQuery<Notifikazioa> check = db.createQuery("SELECT n FROM Notifikazioa n", Notifikazioa.class);
-			System.out.println("Notifikazioa guztiak: " + check.getResultList().size());
 
 			return sale;
 		} catch (NullPointerException e) {
@@ -588,10 +584,6 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		query.setParameter("kategoriak", user.getGustokoKategoriak());
 		System.out.println(user.getGustokoKategoriak());
 		
-		//Borrar esto
-		System.out.println("Kategoriak: " + user.getGustokoKategoriak());
-		List<Notifikazioa> result = query.getResultList();
-	    System.out.println("Notifikazioak aurkituta: " + result.size());
 		return query.getResultList();
 	}
 	
