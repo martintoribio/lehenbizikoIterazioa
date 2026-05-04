@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -53,6 +54,8 @@ public class ShowSaleGUI extends JFrame{
 	private JLabel saldoa = new JLabel();
 	private float unekoSaldoa;
 
+    private JButton multipleBuy = new JButton(ResourceBundle.getBundle("Etiquetas").getString("ShowSaleGUI.multipleBuy")); 
+
 	
 	public ShowSaleGUI(Sale sale, String email,JFrame aurrekoPantaila) { 
 		thisFrame=this; 
@@ -75,13 +78,13 @@ public class ShowSaleGUI extends JFrame{
 
 		
 		scrollPaneEvents.setBounds(new Rectangle(25, 44, 346, 116));
-		jButtonClose.setBounds(new Rectangle(16, 268, 100, 30));
+		jButtonClose.setBounds(new Rectangle(-3, 262, 118, 38));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.setVisible(false);			}
 		});
 
-		btnFavorite.setBounds(new Rectangle(236, 268, 100, 30));
+		btnFavorite.setBounds(new Rectangle(295, 262, 109, 38));
 		btnFavorite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BLFacade facade = MainGUI.getBusinessLogic();
@@ -133,7 +136,7 @@ public class ShowSaleGUI extends JFrame{
 		fieldDescription.setColumns(10);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(340, 44, 220, 200);
+		panel_1.setBounds(340, 44, 220, 110);
 		getContentPane().add(panel_1);
 		
 		labelStatus.setFont(new Font("Lucida Grande", Font.BOLD, 13));
@@ -173,7 +176,7 @@ public class ShowSaleGUI extends JFrame{
 	    	}
 	    });
 	    buyButton.setVisible(true);
-	    buyButton.setBounds(new Rectangle(126, 268, 100, 30));
+	    buyButton.setBounds(new Rectangle(137, 262, 118, 38));
 	    getContentPane().add(buyButton);
 		
 	    reportButton.addActionListener(new ActionListener() {
@@ -183,11 +186,24 @@ public class ShowSaleGUI extends JFrame{
 	    	}
 	    });
 	    reportButton.setVisible(true);
-	    reportButton.setBounds(new Rectangle(346, 268, 100, 30));
+	    reportButton.setBounds(new Rectangle(446, 262, 109, 38));
 	    getContentPane().add(reportButton);
-		this.setVisible(true);
-		
-		
+	    
+	    
+	    
+	    multipleBuy.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		List<Sale> erosketak = new ArrayList<>();
+	    		erosketak.add(sale);
+	    		JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
+	    		hurrengoPantaila.setVisible(true);
+	    	}
+	    });
+	    
+	    multipleBuy.setVisible(true);
+	    multipleBuy.setBounds(342, 187, 218, 38);
+	    getContentPane().add(multipleBuy);
+	    
 		
 	}	 
 	public BufferedImage rescale(BufferedImage originalImage)

@@ -96,5 +96,7 @@ public interface BLFacade  {
 	@WebMethod public List<Erreklamazioa> getAztertzekoErreklamazioak();
 	@WebMethod public List<String> kategoriakAldatu(String email, List<String> kategoriak);
 	@WebMethod public List<Notifikazioa> getNotifikazioak(String email);
+	@WebMethod public List<Sale> getSellerSales(String email);
+
 }
 

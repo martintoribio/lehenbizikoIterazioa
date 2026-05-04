@@ -288,6 +288,14 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return notifikazioak;
 	}
+	
+	@WebMethod
+	public List<Sale> getSellerSales(String email){
+		dbManager.open();
+		List<Sale> ofertak = dbManager.getSellerSales(email);
+		dbManager.close();
+		return ofertak;
+	}
 
 }
 

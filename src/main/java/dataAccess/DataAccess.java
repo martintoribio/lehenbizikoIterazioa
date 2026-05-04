@@ -587,6 +587,12 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		return query.getResultList();
 	}
 	
+	public List<Sale> getSellerSales(String email){
+		User user = db.find(User.class, email);
+		TypedQuery<Sale> query = db.createQuery("SELECT s FROM Sale s WHERE s..bought=false", Sale.class);
+		return query.getResultList();
+	}
+	
 	public void close() {
 		db.close();
 		System.out.println("DataAcess closed");
