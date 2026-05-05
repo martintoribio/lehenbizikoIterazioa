@@ -211,3 +211,1021 @@ New type java.util.ArrayList<domain.Salaketa>
 [2026-05-05 10:06:13 #23 type.registry] 
 New type java.util.ArrayList<domain.Erreklamazioa>
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:45:25 #1 server] 
+Server on port 6136 has started by 18876@Asus-Mart�n
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:46:44 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.I(SMR.java:259)
+	at com.objectdb.o.SMR.n(SMR.java:159)
+	at com.objectdb.o.TOL.run(TOL.java:116)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:47:52 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.I(SMR.java:259)
+	at com.objectdb.o.SMR.n(SMR.java:159)
+	at com.objectdb.o.TOL.run(TOL.java:116)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:47:57 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.I(SMR.java:259)
+	at com.objectdb.o.SMR.n(SMR.java:159)
+	at com.objectdb.o.TOL.run(TOL.java:116)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:47:59 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.I(SMR.java:259)
+	at com.objectdb.o.SMR.n(SMR.java:159)
+	at com.objectdb.o.TOL.run(TOL.java:116)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 11:48:02 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.I(SMR.java:259)
+	at com.objectdb.o.SMR.n(SMR.java:159)
+	at com.objectdb.o.TOL.run(TOL.java:116)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:01:07 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 5560@Asus-Martín
+
+[2026-05-05 12:01:07 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:01:07 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:01:07 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:01:07 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:01:07 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:01:07 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:01:07 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:01:07 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:01:07 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:01:07 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:01:07 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:01:07 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:01:07 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:01:07 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:01:07 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:01:07 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:01:07 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:01:07 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:01:07 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:01:07 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:01:07 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:01:07 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:08:45 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 18888@Asus-Martín
+
+[2026-05-05 12:08:45 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:08:45 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:08:45 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:08:45 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:08:45 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:08:45 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:08:45 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:08:45 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:08:45 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:08:45 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:08:45 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:08:45 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:08:45 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:08:45 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:08:45 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:08:45 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:08:45 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:08:45 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:08:45 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:08:45 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:08:45 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:08:45 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:24:15 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 13700@Asus-Martín
+
+[2026-05-05 12:24:15 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:24:15 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:24:15 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:24:15 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:24:15 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:24:15 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:24:15 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:24:15 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:24:15 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:24:15 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:24:15 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:24:15 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:24:15 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:24:15 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:24:15 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:24:15 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:24:15 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:24:15 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:24:15 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:24:15 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:24:15 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:24:15 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:28:03 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 25696@Asus-Martín
+
+[2026-05-05 12:28:03 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:28:03 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:28:03 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:28:03 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:28:03 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:28:03 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:28:03 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:28:03 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:28:03 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:28:03 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:28:03 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:28:03 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:28:03 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:28:03 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:28:03 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:28:03 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:28:03 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:28:03 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:28:03 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:28:03 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:28:03 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:28:03 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:28:45 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 25916@Asus-Martín
+
+[2026-05-05 12:28:45 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:28:45 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:28:45 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:28:45 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:28:45 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:28:45 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:28:45 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:28:45 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:28:45 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:28:45 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:28:45 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:28:45 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:28:45 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:28:45 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:28:45 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:28:45 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:28:45 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:28:45 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:28:45 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:28:45 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:28:45 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:28:45 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:31:29 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 23020@Asus-Martín
+
+[2026-05-05 12:31:29 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:31:29 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:31:29 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:31:29 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:31:29 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:31:29 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:31:29 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:31:29 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:31:29 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:31:29 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:31:29 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:31:29 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:31:29 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:31:29 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:31:29 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:31:29 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:31:29 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:31:29 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:31:29 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:31:29 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:31:29 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:31:29 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:33:56 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 25948@Asus-Martín
+
+[2026-05-05 12:33:56 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:33:56 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:33:56 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:33:56 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:33:56 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:33:56 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:33:56 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:33:56 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:33:56 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:33:56 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:33:56 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:33:56 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:33:56 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:33:56 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:33:56 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:33:56 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:33:56 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:33:56 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:33:56 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:33:56 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:33:56 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:33:56 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:34:16 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 25332@Asus-Martín
+
+[2026-05-05 12:34:16 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:34:16 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:34:16 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:34:16 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:34:16 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:34:16 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:34:16 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:34:16 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:34:16 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:34:16 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:34:16 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:34:16 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:34:16 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:34:16 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:34:16 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:34:16 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:34:16 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:34:16 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:34:16 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:34:16 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:34:16 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:34:16 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:36:07 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 23896@Asus-Martín
+
+[2026-05-05 12:36:07 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:36:07 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:36:07 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:36:07 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:36:07 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:36:07 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:36:07 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:36:07 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:36:07 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:36:07 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:36:07 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:36:07 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:36:07 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:36:07 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:36:07 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:36:07 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:36:07 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:36:07 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:36:07 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:36:07 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:36:07 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:36:07 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:37:27 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 22888@Asus-Martín
+
+[2026-05-05 12:37:27 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:37:27 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:37:27 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:37:27 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:37:27 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:37:27 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:37:27 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:37:27 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:37:27 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:37:27 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:37:27 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:37:27 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:37:27 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:37:27 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:37:27 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:37:27 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:37:27 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:37:27 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:37:27 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:37:27 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:37:27 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:37:27 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 12:54:06 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 25020@Asus-Martín
+
+[2026-05-05 12:54:06 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 12:54:06 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 12:54:06 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 12:54:06 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 12:54:06 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 12:54:06 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 12:54:06 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 12:54:06 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 12:54:06 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 12:54:06 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 12:54:06 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 12:54:06 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 12:54:06 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 12:54:06 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 12:54:06 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 12:54:06 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 12:54:06 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 12:54:06 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 12:54:06 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 12:54:06 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 12:54:06 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 12:54:06 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 13:05:43 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 26436@Asus-Martín
+
+[2026-05-05 13:05:43 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 13:05:43 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 13:05:43 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 13:05:43 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 13:05:43 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 13:05:43 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 13:05:43 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 13:05:43 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 13:05:43 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 13:05:43 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 13:05:43 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 13:05:43 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 13:05:43 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 13:05:43 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 13:05:43 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 13:05:43 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 13:05:43 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 13:05:43 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 13:05:43 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 13:05:43 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 13:05:43 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 13:05:43 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-05 13:09:07 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 3572@Asus-Martín
+
+[2026-05-05 13:09:07 #2 type.registry] 
+New type domain.User
+
+[2026-05-05 13:09:07 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-05 13:09:07 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-05 13:09:07 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-05 13:09:07 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-05 13:09:07 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-05 13:09:07 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-05 13:09:07 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-05 13:09:07 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-05 13:09:07 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-05 13:09:07 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-05 13:09:07 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-05 13:09:07 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-05 13:09:07 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-05 13:09:07 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-05 13:09:07 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-05 13:09:07 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-05 13:09:07 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-05 13:09:07 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-05 13:09:07 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-05 13:09:07 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-05 13:09:07 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+

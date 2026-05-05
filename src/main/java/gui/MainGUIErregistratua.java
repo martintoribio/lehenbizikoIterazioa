@@ -21,6 +21,11 @@ import java.util.ResourceBundle;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import javax.swing.border.EmptyBorder;
+
 
 public class MainGUIErregistratua extends JFrame {
 	
@@ -28,10 +33,12 @@ public class MainGUIErregistratua extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel jContentPane = null;
-	private JButton jButtonCreateQuery = null;
-	private JButton jButtonQueryQueries = null;
-	private JButton jButtonLogout = null;	
-	private JButton btnDiruaKudeatu = null;
+	private JButton jButtonLogout = null;
+	private JButton btnMerkatua;
+	private JButton btnNireEremua;
+	private JButton btnDiruZorroa;
+	private JButton btnNotifikazioak;
+	
 
     private static BLFacade appFacadeInterface;
 	
@@ -46,13 +53,6 @@ public class MainGUIErregistratua extends JFrame {
 	private JRadioButton rdbtnNewRadioButton;
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JRadioButton rdbtnNewRadioButton_2;
-	
-	private JButton jButtonViewFavorites = null;
-	private JButton jButtonViewBought = null;
-	private JButton jButtonViewMovements = null;
-	private JButton jButtonViewReports = null;
-	private JButton viewErreklamazioak = null;
-	private JButton jButtonViewNotifikazioak = null;
 	
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -103,104 +103,78 @@ public class MainGUIErregistratua extends JFrame {
 		panel.add(rdbtnNewRadioButton_2);
 		panel.add(rdbtnNewRadioButton);
 		
-		jButtonCreateQuery = new JButton();
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.CreateSale"));
-		jButtonCreateQuery.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new CreateSaleGUI(sellerMail,nirePantaila);
-				a.setVisible(true);
-			}
+		btnMerkatua = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuMerkatua"));
+		btnMerkatua.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        JFrame a = new MenuMerkatuaGUI(nirePantaila, sellerMail);
+		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
+		    }
 		});
-		
-		jButtonQueryQueries = new JButton();
-		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
-		jButtonQueryQueries.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				JFrame a = new QuerySalesGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
 
-				a.setVisible(true);
-			}
-		});
-		
-		jButtonViewFavorites = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryFavorites"));
-		jButtonViewFavorites.addActionListener(new ActionListener() {
+		btnNireEremua = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuNireEremua"));
+		btnNireEremua.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryFavoritesGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
+		        JFrame a = new MenuNireEremuaGUI(nirePantaila, sellerMail);
 		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
 		    }
 		});
-		
-		jButtonViewBought = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
-		jButtonViewBought.addActionListener(new ActionListener() {
+
+		btnDiruZorroa = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuDiruZorroa"));
+		btnDiruZorroa.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryBoughtGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
+		        JFrame a = new MenuDiruZorroaGUI(nirePantaila, sellerMail);
 		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
 		    }
 		});
-		
-		jButtonViewMovements = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryMovements"));
-		jButtonViewMovements.addActionListener(new ActionListener() {
+
+		btnNotifikazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuNotifikazioak"));
+		btnNotifikazioak.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryMugimenduakGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
+		        JFrame a = new MenuNotifikazioakGUI(nirePantaila, sellerMail);
 		        a.setVisible(true);
+		        nirePantaila.setVisible(false);
 		    }
 		});
-		btnDiruaKudeatu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
-		btnDiruaKudeatu.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new WalletGUI(sellerMail);
-		        a.setVisible(true);
-		    }
-		});
-		jButtonViewReports = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryReports"));
-		jButtonViewReports.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QuerySalaketakGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
-		        a.setVisible(true);
-		    }
-		});
-		
-		viewErreklamazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryErreklamazioak")); 
-		viewErreklamazioak.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryErreklamazioakGUI(nirePantaila, sellerMail,MainGUIErregistratua.this);
-		        a.setVisible(true);
-		    }
-		});
-		
-		jButtonViewNotifikazioak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryNotifikazioak")); 
-		jButtonViewNotifikazioak.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryNotifikazioakGUI(sellerMail, nirePantaila);
-		        a.setVisible(true);
-		    }
-		});
-		
+
 		jButtonLogout = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
 		jButtonLogout.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        JFrame a = new MainGUI();
 		        a.setVisible(true);
-		        nirePantaila.setVisible(false);
+		        nirePantaila.dispose();
 		    }
 		});
-	
+
 		
 		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(12, 1, 0, 0));
-		jContentPane.add(jLabelSelectOption);
-		jContentPane.add(jButtonCreateQuery);
-		jContentPane.add(jButtonQueryQueries);
-		jContentPane.add(jButtonViewFavorites);
-		jContentPane.add(jButtonViewBought);
-		jContentPane.add(jButtonViewMovements);
-		jContentPane.add(btnDiruaKudeatu);
-		jContentPane.add(jButtonViewReports);
-		jContentPane.add(viewErreklamazioak);
-		jContentPane.add(jButtonViewNotifikazioak);
-		jContentPane.add(jButtonLogout);
-		jContentPane.add(panel);
-		
+		jContentPane.setLayout(new BorderLayout(10, 15)); 
+		jContentPane.setBorder(new EmptyBorder(10, 15, 10, 15)); 
+
+		JPanel titlePane = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		titlePane.add(jLabelSelectOption);
+		jContentPane.add(titlePane, BorderLayout.NORTH);
+
+		JPanel centralPane = new JPanel(new GridLayout(2, 2, 10, 10)); 
+		centralPane.add(btnMerkatua);
+		centralPane.add(btnNireEremua);
+		centralPane.add(btnDiruZorroa);
+		centralPane.add(btnNotifikazioak);
+		jContentPane.add(centralPane, BorderLayout.CENTER);
+
+		JPanel bottomPane = new JPanel();
+		bottomPane.setLayout(new BoxLayout(bottomPane, BoxLayout.Y_AXIS)); 
+
+		JPanel panelLogout = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		panelLogout.add(jButtonLogout);
+
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER)); 
+
+		bottomPane.add(panelLogout);
+		bottomPane.add(panel);
+		jContentPane.add(bottomPane, BorderLayout.SOUTH);
 		
 		setContentPane(jContentPane);
 		setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MainTitle") +": "+sellerMail);
@@ -214,18 +188,13 @@ public class MainGUIErregistratua extends JFrame {
 	}
 	
 	private void paintAgain() {
-		jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.SelectOption"));
-		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
-		jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.CreateSale"));
-		jButtonViewFavorites.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryFavorites"));
-		jButtonViewBought.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
-		jButtonViewMovements.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryMovements"));
-		btnDiruaKudeatu.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
-		jButtonViewReports.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryReports"));
-		viewErreklamazioak.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryErreklamazioak"));
-		jButtonViewNotifikazioak.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryNotifikazioak"));
-		jButtonLogout.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
+	    jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.SelectOption"));
+	    btnMerkatua.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuMerkatua"));
+	    btnNireEremua.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuNireEremua"));
+	    btnDiruZorroa.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuDiruZorroa"));
+	    btnNotifikazioak.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuNotifikazioak"));
+	    jButtonLogout.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Logout"));
+	    this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MainTitle")+ ": "+sellerMail);
 	}
 	
 } // @jve:decl-index=0:visual-constraint="0,0"

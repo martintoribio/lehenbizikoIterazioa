@@ -39,6 +39,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/bolo/Downloads/flatlaf-3.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/flatlaf-3.7.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
