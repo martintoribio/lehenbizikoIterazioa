@@ -13,54 +13,55 @@ import dataAccess.DataAccess;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
 
-public class ApplicationLauncher { 
-	
-	
-	
+
+public class ApplicationLauncher {
+
 	public static void main(String[] args) {
 
-		ConfigXML c=ConfigXML.getInstance();		
-		Locale.setDefault(new Locale(c.getLocale()));
-		
-		MainGUI a=new MainGUI();
-		a.setVisible(true);
+		// ── Tema visual ──────────────────────────────────────────
+		try {
+			UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+			java.io.InputStream is = ApplicationLauncher.class.getResourceAsStream("/wallapop-theme.properties");
+			if (is != null) {
+				java.util.Properties props = new java.util.Properties();
+				props.load(is);
+				java.util.Map<String, String> map = new java.util.HashMap<>();
+				for (String key : props.stringPropertyNames()) {
+				    map.put(key, props.getProperty(key));
+				}
+				com.formdev.flatlaf.FlatLaf.setGlobalExtraDefaults(map);
+			}
+		} catch (Exception e) {
+			System.out.println("Error cargando tema: " + e.toString());
+		}
+		// ─────────────────────────────────────────────────────────
 
+		ConfigXML c = ConfigXML.getInstance();
+		Locale.setDefault(new Locale(c.getLocale()));
+
+		MainGUI a = new MainGUI();
+		a.setVisible(true);
 
 		try {
 			BLFacade appFacadeInterface;
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-			
+
 			if (c.isBusinessLogicLocal()) {
-				DataAccess da= new DataAccess();
-				appFacadeInterface=new BLFacadeImplementation(da);
+				DataAccess da = new DataAccess();
+				appFacadeInterface = new BLFacadeImplementation(da);
+			} else {
+				String serviceName = "http://" + c.getBusinessLogicNode() + ":" + c.getBusinessLogicPort() + "/ws/" + c.getBusinessLogicName() + "?wsdl";
+				URL url = new URL(serviceName);
+				QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
+				Service service = Service.create(url, qname);
+				appFacadeInterface = service.getPort(BLFacade.class);
 			}
-			else { //If remote
-				
-				 String serviceName= "http://"+c.getBusinessLogicNode() 	+":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";	 
-				 URL url = new URL(serviceName);
 
-		 
-		        //1st argument refers to wsdl document above
-				//2nd argument is service name, refer to wsdl document above
-		        QName qname = new QName("http://businessLogic/", "BLFacadeImplementationService");
-		 
-		        Service service = Service.create(url, qname);
-
-		        appFacadeInterface = service.getPort(BLFacade.class);
-			} 
-			
 			MainGUI.setBussinessLogic(appFacadeInterface);
-			//ErreklamatuGUI g=new ErreklamatuGUI();
-			//g.setVisible(true);
-			
-		}catch (Exception e) {
-			a.jLabelTitle.setText("Error: "+e.toString());
-			a.jLabelTitle.setForeground(Color.RED);	
-			
-			System.out.println("Error in ApplicationLauncher: "+e.toString());
+
+		} catch (Exception e) {
+			a.jLabelTitle.setText("Error: " + e.toString());
+			a.jLabelTitle.setForeground(Color.RED);
+			System.out.println("Error in ApplicationLauncher: " + e.toString());
 		}
-
-
 	}
-
 }

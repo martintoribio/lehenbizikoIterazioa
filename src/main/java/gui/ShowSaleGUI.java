@@ -195,8 +195,8 @@ public class ShowSaleGUI extends JFrame{
 	    	public void actionPerformed(ActionEvent e) {
 	    		List<Sale> erosketak = new ArrayList<>();
 	    		erosketak.add(sale);
-	    		JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
-	    		hurrengoPantaila.setVisible(true);
+	    		//JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
+	    		//hurrengoPantaila.setVisible(true);
 	    	}
 	    });
 	    
