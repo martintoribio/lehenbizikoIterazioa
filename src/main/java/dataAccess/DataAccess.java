@@ -589,7 +589,7 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	
 	public List<Sale> getSellerSales(String email){
 		User user = db.find(User.class, email);
-		TypedQuery<Sale> query = db.createQuery("SELECT s FROM Sale s WHERE s..bought=false", Sale.class);
+		TypedQuery<Sale> query = db.createQuery("SELECT s FROM Sale s WHERE s.bought=false", Sale.class);
 		return query.getResultList();
 	}
 	
