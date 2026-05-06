@@ -1,13 +1,17 @@
 package gui;
 import javax.swing.*;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ResourceBundle;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.border.EmptyBorder;
 
 public class MenuDiruZorroaGUI extends JFrame {
     private JPanel jContentPane;
+    
     public MenuDiruZorroaGUI(JFrame pantailaNagusia, String sellerMail) {
-        setSize(495, 290);
+        setSize(500, 300);
         setTitle("Diru-zorroa - " + sellerMail);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -19,7 +23,8 @@ public class MenuDiruZorroaGUI extends JFrame {
 
         JButton btnDiruaKudeatu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.Wallet"));
         btnDiruaKudeatu.addActionListener(e -> {
-            new WalletGUI(sellerMail).setVisible(true);
+            new WalletGUI(sellerMail, this).setVisible(true);
+            this.setVisible(false);
         });
 
         JButton btnAtzera = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
@@ -28,10 +33,19 @@ public class MenuDiruZorroaGUI extends JFrame {
             dispose();
         });
 
-        jContentPane = new JPanel(new GridLayout(3, 1, 0, 0));
-        jContentPane.add(btnViewMovements);
-        jContentPane.add(btnDiruaKudeatu);
-        jContentPane.add(btnAtzera);
+        jContentPane = new JPanel();
+        jContentPane.setLayout(new BorderLayout(10, 15));
+        jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
+        
+        JPanel panelZentroa = new JPanel(new GridLayout(1,2,15,0));
+        panelZentroa.add(btnViewMovements);
+        panelZentroa.add(btnDiruaKudeatu);
+        jContentPane.add(panelZentroa, BorderLayout.CENTER);
+        
+        JPanel panelItxi = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelItxi.add(btnAtzera);
+        jContentPane.add(panelItxi, BorderLayout.SOUTH);
+        
         setContentPane(jContentPane);
     }
 }

@@ -38,7 +38,7 @@ public class CreateSaleGUI extends JFrame {
 
 	private String sellerMail;
 	private JTextField fieldTitle=new JTextField();
-	private JTextField fieldDescription=new JTextField();
+	private JTextArea fieldDescription=new JTextArea();
 	
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Title"));
 	private JLabel jLabelDescription = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Description")); 
@@ -74,19 +74,31 @@ public class CreateSaleGUI extends JFrame {
 		thisFrame=this;
 		this.sellerMail=mail;
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(604, 370));
+		this.setSize(new Dimension(650, 450));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.CreateProduct"));
 
-		jLabelTitle.setBounds(new Rectangle(6, 24, 92, 20));
+		jLabelTitle.setBounds(20, 30, 90, 20);
+		fieldTitle.setBounds(110, 30, 220, 25);
 		
-		jLabelPrice.setBounds(new Rectangle(6, 141, 101, 20));
-		jTextFieldPrice.setBounds(new Rectangle(97, 141, 60, 20));
+		jLabelDescription.setBounds(20, 70, 90, 20);
+		fieldDescription.setLineWrap(true);
+		fieldDescription.setWrapStyleWord(true);
+		JScrollPane scrollDescription = new JScrollPane(fieldDescription);
+		scrollDescription.setBounds(110, 70, 220, 60);
+		getContentPane().add(scrollDescription);
+		
+		jLabelPrice.setBounds(20, 290, 90, 20);
+		jTextFieldPrice.setBounds(110, 290, 80, 25);
 
+		JLabel lblEuro = new JLabel("€");
+		lblEuro.setBounds(195, 290, 20, 25);
+		lblEuro.setFont(new Font("Tahoma", Font.BOLD, 14));
+		this.getContentPane().add(lblEuro);
 		
 		scrollPaneEvents.setBounds(new Rectangle(25, 44, 346, 116));
 		jButtonCreate.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 
-		jButtonCreate.setBounds(new Rectangle(100, 270, 216, 41));
+		jButtonCreate.setBounds(380, 275, 225, 40);
 
 		jButtonCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -111,17 +123,17 @@ public class CreateSaleGUI extends JFrame {
 					}
 			}
 		});
-		jButtonClose.setBounds(new Rectangle(328, 228, 101, 30));
+		jButtonClose.setBounds(275, 340, 100, 30);
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.setVisible(false);
 				jasotakoPantaila.setVisible(true);}
 		});
 
-		jLabelMsg.setBounds(new Rectangle(26, 320, 377, 20));
+		jLabelMsg.setBounds(20, 380, 600, 20);
 		jLabelMsg.setForeground(Color.red);
 
-		jLabelError.setBounds(new Rectangle(16, 320, 384, 20));
+		jLabelError.setBounds(20, 380, 600, 20);
 		jLabelError.setForeground(Color.red);
 		
 	    status=Utils.getStatus();
@@ -141,32 +153,25 @@ public class CreateSaleGUI extends JFrame {
 		this.getContentPane().add(jLabelPrice, null);
 		this.getContentPane().add(jTextFieldPrice, null);
 		
-		jLabelProductStatus.setBounds(new Rectangle(40, 15, 140, 25));
-		jLabelProductStatus.setBounds(6, 185, 140, 25);
+		jLabelProductStatus.setBounds(20, 210, 90, 20);
 		getContentPane().add(jLabelProductStatus);
 		
-		jLabelDescription.setBounds(6, 56, 109, 16);
 		getContentPane().add(jLabelDescription);
 		
 		
-		fieldTitle.setBounds(98, 21, 250, 26);
 		getContentPane().add(fieldTitle);
 		fieldTitle.setColumns(10);
 		
-		jLabelKategoria.setBounds(6, 215, 140, 25);
+		jLabelKategoria.setBounds(20, 250, 90, 20);
 		getContentPane().add(jLabelKategoria);
 		
-		fieldDescription.setBounds(98, 56, 250, 73);
-		getContentPane().add(fieldDescription);
-		fieldDescription.setColumns(10);
-		
 		jComboBoxStatus.setModel(statusOptions);
-		jComboBoxStatus.setBounds(90, 183, 114, 27);
+		jComboBoxStatus.setBounds(110, 210, 150, 25);
 		getContentPane().add(jComboBoxStatus);
 		
 
 		jComboBoxKategoria.setModel(kategoriaOptions);
-		jComboBoxKategoria.setBounds(90, 213, 114, 27);
+		jComboBoxKategoria.setBounds(110, 250, 150, 25);
 		getContentPane().add(jComboBoxKategoria);
 		
 		JButton btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.LoadPicture")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -198,11 +203,11 @@ public class CreateSaleGUI extends JFrame {
 		            }
 			}
 		});
-		btnNewButton.setBounds(186, 138, 162, 29);
-		getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(110, 140, 150, 30);
+		getContentPane().add(btnNewButton);;
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(461, 209, 124, 86);
+		panel_1.setBounds(270, 140, 60, 60);
 		getContentPane().add(panel_1);
 /**		
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -225,12 +230,11 @@ public class CreateSaleGUI extends JFrame {
 		
 		getContentPane().add(btnNewButton_2);
 */		
-		jCalendar.setBounds(new Rectangle(360, 50, 225, 150));
+		jCalendar.setBounds(380, 60, 225, 150);
 		this.getContentPane().add(jCalendar, null);
 		
 		JLabel jLabelPublicationDate = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.PublicationDate"));
-		jLabelPublicationDate.setBounds(new Rectangle(6, 24, 92, 20));
-		jLabelPublicationDate.setBounds(360, 26, 197, 20);
+		jLabelPublicationDate.setBounds(360, 30, 200, 20);
 		getContentPane().add(jLabelPublicationDate);
 
 		this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {

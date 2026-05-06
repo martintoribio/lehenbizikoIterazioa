@@ -19,31 +19,42 @@ public class QueryBoughtGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryBoughtGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Izena", "Prezioa", "Data" };
+	private String[] columnNamesProducts = new String[] { 
+			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Title"), 
+			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Price"),
+			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Category"),
+			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.PublicationDate") 
+	};
 
 	public QueryBoughtGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(600, 400));
-		this.setTitle("Erositakoak");
+		this.setSize(new Dimension(750, 500));
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QueryBoughtGUI.name"));
 
-		jLabelTitle.setBounds(50, 20, 300, 20);
+		jLabelTitle.setBounds(50, 30, 300, 20);
 		this.getContentPane().add(jLabelTitle);
 
-		jButtonClose.setBounds(new Rectangle(220, 300, 130, 30));
+		jButtonClose.setBounds(new Rectangle(310, 390, 130, 30));
 		jButtonClose.addActionListener(e -> {
 			this.setVisible(false);
 			pantaila.setVisible(true);
 		});
 		this.getContentPane().add(jButtonClose, null);
 
-		scrollPanelProducts.setBounds(new Rectangle(50, 60, 480, 200));
+		scrollPanelProducts.setBounds(new Rectangle(50, 70, 630, 290));
 		tableModelProducts = new DefaultTableModel(null, columnNamesProducts);
 		tableProducts.setModel(tableModelProducts);
-		tableModelProducts.setColumnCount(4);
+		tableModelProducts.setColumnCount(5);
 		scrollPanelProducts.setViewportView(tableProducts);
+		
+		tableProducts.getColumnModel().getColumn(0).setPreferredWidth(180);
+		tableProducts.getColumnModel().getColumn(1).setPreferredWidth(70);
+		tableProducts.getColumnModel().getColumn(2).setPreferredWidth(100);
+		tableProducts.getColumnModel().getColumn(3).setPreferredWidth(100);
+		
 		this.getContentPane().add(scrollPanelProducts, null);
 
-		tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(3));
+		tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(4));
 
 		loadBoughtSales(email);
 		tableProducts.addMouseListener(new MouseAdapter() {
@@ -51,7 +62,7 @@ public class QueryBoughtGUI extends JFrame {
 			public void mousePressed(MouseEvent mouseEvent) {
 				if (mouseEvent.getClickCount() == 2) {
 					int row = tableProducts.rowAtPoint(mouseEvent.getPoint());
-					Sale s = (Sale) tableModelProducts.getValueAt(row, 3);
+					Sale s = (Sale) tableModelProducts.getValueAt(row, 4);
 					new ShowBoughtSaleGUI(s,email,aurrekoPantaila);
 				}
 			}
@@ -67,6 +78,7 @@ public class QueryBoughtGUI extends JFrame {
 				Vector<Object> row = new Vector<Object>();
 				row.add(sale.getTitle());
 				row.add(sale.getPrice());
+				row.add(sale.getKategoria());
 				row.add(new SimpleDateFormat("dd-MM-yyyy").format(sale.getPublicationDate()));
 				row.add(sale);
 				tableModelProducts.addRow(row);

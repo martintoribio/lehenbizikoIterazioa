@@ -1,13 +1,17 @@
 package gui;
 import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ResourceBundle;
+import javax.swing.border.EmptyBorder;
 
 public class MenuNotifikazioakGUI extends JFrame {
     private JPanel jContentPane;
+    
     public MenuNotifikazioakGUI(JFrame pantailaNagusia, String sellerMail) {
-        setSize(495, 290);
+        setSize(750, 300);
         setTitle("Notifikazioak - " + sellerMail);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -35,11 +39,20 @@ public class MenuNotifikazioakGUI extends JFrame {
             dispose();
         });
 
-        jContentPane = new JPanel(new GridLayout(4, 1, 0, 0)); 
-        jContentPane.add(viewSalaketak);
-        jContentPane.add(viewErreklamazioak);
-        jContentPane.add(jButtonViewNotifikazioak);
-        jContentPane.add(btnAtzera);
+        jContentPane = new JPanel(new BorderLayout(10, 15));
+        jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
+
+        JPanel panelZentroa = new JPanel(new GridLayout(1, 3, 15, 0));
+        panelZentroa.add(viewSalaketak);
+        panelZentroa.add(viewErreklamazioak);
+        panelZentroa.add(jButtonViewNotifikazioak);
+        
+        jContentPane.add(panelZentroa, BorderLayout.CENTER);
+
+        JPanel panelItxi = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelItxi.add(btnAtzera);
+        
+        jContentPane.add(panelItxi, BorderLayout.SOUTH);
         setContentPane(jContentPane);
     }
 }

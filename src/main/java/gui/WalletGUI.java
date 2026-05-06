@@ -1,6 +1,8 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,7 +24,7 @@ public class WalletGUI extends JFrame {
 	private JLabel jLabelPin = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Pin"));
 
 	private JTextField textKantitatea = new JTextField();
-	private JTextField textPin = new JTextField();
+	private JPasswordField textPin = new JPasswordField();
 
 	private JButton btnGehitu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Add"));
 	private JButton btnAtera = new JButton(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Remove"));
@@ -30,67 +32,102 @@ public class WalletGUI extends JFrame {
 
 	private JLabel jLabelError = new JLabel();
 
-	public WalletGUI(String email) {
+	public WalletGUI(String email, JFrame aurrekoPantaila) {
 
 		this.email = email;
-
-		this.setSize(400, 300);
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Title"));
-		getContentPane().setLayout(new GridLayout(7, 1, 5, 5));
-
 		BLFacade bl = MainGUI.getBusinessLogic();
 
-		
+		this.setSize(500, 420);
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Title"));
+		getContentPane().setLayout(null);
+
+
+		jLabelTitle.setBounds(150, 20, 200, 30);
 		jLabelTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabelTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
 		getContentPane().add(jLabelTitle);
 
-	
-		float saldo = bl.getSaldoa(email);
-		jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldo);
+		
+		jLabelSaldo.setBounds(100, 80, 300, 25);
 		jLabelSaldo.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabelSaldo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		float saldo = bl.getSaldoa(email);
+		updateTextSaldo(saldo);
 		getContentPane().add(jLabelSaldo);
 
-	
-		JPanel panelKantitatea = new JPanel(new FlowLayout());
-		panelKantitatea.add(jLabelKantitatea);
-		textKantitatea.setColumns(10);
-		panelKantitatea.add(textKantitatea);
-		getContentPane().add(panelKantitatea);
+		
+		jLabelKantitatea.setBounds(110, 140, 100, 25);
+		jLabelKantitatea.setHorizontalAlignment(SwingConstants.RIGHT);
+		getContentPane().add(jLabelKantitatea);
 
+		textKantitatea.setBounds(220, 140, 100, 25);
+		getContentPane().add(textKantitatea);
+		
+		JLabel lblEuro = new JLabel("€");
+		lblEuro.setBounds(330, 140, 20, 25);
+		lblEuro.setFont(new Font("Tahoma", Font.BOLD, 14));
+		getContentPane().add(lblEuro);
 	
-		JPanel panelPin = new JPanel(new FlowLayout());
-		panelPin.add(jLabelPin);
-		textPin.setColumns(10);
-		panelPin.add(textPin);
-		getContentPane().add(panelPin);
+		
+		jLabelPin.setBounds(110, 190, 100, 25);
+		jLabelPin.setHorizontalAlignment(SwingConstants.RIGHT);
+		getContentPane().add(jLabelPin);
+
+		textPin.setBounds(220, 190, 100, 25);
+		getContentPane().add(textPin);
 
 		
-		JPanel panelBotones = new JPanel(new FlowLayout());
-		panelBotones.add(btnGehitu);
-		panelBotones.add(btnAtera);
-		getContentPane().add(panelBotones);
+		btnGehitu.setBounds(110, 260, 120, 35);
+		btnGehitu.setEnabled(false);
+		getContentPane().add(btnGehitu);
+
+		btnAtera.setBounds(260, 260, 120, 35);
+		btnAtera.setEnabled(false);
+		getContentPane().add(btnAtera);
 
 	
+		jButtonClose.setBounds(185, 320, 120, 30);
+		getContentPane().add(jButtonClose);
+
+		
+		jLabelError.setBounds(50, 360, 400, 20);
 		jLabelError.setForeground(Color.RED);
 		jLabelError.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(jLabelError);
+		
+		
+		DocumentListener fieldListener = new DocumentListener() {
+			public void insertUpdate(DocumentEvent e) { checkFields(); }
+			public void removeUpdate(DocumentEvent e) { checkFields(); }
+			public void changedUpdate(DocumentEvent e) { checkFields(); }
 
-	
-		getContentPane().add(jButtonClose);
-		jLabelError.setText("");
+			private void checkFields() {
+				boolean hasAmount = !textKantitatea.getText().trim().isEmpty();
+				boolean hasPin = textPin.getPassword().length > 0;
+				boolean enableButtons = hasAmount && hasPin;
+				
+				btnGehitu.setEnabled(enableButtons);
+				btnAtera.setEnabled(enableButtons);
+			}
+		};
+		textKantitatea.getDocument().addDocumentListener(fieldListener);
+		textPin.getDocument().addDocumentListener(fieldListener);
+		
+		
 		btnGehitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					float kantitatea = Float.parseFloat(textKantitatea.getText());
-					if (kantitatea<=0.0) {
+					if (kantitatea <= 0.0) {
 						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Negative"));
 					} else {
 						jLabelError.setText("");
-						int pin = Integer.parseInt(textPin.getText());
+						int pin = Integer.parseInt(new String(textPin.getPassword()));
 						bl.diruaGehitu(email, kantitatea, pin);
+						
 						float saldoBerria = bl.getSaldoa(email);
-						jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldoBerria);
+						updateTextSaldo(saldoBerria);
+						cleanFields();
 					}
 				} catch (TxartelOkerraException ex) {
 					jLabelError.setText(ex.getMessage());
@@ -104,14 +141,16 @@ public class WalletGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					float kantitatea = Float.parseFloat(textKantitatea.getText());
-					if (kantitatea<=0.0) {
+					if (kantitatea <= 0.0) {
 						jLabelError.setText(ResourceBundle.getBundle("Etiquetas").getString("WalletGUI.Negative"));
 					} else {
 						jLabelError.setText("");
-						int pin = Integer.parseInt(textPin.getText());
-						bl.diruaAtera(email,  kantitatea, pin);
+						int pin = Integer.parseInt(new String(textPin.getPassword()));
+						bl.diruaAtera(email, kantitatea, pin);
+						
 						float saldoBerria = bl.getSaldoa(email);
-						jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + saldoBerria);	
+						updateTextSaldo(saldoBerria);
+						cleanFields();
 					}
 				} catch (TxartelOkerraException ex) {
 					jLabelError.setText(ex.getMessage());
@@ -125,8 +164,18 @@ public class WalletGUI extends JFrame {
 
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				aurrekoPantaila.setVisible(true);
 				dispose();
 			}
 		});
+	}
+	
+	private void updateTextSaldo(float saldo) {
+		jLabelSaldo.setText(ResourceBundle.getBundle("Etiquetas").getString("Wallet.Balance") + ": " + String.format("%.2f €", saldo));
+	}
+	
+	private void cleanFields() {
+		textKantitatea.setText("");
+		textPin.setText("");
 	}
 }

@@ -1,13 +1,17 @@
 package gui;
 import javax.swing.*;
-import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.ResourceBundle;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.border.EmptyBorder;
 
 public class MenuNireEremuaGUI extends JFrame {
     private JPanel jContentPane;
+    
     public MenuNireEremuaGUI(JFrame pantailaNagusia, String sellerMail) {
-        setSize(495, 290);
+        setSize(500, 300);
         setTitle("Nire Eremua - " + sellerMail);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -29,10 +33,19 @@ public class MenuNireEremuaGUI extends JFrame {
             dispose();
         });
 
-        jContentPane = new JPanel(new GridLayout(3, 1, 0, 0));
-        jContentPane.add(btnViewFavorites);
-        jContentPane.add(btnViewBought);
-        jContentPane.add(btnAtzera);
+        jContentPane = new JPanel();
+        jContentPane.setLayout(new BorderLayout(10, 15));
+        jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
+        
+        JPanel panelZentroa = new JPanel(new GridLayout(1,2,15,0));
+        panelZentroa.add(btnViewFavorites);
+        panelZentroa.add(btnViewBought);
+        jContentPane.add(panelZentroa, BorderLayout.CENTER);
+        
+        JPanel panelItxi = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelItxi.add(btnAtzera);
+        jContentPane.add(panelItxi, BorderLayout.SOUTH);
+        
         setContentPane(jContentPane);
     }
 }

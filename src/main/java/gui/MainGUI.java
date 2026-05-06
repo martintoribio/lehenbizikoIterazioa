@@ -6,9 +6,11 @@ package gui;
 
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import businessLogic.BLFacade;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -54,11 +56,13 @@ public class MainGUI extends JFrame {
 		super();
 		nirePantaila=this;
 		
-		this.setSize(495, 290);
-		jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title"));
+		this.setSize(500, 300);
+		
+		jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
 		jLabelTitle.setFont(new Font("Tahoma", Font.BOLD, 20));
 		jLabelTitle.setForeground(Color.BLACK);
 		jLabelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabelTitle.setBorder(new EmptyBorder(10, 0, 10, 0));
 		
 		rdbtnNewRadioButton = new JRadioButton("English");
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
@@ -101,7 +105,7 @@ public class MainGUI extends JFrame {
 		});
 		
 		jButtonRegister = new JButton();
-		jButtonRegister.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Register"));
+		jButtonRegister.setText("<html><center>" + ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Register") + "</center></html>");
 		jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 				JFrame a = new RegisterGUI();
@@ -111,16 +115,26 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
-		jContentPane = new JPanel();
-		jContentPane.setLayout(new GridLayout(4, 1, 0, 0));
-		jContentPane.add(jLabelTitle);
-		jContentPane.add(jButtonLogin);
-		jContentPane.add(jButtonRegister);
-		jContentPane.add(panel);
+		JPanel centerPanel = new JPanel(new GridLayout(1, 2, 20, 0));
+		centerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
+		centerPanel.add(jButtonLogin);
+		centerPanel.add(jButtonRegister);
 		
+		jContentPane = new JPanel();
+		jContentPane.setLayout(new BorderLayout(10, 10));
+		jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
+		
+		jContentPane.add(jLabelTitle, BorderLayout.NORTH);
+		jContentPane.add(centerPanel, BorderLayout.CENTER);
+		jContentPane.add(panel, BorderLayout.SOUTH);
 		
 		setContentPane(jContentPane);
-		setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title") +": "+sellerMail);
+		
+		if (sellerMail != null) {
+			setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title") + ": " + sellerMail);
+		} else {
+			setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title"));
+		}
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -132,9 +146,13 @@ public class MainGUI extends JFrame {
 	
 	private void paintAgain() {
 		jLabelTitle.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.SelectOption"));
-		jButtonRegister.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Register"));
+		jButtonRegister.setText("<html><center>" + ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Register") + "</center></html>");
 		jButtonLogin.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Login"));
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title")+ ": "+sellerMail);
+		if (sellerMail != null) {
+			this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title") + ": " + sellerMail);
+		} else {
+			this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.Title"));
+		}
 	}
 	
 } // @jve:decl-index=0:visual-constraint="0,0"
