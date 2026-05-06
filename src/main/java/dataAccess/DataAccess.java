@@ -26,6 +26,7 @@ import domain.Mugimendua;
 import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
+import domain.Eskaera;
 import domain.Sale;
 import domain.Txartela;
 import domain.User;
@@ -591,6 +592,21 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		User user = db.find(User.class, email);
 		TypedQuery<Sale> query = db.createQuery("SELECT s FROM Sale s WHERE s.bought=false", Sale.class);
 		return query.getResultList();
+	}
+	
+	public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+		db.getTransaction().begin();
+		Eskaera esk = db.find(Eskaera.class, idEskaera);
+		User user = db.find(User.class, email);
+		if (sale!=null && user!=null) {
+			Salaketa salaketa = user.addSalaketa(titulua, deskribapena, sale);
+			sale.addSalaketa(salaketa);
+			db.getTransaction().commit();
+			return salaketa;
+		} else {
+			db.getTransaction().rollback();
+			return null;
+		}
 	}
 	
 	public void close() {

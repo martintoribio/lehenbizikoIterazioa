@@ -32,7 +32,7 @@ public class Erreklamazioa implements Serializable {
 	private User user;
 	
 	@XmlIDREF
-	@ManyToOne
+	@OneToOne
 	private Sale sale;
 	
 	
