@@ -26,7 +26,8 @@ import domain.Mugimendua;
 import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
-import domain.Eskaera;
+//Descomentar este import
+//import domain.Eskaera; 
 import domain.Sale;
 import domain.Txartela;
 import domain.User;
@@ -594,8 +595,8 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		TypedQuery<Sale> query = db.createQuery("SELECT s FROM Sale s WHERE s.bought=false", Sale.class);
 		return query.getResultList();
 	}
-	
-	public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+	//Descomentar esta funcion
+	/*public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
 		db.getTransaction().begin();
 		Eskaera esk = db.find(Eskaera.class, idEskaera);
 		User user = db.find(User.class, email);
@@ -608,7 +609,7 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 			db.getTransaction().rollback();
 			return null;
 		}
-	}
+	}*/
 	
 	public void close() {
 		db.close();
