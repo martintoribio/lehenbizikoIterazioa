@@ -9,6 +9,7 @@ import domain.Mugimendua;
 import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
+import domain.Eskaera;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -97,6 +98,8 @@ public interface BLFacade  {
 	@WebMethod public List<String> kategoriakAldatu(String email, List<String> kategoriak);
 	@WebMethod public List<Notifikazioa> getNotifikazioak(String email);
 	@WebMethod public List<Sale> getSellerSales(String email);
+	@WebMethod public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email); 
+
 
 }
 

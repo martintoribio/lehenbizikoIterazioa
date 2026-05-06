@@ -18,7 +18,6 @@ public class ApplicationLauncher {
 
 	public static void main(String[] args) {
 
-		// ── Tema visual ──────────────────────────────────────────
 		try {
 			UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
 			java.io.InputStream is = ApplicationLauncher.class.getResourceAsStream("/wallapop-theme.properties");
@@ -32,9 +31,8 @@ public class ApplicationLauncher {
 				com.formdev.flatlaf.FlatLaf.setGlobalExtraDefaults(map);
 			}
 		} catch (Exception e) {
-			System.out.println("Error cargando tema: " + e.toString());
+			System.out.println("Theme charging error: " + e.toString());
 		}
-		// ─────────────────────────────────────────────────────────
 
 		ConfigXML c = ConfigXML.getInstance();
 		Locale.setDefault(new Locale(c.getLocale()));

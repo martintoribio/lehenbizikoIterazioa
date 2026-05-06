@@ -12,6 +12,7 @@ import domain.Mugimendua;
 import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
+import domain.Eskaera;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -296,6 +297,15 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return ofertak;
 	}
+	 @WebMethod
+		public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+			/*dbManager.open();
+			Eskaera esk=dbManager.sortuEskaera(idEskaera, produktuIzena, kategoria, egoera, email);		
+			dbManager.close();
+			return esk;*/
+		 	return null;
+	   };
+		
 
 }
 

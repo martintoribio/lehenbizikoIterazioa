@@ -223,4 +223,5 @@ public class User implements Serializable {
 		this.txartela = new Txartela(tIzena, tZenb, PIN, this);
 	}
 	
+	
 }
