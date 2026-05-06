@@ -2463,3 +2463,74 @@ New type java.util.ArrayList<domain.Salaketa>
 [2026-05-06 17:15:45 #23 type.registry] 
 New type java.util.ArrayList<domain.Erreklamazioa>
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-06 18:05:20 #1 store] 
+Database 'C:\Users\marti\git\proiektuaSI\src\main\resources\products.temp' is opened by 7896@Asus-Martín
+
+[2026-05-06 18:05:20 #2 type.registry] 
+New type domain.User
+
+[2026-05-06 18:05:20 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-06 18:05:20 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-06 18:05:20 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-06 18:05:20 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-06 18:05:20 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-06 18:05:20 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-06 18:05:20 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-06 18:05:20 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-06 18:05:20 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-06 18:05:20 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-06 18:05:20 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-06 18:05:20 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-06 18:05:20 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-06 18:05:20 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-06 18:05:20 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-06 18:05:20 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-06 18:05:20 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-06 18:05:20 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-06 18:05:20 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-06 18:05:20 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-06 18:05:20 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
