@@ -39,28 +39,28 @@ public class KategoriakGUI extends JFrame {
 		ArrayList<JCheckBox> checkBoxes = new ArrayList<>();
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox(kategoriak.remove(0));
-		chckbxNewCheckBox.setBounds(23, 74, 93, 21);
+		chckbxNewCheckBox.setBounds(23, 74, 120, 21);
 		contentPane.add(chckbxNewCheckBox);
 		checkBoxes.add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox(kategoriak.remove(0));
-		chckbxNewCheckBox_1_1.setBounds(154, 74, 93, 21);
+		chckbxNewCheckBox_1_1.setBounds(154, 74, 120, 21);
 		contentPane.add(chckbxNewCheckBox_1_1);
 		checkBoxes.add(chckbxNewCheckBox_1_1);
 
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox(kategoriak.remove(0));
-		chckbxNewCheckBox_1.setBounds(289, 74, 93, 21);
+		chckbxNewCheckBox_1.setBounds(289, 74, 126, 21);
 		contentPane.add(chckbxNewCheckBox_1);
 		checkBoxes.add(chckbxNewCheckBox_1);
 		
 		JCheckBox chckbxNewCheckBox_2 = new JCheckBox(kategoriak.remove(0));
-		chckbxNewCheckBox_2.setBounds(82, 138, 93, 21);
+		chckbxNewCheckBox_2.setBounds(82, 138, 147, 21);
 		contentPane.add(chckbxNewCheckBox_2);
 		checkBoxes.add(chckbxNewCheckBox_2);
 		 
 		JCheckBox chckbxNewCheckBox_3 = new JCheckBox(kategoriak.remove(0));
-		chckbxNewCheckBox_3.setBounds(233, 138, 93, 21);
+		chckbxNewCheckBox_3.setBounds(232, 138, 150, 21);
 		contentPane.add(chckbxNewCheckBox_3);
 		checkBoxes.add(chckbxNewCheckBox_3);
 		

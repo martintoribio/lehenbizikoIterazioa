@@ -291,9 +291,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 	
 	@WebMethod
-	public List<Sale> getSellerSales(String email){
+	public List<Sale> getSellerSales(String email, User seller){
 		dbManager.open();
-		List<Sale> ofertak = dbManager.getSellerSales(email);
+		List<Sale> ofertak = dbManager.getSellerSales(email, seller);
 		dbManager.close();
 		return ofertak;
 	}

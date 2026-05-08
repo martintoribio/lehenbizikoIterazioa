@@ -74,7 +74,7 @@ public class ShowSaleGUI extends JFrame{
 		
 		jLabelPrice.setBounds(new Rectangle(6, 166, 101, 20));
 		fieldPrice.setEditable(false);
-		fieldPrice.setBounds(new Rectangle(137, 166, 60, 20));
+		fieldPrice.setBounds(new Rectangle(125, 166, 60, 20));
 
 		
 		scrollPaneEvents.setBounds(new Rectangle(25, 44, 346, 116));
@@ -140,7 +140,7 @@ public class ShowSaleGUI extends JFrame{
 		getContentPane().add(panel_1);
 		
 		labelStatus.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		labelStatus.setBounds(37, 231, 289, 16);
+		labelStatus.setBounds(16, 231, 310, 16);
 		getContentPane().add(labelStatus);
 		labelStatus.setBounds(37, 231, 289, 16);
 		
@@ -159,7 +159,7 @@ public class ShowSaleGUI extends JFrame{
 		}
 		System.out.println("status: "+sale.getStatus());
 		statusField = new JLabel(Utils.getStatus(sale.getStatus())); 
-		statusField.setBounds(137, 191, 92, 16);
+		statusField.setBounds(125, 191, 92, 16);
 		getContentPane().add(statusField);
 	    buyButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
@@ -195,13 +195,13 @@ public class ShowSaleGUI extends JFrame{
 	    	public void actionPerformed(ActionEvent e) {
 	    		List<Sale> erosketak = new ArrayList<>();
 	    		erosketak.add(sale);
-	    		//JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
-	    		//hurrengoPantaila.setVisible(true);
+	    		JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
+	    		hurrengoPantaila.setVisible(true);
 	    	}
 	    });
 	    
 	    multipleBuy.setVisible(true);
-	    multipleBuy.setBounds(342, 187, 218, 38);
+	    multipleBuy.setBounds(227, 187, 333, 38);
 	    getContentPane().add(multipleBuy);
 	    
 		

@@ -3,6 +3,7 @@ package gui;
 import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Sale;
+import domain.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,7 @@ public class QueryMultipleSalesGUI extends JFrame {
 	};
 	
 	private String loggedEmail;
-
+	private Sale sale;
 	
 	public QueryMultipleSalesGUI(JFrame pantaila, String email,JFrame aurrekoPantaila, List <Sale> saskia) {
 		jasotakoPantaila=pantaila;
@@ -47,7 +48,8 @@ public class QueryMultipleSalesGUI extends JFrame {
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.FindProducts"));
 		jLabelProducts.setBounds(52, 108, 427, 16);
 		this.getContentPane().add(jLabelProducts);
-
+		sale = saskia.get(0);
+		User seller = sale.getSeller();
 		jButtonClose.setBounds(new Rectangle(220, 372, 130, 30));
 
 		jButtonClose.addActionListener(new ActionListener()
@@ -81,6 +83,10 @@ public class QueryMultipleSalesGUI extends JFrame {
 
 		this.getContentPane().add(scrollPanelProducts, null);
 		
+		JLabel sellerIzena = new JLabel(seller.getEmail()); 
+		sellerIzena.setBounds(52, 65, 130, 17);
+		getContentPane().add(sellerIzena);
+		
 		try {
 			tableModelProducts.setDataVector(null, columnNamesProducts);
 			tableModelProducts.setColumnCount(4); // another column added to allocate product object
@@ -88,7 +94,7 @@ public class QueryMultipleSalesGUI extends JFrame {
 			BLFacade facade = MainGUI.getBusinessLogic();
 			Date today = UtilDate.trim(new Date());
 
-			List<domain.Sale> sales=facade.getSellerSales(email);
+			List<domain.Sale> sales=facade.getSellerSales(email, seller);
 			for (domain.Sale sale:sales){
 				if (!sale.bought && !(saskia.contains(sale))) {
 					Vector<Object> row = new Vector<Object>();
