@@ -597,20 +597,16 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	}
 	
 	
-	/*public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+	public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
 		db.getTransaction().begin();
-		Eskaera esk = db.find(Eskaera.class, idEskaera);
 		User user = db.find(User.class, email);
-		if (sale!=null && user!=null) {
-			Salaketa salaketa = user.addSalaketa(titulua, deskribapena, sale);
-			sale.addSalaketa(salaketa);
-			db.getTransaction().commit();
-			return salaketa;
-		} else {
-			db.getTransaction().rollback();
-			return null;
+		if (user!=null) {
+			Eskaera esk = user.addEskaera(idEskaera, produktuIzena, kategoria, egoera);
+			return esk;
 		}
-	}*/
+		return null;
+		
+	}
 	
 	public void close() {
 		db.close();

@@ -51,6 +51,9 @@ public class User implements Serializable {
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Erreklamazioa> erreklamazioak = new ArrayList<Erreklamazioa>();
+	@XmlIDREF
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	private List<Eskaera> eskaerak = new ArrayList<Eskaera>();
 	
 	
 	public User() {
@@ -222,6 +225,10 @@ public class User implements Serializable {
 	public void addTxartela(String tIzena, String tZenb, int PIN) {
 		this.txartela = new Txartela(tIzena, tZenb, PIN, this);
 	}
-	
+	public Eskaera addEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera) {
+		Eskaera esk = new Eskaera(idEskaera, produktuIzena, kategoria, egoera, this);
+		eskaerak.add(esk);
+		return esk;
+	}
 	
 }

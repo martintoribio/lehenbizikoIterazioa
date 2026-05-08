@@ -299,11 +299,10 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 	 @WebMethod
 		public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
-			/*dbManager.open();
+			dbManager.open();
 			Eskaera esk=dbManager.sortuEskaera(idEskaera, produktuIzena, kategoria, egoera, email);		
 			dbManager.close();
-			return esk;*/
-		 	return null;
+			return esk;
 	   };
 		
 
