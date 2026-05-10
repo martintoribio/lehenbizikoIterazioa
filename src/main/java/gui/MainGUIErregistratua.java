@@ -186,7 +186,7 @@ public class MainGUIErregistratua extends JFrame {
 			}
 		});
 	}
-	
+		
 	private void paintAgain() {
 	    jLabelSelectOption.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.SelectOption"));
 	    btnMerkatua.setText(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.MenuMerkatua"));

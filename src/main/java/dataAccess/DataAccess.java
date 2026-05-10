@@ -637,7 +637,7 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 			user.addEskaintza(eskaintza);
 			db.getTransaction().commit();
 			return eskaintza;
-		}
+		}	
 		db.getTransaction().rollback();
 		return null;
 	}

@@ -59,7 +59,7 @@ public class EskaeraSortuGUI extends JFrame {
 		getContentPane().add(jComboBoxKategoria);
 		
 		JLabel mezua = new JLabel("");
-		mezua.setBounds(142, 191, 213, 17);
+		mezua.setBounds(111, 191, 295, 17);
 		getContentPane().add(mezua);
 		
 		JTextField produktuIzena = new JTextField();
@@ -78,11 +78,15 @@ public class EskaeraSortuGUI extends JFrame {
 		JButton eskaintzaSortuButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.EskaeraSortu"));
 		eskaintzaSortuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String kategoria = (String)jComboBoxKategoria.getSelectedItem();
-				String productName = produktuIzena.getText();
-				Eskaera eskaera = facade.sortuEskaera(productName, kategoria, email);
-				if (eskaera!=null) {
-					mezua.setText(ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.mezua"));
+				if (!produktuIzena.getText().trim().isEmpty()) {
+					String kategoria = (String)jComboBoxKategoria.getSelectedItem();
+					String productName = produktuIzena.getText();
+					Eskaera eskaera = facade.sortuEskaera(productName, kategoria, email);
+					if (eskaera!=null) {
+						mezua.setText(ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.mezua"));
+					}
+				} else {
+					mezua.setText(ResourceBundle.getBundle("Etiquetas").getString("RegisteredGUI.blankData"));
 				}
 			}
 		});

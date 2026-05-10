@@ -62,6 +62,7 @@ public class QueryEskaerakGUI extends JFrame {
                     JTable table = (JTable) mouseEvent.getSource();
                     int row = table.rowAtPoint(mouseEvent.getPoint());
                     Eskaera esk = (Eskaera) tableModelProducts.getValueAt(row, 2);
+                    new EskaeraErantzunGUI(esk, email, thisFrame).setVisible(true);
                 }
             }
         });

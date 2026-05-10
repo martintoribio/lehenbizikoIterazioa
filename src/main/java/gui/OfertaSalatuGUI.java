@@ -33,7 +33,7 @@ public class OfertaSalatuGUI extends JFrame {
 	 */
 	public OfertaSalatuGUI(String email, JFrame pantaila, int saleNumber) {
 		nirePantaila = this;
-		JLabel erroreMezua = new JLabel(""); //$NON-NLS-1$ //$NON-NLS-2$
+		JLabel erroreMezua = new JLabel(""); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 330);
 		contentPane = new JPanel();
