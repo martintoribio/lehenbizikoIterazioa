@@ -3,7 +3,7 @@ package gui;
 import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Sale;
-
+import domain.Eskaera;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,41 +17,24 @@ import javax.swing.table.DefaultTableModel;
 public class EskaeraSortuGUI extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	private final JLabel jLabelProducts = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Products")); 
-
-	private JButton jButtonSearch = new JButton(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Search")); 
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
-
-	private JScrollPane scrollPanelProducts = new JScrollPane();
-	private JTable tableProducts= new JTable();
 
 	private DefaultTableModel tableModelProducts;
 
 	private JFrame thisFrame; 
 	private JFrame jasotakoPantaila;
-	private String[] columnNamesProducts = new String[] {
-			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Title"), 
-			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Price"),
-			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.PublicationDate"),
-
-	};
-	private JTextField jTextFieldSearch;
 	
 	private String loggedEmail;
-
+	private JTextField textField;
+	BLFacade facade = MainGUI.getBusinessLogic();
 	
 	public EskaeraSortuGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		jasotakoPantaila=pantaila;
 		this.loggedEmail = email;
-		tableProducts.setEnabled(false);
 		thisFrame=this;
-		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(700, 500));
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.FindProducts"));
-		jLabelProducts.setBounds(52, 108, 427, 16);
-		this.getContentPane().add(jLabelProducts);
-
-		jButtonClose.setBounds(new Rectangle(220, 379, 130, 30));
+		this.setSize(new Dimension(500, 300));
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.EskaeraSortu"));
+		jButtonClose.setBounds(300, 232, 130, 30);
 
 		jButtonClose.addActionListener(new ActionListener()
 		{
@@ -62,87 +45,56 @@ public class EskaeraSortuGUI extends JFrame {
 
 			}
 		});		
+		getContentPane().setLayout(null);
 		
-		this.getContentPane().add(jButtonClose, null);
-
-		scrollPanelProducts.setBounds(new Rectangle(52, 137, 459, 150));
-
-		scrollPanelProducts.setViewportView(tableProducts);
-		tableModelProducts = new DefaultTableModel(null, columnNamesProducts);
-
-		tableProducts.setModel(tableModelProducts);
-
-		tableModelProducts.setDataVector(null, columnNamesProducts);
-		tableModelProducts.setColumnCount(4); // another column added to allocate ride objects
-
-		tableProducts.getColumnModel().getColumn(0).setPreferredWidth(200);
-		tableProducts.getColumnModel().getColumn(1).setPreferredWidth(10);
-		tableProducts.getColumnModel().getColumn(1).setPreferredWidth(70);
-
-
-		tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(3)); // not shown in JTable
-
-		this.getContentPane().add(scrollPanelProducts, null);
+		this.getContentPane().add(jButtonClose);
 		
-		jTextFieldSearch = new JTextField();
-		jTextFieldSearch.setBounds(52, 56, 357, 26);
-		getContentPane().add(jTextFieldSearch);
-		jTextFieldSearch.setColumns(10);
+		JComboBox<String> jComboBoxKategoria = new JComboBox<String>();
+		DefaultComboBoxModel<String> kategoriaOptions = new DefaultComboBoxModel<String>();
+		List<String> kategoriak;
+		kategoriak=Utils.getKategoriak();
+		for(String k:kategoriak) kategoriaOptions.addElement(k);
+		jComboBoxKategoria.setModel(kategoriaOptions);
+		jComboBoxKategoria.setBounds(50, 144, 250, 25);
+		getContentPane().add(jComboBoxKategoria);
 		
-		 jButtonSearch.addActionListener(new ActionListener() {
-		 	public void actionPerformed(ActionEvent e) {
-		 		try {
-					tableModelProducts.setDataVector(null, columnNamesProducts);
-					tableModelProducts.setColumnCount(4); // another column added to allocate product object
-
-					BLFacade facade = MainGUI.getBusinessLogic();
-					Date today = UtilDate.trim(new Date());
-
-					List<domain.Sale> sales=facade.getPublishedSales(jTextFieldSearch.getText(),today);
-
-					if (sales.isEmpty() ) jLabelProducts.setText(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.NoProducts"));
-					else jLabelProducts.setText(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Products"));
-					for (domain.Sale sale:sales){
-						if (!sale.bought) {
-							Vector<Object> row = new Vector<Object>();
-							row.add(sale.getTitle());
-							row.add(sale.getPrice());
-							row.add(new SimpleDateFormat("dd-MM-yyyy").format(sale.getPublicationDate()));
-							row.add(sale); // product object added in order to obtain it with tableModelProducts.getValueAt(i,2)
-							tableModelProducts.addRow(row);
-						}
-								
-					}
-				} catch (Exception e1) {
-
-					e1.printStackTrace();
+		JLabel mezua = new JLabel("");
+		mezua.setBounds(142, 191, 213, 17);
+		getContentPane().add(mezua);
+		
+		JTextField produktuIzena = new JTextField();
+		produktuIzena.setBounds(50, 75, 250, 25);
+		getContentPane().add(produktuIzena);
+		produktuIzena.setColumns(10);
+		
+		JLabel produktuKategoriaLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.produktuKategoria"));
+		produktuKategoriaLbl.setBounds(50, 119, 189, 17);
+		getContentPane().add(produktuKategoriaLbl);
+		
+		JLabel produktuIzenaLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.productName")); 
+		produktuIzenaLbl.setBounds(50, 50, 189, 17);
+		getContentPane().add(produktuIzenaLbl);
+		
+		JButton eskaintzaSortuButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.EskaeraSortu"));
+		eskaintzaSortuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String kategoria = (String)jComboBoxKategoria.getSelectedItem();
+				String productName = produktuIzena.getText();
+				Eskaera eskaera = facade.sortuEskaera(productName, kategoria, email);
+				if (eskaera!=null) {
+					mezua.setText(ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.mezua"));
 				}
-				tableProducts.getColumnModel().getColumn(0).setPreferredWidth(200);
-				tableProducts.getColumnModel().getColumn(1).setPreferredWidth(10);
-				tableProducts.getColumnModel().getColumn(1).setPreferredWidth(70);
-
-				tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(3)); // not shown in JTable
-		 		
-		 	}
-		 });
-		jButtonSearch.setBounds(427, 56, 117, 29);
-		getContentPane().add(jButtonSearch);
+			}
+		});
+		eskaintzaSortuButton.setBounds(50, 232, 160, 30);
+		getContentPane().add(eskaintzaSortuButton);
 		
-	    
-		tableProducts.addMouseListener(new MouseAdapter() {
-		        @Override
-		        public void mousePressed(MouseEvent mouseEvent) {
-		            
-		            if(mouseEvent.getClickCount() == 2)
-		            {
-				        JTable table =(JTable) mouseEvent.getSource();
-		            	Point point = mouseEvent.getPoint();
-				        int row = table.rowAtPoint(point);
-		            	Sale s=(Sale) tableModelProducts.getValueAt(row, 3);
-			            new ShowSaleGUI(s, loggedEmail,aurrekoPantaila);
-		            }
-		        }
-		 });
+		
+		
+		
+		
+		
+		
 	}
 }
 

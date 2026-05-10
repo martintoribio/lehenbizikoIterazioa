@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
@@ -22,33 +23,33 @@ public class Eskaera implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@XmlID
 	@Id 
-	private String idEskaera;
+	@XmlJavaTypeAdapter(IntegerAdapter.class)
+	@GeneratedValue
+	private Integer idEskaera;
 	private String produktuIzena;
+	private boolean bought;
 	private String kategoria;
-	private String egoera;
 
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private User user;
 	
 	@OneToMany(cascade=CascadeType.PERSIST)
-	private Eskaintza eskaintza;
+	private List<Eskaintza> eskaintzak = new ArrayList<Eskaintza>();
 	
 	
 	public Eskaera() {
 		super();
 	}
 
-	public Eskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, User user) {
-		this.idEskaera = idEskaera;
+	public Eskaera(String produktuIzena, String kategoria, User user) {
 		this.produktuIzena = produktuIzena;
+		this.bought = false;
 		this.kategoria = kategoria;
-		this.egoera = egoera;
 		this.user = user;
-		
 	}
 	
-	public String getIdEskaera() {
+	public Integer getIdEskaera() {
 		return idEskaera;
 	}
 
@@ -56,18 +57,26 @@ public class Eskaera implements Serializable {
 		return produktuIzena;
 	}
 
+	public boolean isBought() {
+		return bought;
+	}
+	
+	public void setBought() {
+		this.bought=true;
+	}
+	
 	public String getKategoria() {
 		return kategoria;
 	}
-	
-	public String getEgoera() {
-		return egoera;
-	}
 
-	
+	public Eskaintza addEskaintza(String erantzunMezua, float prezioa, User user) {
+		Eskaintza eskaintza = new Eskaintza(erantzunMezua, prezioa, this, user);
+		eskaintzak.add(eskaintza);
+		return eskaintza;
+	}
 	
 	public String toString(){
-		return idEskaera+";"+produktuIzena+ ";" + kategoria + ";" + egoera;
+		return idEskaera+";"+produktuIzena+ ";" + bought + ";" + kategoria;
 	}
 	
 	

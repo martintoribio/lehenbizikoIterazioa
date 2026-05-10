@@ -10,6 +10,7 @@ import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Eskaera;
+import domain.Eskaintza;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -98,8 +99,12 @@ public interface BLFacade  {
 	@WebMethod public List<String> kategoriakAldatu(String email, List<String> kategoriak);
 	@WebMethod public List<Notifikazioa> getNotifikazioak(String email);
 	@WebMethod public List<Sale> getSellerSales(String email, User seller);
-	@WebMethod public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email); 
-
+	@WebMethod public Eskaera sortuEskaera(String produktuIzena, String kategoria, String email); 
+	@WebMethod public Eskaintza erantzunEskaera(String erantzunMezua, float prezioa, Eskaera eskaera, String email);
+	@WebMethod public boolean onartuEskaintza(Eskaera eskaera, String emailSaltzaile, Eskaintza eskaintza) throws NahikoDirurikEzException;
+	@WebMethod public void ezeztatuEskaintza(Eskaintza eskaintza);
+	@WebMethod public List<Eskaera> getEskaerak();
+	@WebMethod public List<Eskaintza> getEskaintzak(Eskaera eskaera);
 
 }
 

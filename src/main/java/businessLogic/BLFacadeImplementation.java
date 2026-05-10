@@ -13,6 +13,7 @@ import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Eskaera;
+import domain.Eskaintza;
 import domain.Sale;
 import domain.User;
 import domain.Txartela;
@@ -297,14 +298,52 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return ofertak;
 	}
-	 @WebMethod
-		public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+	@WebMethod
+	public Eskaera sortuEskaera(String produktuIzena, String kategoria, String email) {
 			dbManager.open();
-			Eskaera esk=dbManager.sortuEskaera(idEskaera, produktuIzena, kategoria, egoera, email);		
+			Eskaera esk=dbManager.sortuEskaera(produktuIzena, kategoria, email);		
 			dbManager.close();
 			return esk;
-	   };
+	 };
+	 
+	@WebMethod 
+	public Eskaintza erantzunEskaera(String erantzunMezua,float prezioa, Eskaera eskaera, String email) {
+		dbManager.open();
+		Eskaintza eskaintza = dbManager.erantzunEskaera(erantzunMezua, prezioa, eskaera, email);
+		dbManager.close();
+		return eskaintza;
+	}
+	
+	@WebMethod
+	public boolean onartuEskaintza(Eskaera eskaera, String emailSaltzaile, Eskaintza eskaintza) throws NahikoDirurikEzException{
+		dbManager.open();
+		boolean b = dbManager.onartuEskaintza(eskaera, emailSaltzaile, eskaintza);
+		dbManager.close();
+		return b;
+	}
+	
+	@WebMethod
+	public void ezeztatuEskaintza(Eskaintza eskaintza) {
+		dbManager.open();
+		dbManager.ezeztatuEskaintza(eskaintza);
+		dbManager.close();
+	}
 		
+	@WebMethod 
+	public List<Eskaera> getEskaerak(){
+		dbManager.open();
+		List<Eskaera> eskaerak = dbManager.getEskaerak();
+		dbManager.close();
+		return eskaerak;
+	}
+	@WebMethod 
+	public List<Eskaintza> getEskaintzak(Eskaera eskaera){
+		dbManager.open();
+		List<Eskaintza> eskaintzak = dbManager.getEskaintzak(eskaera);
+		dbManager.close();	
+		return eskaintzak;
+	}
+	
 
 }
 

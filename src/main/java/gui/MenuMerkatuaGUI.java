@@ -28,7 +28,13 @@ public class MenuMerkatuaGUI extends JFrame {
             new EskaeraSortuGUI(this, sellerMail, this).setVisible(true);
             this.setVisible(false);
         });
-
+        
+        JButton btnQueryEskaerak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryEskaerak"));
+        btnQueryEskaerak.addActionListener(e -> {
+            new QueryEskaerakGUI(this, sellerMail, this).setVisible(true);
+            this.setVisible(false);
+        });
+        
         JButton btnAtzera = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
         btnAtzera.addActionListener(e -> {
             pantailaNagusia.setVisible(true);
@@ -36,10 +42,11 @@ public class MenuMerkatuaGUI extends JFrame {
         });
         
 
-        jContentPane = new JPanel(new GridLayout(4, 1, 0, 0));
+        jContentPane = new JPanel(new GridLayout(5, 1, 0, 0));
         jContentPane.add(btnCreateQuery);
         jContentPane.add(btnQueryQueries);
         jContentPane.add(btnEskaeraSortu);
+        jContentPane.add(btnQueryEskaerak);
         jContentPane.add(btnAtzera);
         setContentPane(jContentPane);
     }

@@ -27,6 +27,7 @@ import domain.Notifikazioa;
 import domain.Salaketa;
 import domain.Erreklamazioa;
 import domain.Eskaera;
+import domain.Eskaintza;
 import domain.Sale;
 import domain.Txartela;
 import domain.User;
@@ -104,13 +105,19 @@ public class DataAccess {
 			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", "Kirolak", 2, 10, today, null);
 			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi", "Moda", 2, 20, today, null);
 			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
-
+			user1.addEskaera("saskibaloi baloia", "Kirolak");
+			user1.addEskaera("korrika egiteko zapatilak", "Moda");
+			
+			
 			user2.addSale("imac 27", "7 urte, dena ondo dabil", "Elektronika", 1, 200, today, null);
 			user2.addSale("iphone 17", "oso gutxi erabilita", "Elektronika", 2, 400, today, null);
 			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", "Kirolak", 3, 225, today, null);
 			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", "Moda",  3, 30, today, null);
+			user2.addEskaera("eskumuturreko erlojua", "Moda");
 			
 			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", "Altzariak", 3, 45, today, null);
+			user3.addEskaera("zartagina", "Altzariak");
+			
 			
 			db.persist(user1);
 			db.persist(user2);
@@ -597,15 +604,70 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	}
 	
 	
-	public Eskaera sortuEskaera(String idEskaera, String produktuIzena, String kategoria, String egoera, String email) {
+	public Eskaera sortuEskaera(String produktuIzena, String kategoria, String email) {
 		db.getTransaction().begin();
 		User user = db.find(User.class, email);
 		if (user!=null) {
-			Eskaera esk = user.addEskaera(idEskaera, produktuIzena, kategoria, egoera);
+			Eskaera esk = user.addEskaera(produktuIzena, kategoria);
+			db.getTransaction().commit();
 			return esk;
 		}
+		db.getTransaction().rollback();
 		return null;
-		
+	}
+	
+	public List<Eskaera> getEskaerak() {
+		TypedQuery<Eskaera> query = db.createQuery("SELECT e FROM Eskaera e WHERE e.bought=false", Eskaera.class);
+		return query.getResultList();
+	}
+	
+	public Eskaintza erantzunEskaera(String erantzunMezua, float prezioa, Eskaera eskaera, String email) {
+		db.getTransaction().begin();
+		User user = db.find(User.class, email);
+		Eskaera mEskaera = db.find(Eskaera.class, eskaera.getIdEskaera());
+		if (user!=null) {
+			Eskaintza eskaintza = mEskaera.addEskaintza(erantzunMezua, prezioa, user);
+			user.addEskaintza(eskaintza);
+			db.getTransaction().commit();
+			return eskaintza;
+		}
+		db.getTransaction().rollback();
+		return null;
+	}
+	
+	public List<Eskaintza> getEskaintzak(Eskaera eskaera) {
+		TypedQuery <Eskaintza> query = db.createQuery("SELECT e FROM Eskaintza e WHERE e.eskaera=:eskaera", Eskaintza.class);
+		query.setParameter("eskaera", eskaera);
+		return query.getResultList();
+	}
+	
+	public boolean onartuEskaintza(Eskaera eskaera, String emailSaltzaile, Eskaintza eskaintza) throws NahikoDirurikEzException{
+		db.getTransaction().begin();
+		User saltzaile = db.find(User.class, emailSaltzaile);
+		User erosle = eskaintza.getEroslea();
+		if (saltzaile!=null && erosle!=null) {
+			float prezioa = eskaintza.getPrezioa();
+			float erosleSaldoa = erosle.getSaldoa();
+			if (erosleSaldoa>=prezioa) {
+				erosle.diruaKendu(prezioa);
+				saltzaile.diruaGehitu(prezioa);
+				eskaera.setBought();
+				eskaintza.setOnartua();
+				db.getTransaction().commit();
+				return true;
+			} else {
+				db.getTransaction().rollback();
+				throw new NahikoDirurikEzException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.NahikoDirurikEzException"));
+			}
+		}
+		db.getTransaction().rollback();
+		return false;
+	}
+	
+	public void ezeztatuEskaintza(Eskaintza eskaintza) {
+		db.getTransaction().begin();
+		eskaintza.setEzeztatua();
+		db.getTransaction().commit();
 	}
 	
 	public void close() {
