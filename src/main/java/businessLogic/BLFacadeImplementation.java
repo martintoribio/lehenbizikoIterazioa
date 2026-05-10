@@ -344,6 +344,21 @@ public class BLFacadeImplementation  implements BLFacade {
 		return eskaintzak;
 	}
 	
+	@WebMethod
+	public List<Eskaera> getNireEskaerak(String email){
+		dbManager.open();
+		List<Eskaera> eskaerak = dbManager.getNireEskaerak(email);
+		dbManager.close();
+		return eskaerak;
+	}
+	
+	@WebMethod 
+	public List<Eskaintza> getNireEskaintzak(String email){
+		dbManager.open();
+		List <Eskaintza> eskaintzak = dbManager.getNireEskaintzak(email);
+		dbManager.close();
+		return eskaintzak;
+	}
 
 }
 

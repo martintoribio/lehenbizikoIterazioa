@@ -105,6 +105,8 @@ public interface BLFacade  {
 	@WebMethod public void ezeztatuEskaintza(Eskaintza eskaintza);
 	@WebMethod public List<Eskaera> getEskaerak();
 	@WebMethod public List<Eskaintza> getEskaintzak(Eskaera eskaera);
+	@WebMethod public List<Eskaera> getNireEskaerak(String email);
+	@WebMethod public List<Eskaintza> getNireEskaintzak(String email);
 
 }
 

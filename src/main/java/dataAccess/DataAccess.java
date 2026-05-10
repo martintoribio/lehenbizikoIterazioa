@@ -621,6 +621,13 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 		return query.getResultList();
 	}
 	
+	public List<Eskaera> getNireEskaerak(String email){
+		TypedQuery<Eskaera> query = db.createQuery("SELECT e FROM Eskaera e WHERE e.bought=false AND e.user=:user", Eskaera.class);
+		User user = db.find(User.class, email);
+		query.setParameter("user", user);
+		return query.getResultList();
+	}
+	
 	public Eskaintza erantzunEskaera(String erantzunMezua, float prezioa, Eskaera eskaera, String email) {
 		db.getTransaction().begin();
 		User user = db.find(User.class, email);
@@ -638,6 +645,13 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	public List<Eskaintza> getEskaintzak(Eskaera eskaera) {
 		TypedQuery <Eskaintza> query = db.createQuery("SELECT e FROM Eskaintza e WHERE e.eskaera=:eskaera", Eskaintza.class);
 		query.setParameter("eskaera", eskaera);
+		return query.getResultList();
+	}
+	
+	public List<Eskaintza> getNireEskaintzak(String email) {
+		User user = db.find(User.class, email);
+		TypedQuery<Eskaintza> query = db.createQuery("SELECT e FROM Eskaintza e WHERE e.user=:user", Eskaintza.class);
+		query.setParameter("user", user);
 		return query.getResultList();
 	}
 	
