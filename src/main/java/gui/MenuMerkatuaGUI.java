@@ -19,13 +19,13 @@ public class MenuMerkatuaGUI extends JFrame {
 
         JButton btnQueryQueries = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QuerySales"));
         btnQueryQueries.addActionListener(e -> {
-            new QuerySalesGUI(this, sellerMail, this).setVisible(true);
+            new QuerySalesGUI(this, sellerMail).setVisible(true);
             this.setVisible(false);
         });
         
         JButton btnEskaeraSortu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.EskaeraSortu"));
         btnEskaeraSortu.addActionListener(e -> {
-            new EskaeraSortuGUI(this, sellerMail, this).setVisible(true);
+            new EskaeraSortuGUI(this, sellerMail).setVisible(true);
             this.setVisible(false);
         });
         

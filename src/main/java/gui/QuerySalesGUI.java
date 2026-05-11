@@ -41,7 +41,7 @@ public class QuerySalesGUI extends JFrame {
 	private String loggedEmail;
 
 	
-	public QuerySalesGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QuerySalesGUI(JFrame pantaila, String email) {
 		jasotakoPantaila=pantaila;
 		this.loggedEmail = email;
 		tableProducts.setEnabled(false);
@@ -131,7 +131,7 @@ public class QuerySalesGUI extends JFrame {
 					Point point = mouseEvent.getPoint();
 					int row = table.rowAtPoint(point);
 					Sale s=(Sale) tableModelProducts.getValueAt(row, 4);
-					new ShowSaleGUI(s, loggedEmail,aurrekoPantaila);
+					new ShowSaleGUI(s, loggedEmail,pantaila);
 				}
 			}
 		});

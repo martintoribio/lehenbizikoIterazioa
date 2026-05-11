@@ -23,7 +23,7 @@ public class QueryAztertzekoSalaketakGUI extends JFrame {
 	private JFrame unekoPantaila = this;
 	private String[] columnNamesProducts = new String[] { "Salaketa","Produktua", "Erabiltzailea"};
 
-	public QueryAztertzekoSalaketakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QueryAztertzekoSalaketakGUI(JFrame pantaila, String email) {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(750, 300));
 		this.setTitle("Salaketak");

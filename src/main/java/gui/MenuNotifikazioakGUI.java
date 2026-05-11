@@ -17,7 +17,7 @@ public class MenuNotifikazioakGUI extends JFrame {
 
         JButton viewSalaketak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryReports"));
         viewSalaketak.addActionListener(e -> {
-            new QuerySalaketakGUI(this, sellerMail, this).setVisible(true);
+            new QuerySalaketakGUI(this, sellerMail).setVisible(true);
             this.setVisible(false);
         });
         
