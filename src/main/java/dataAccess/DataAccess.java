@@ -104,8 +104,8 @@ public class DataAccess {
 
 			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", "Kirolak", 2, 10, today, null);
 			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi", "Moda", 2, 20, today, null);
-			Sale sale1 = user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
-			user1.addEskaera("saskibaloi baloia", "Kirolak");
+			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
+			Eskaera eskaera = user1.addEskaera("saskibaloi baloia", "Kirolak");
 			user1.addEskaera("korrika egiteko zapatilak", "Moda");
 			
 			
@@ -114,9 +114,11 @@ public class DataAccess {
 			user2.addSale("orbea mendiko bizikleta", "29\" 10 urte, mantenua behar du", "Kirolak", 3, 225, today, null);
 			user2.addSale("polar kilor erlojua", "Vantage M, ondo dago", "Moda",  3, 30, today, null);
 			user2.addEskaera("eskumuturreko erlojua", "Moda");
+			eskaera.addEskaintza("Nik kalitate oneko baloi bat dut", 67, user2);
 			
 			user3.addSale("sukaldeko mahaia", "1.8*0.8, 4 aulkiekin. Prezio finkoa", "Altzariak", 3, 45, today, null);
 			user3.addEskaera("zartagina", "Altzariak");
+			eskaera.addEskaintza("Ez da kalitate onekoa baina merke saltzen dut. ", 4, user3);
 			
 			
 			db.persist(user1);
@@ -328,22 +330,25 @@ public class DataAccess {
 			User user = db.find(User.class, email);
 			float saldoa = user.getSaldoa();
 			float prezioa = sale.getPrice();
-			if (saldoa-prezioa>=0) {
-				sale.setBought(true);
-				user.diruaKendu(prezioa);
-				user.addBought(sale);
-				String title = sale.getTitle();
-				Mugimendua mugi = user.addMugimendua("Erosketa: " + title, prezioa*(-1));
-				User seller = sale.getSeller();
-				seller.diruaGehitu(prezioa);
-				Mugimendua mugi2 = seller.addMugimendua("Salmenta: " + title, prezioa);
-				db.getTransaction().commit();
-				return sale;
+			if (!sale.isBought()) {
+				if (saldoa-prezioa>=0) {
+					sale.setBought(true);
+					user.diruaKendu(prezioa);
+					user.addBought(sale);
+					String title = sale.getTitle();
+					Mugimendua mugi = user.addMugimendua("Erosketa: " + title, prezioa*(-1));
+					User seller = sale.getSeller();
+					seller.diruaGehitu(prezioa);
+					Mugimendua mugi2 = seller.addMugimendua("Salmenta: " + title, prezioa);
+					db.getTransaction().commit();
+					return sale;
+				} else {
+					throw new NahikoDirurikEzException(
+							ResourceBundle.getBundle("Etiquetas").getString("DataAccess.NahikoDirurikEzException"));
+				}
 			} else {
-				throw new NahikoDirurikEzException(
-						ResourceBundle.getBundle("Etiquetas").getString("DataAccess.NahikoDirurikEzException"));
+				return null;
 			}
-
 		} catch (NahikoDirurikEzException e) {
 			db.getTransaction().rollback();
 			throw e;
@@ -643,7 +648,7 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	}
 	
 	public List<Eskaintza> getEskaintzak(Eskaera eskaera) {
-		TypedQuery <Eskaintza> query = db.createQuery("SELECT e FROM Eskaintza e WHERE e.eskaera=:eskaera", Eskaintza.class);
+		TypedQuery <Eskaintza> query = db.createQuery("SELECT e FROM Eskaintza e WHERE e.eskaera=:eskaera AND e.egoera='Ikusi gabe' AND e.eskaera.bought=false", Eskaintza.class);
 		query.setParameter("eskaera", eskaera);
 		return query.getResultList();
 	}
@@ -658,29 +663,38 @@ public boolean erreklamazioaOnartu(Integer idErreklam) {
 	public boolean onartuEskaintza(Eskaera eskaera, String emailSaltzaile, Eskaintza eskaintza) throws NahikoDirurikEzException{
 		db.getTransaction().begin();
 		User saltzaile = db.find(User.class, emailSaltzaile);
-		User erosle = eskaintza.getEroslea();
-		if (saltzaile!=null && erosle!=null) {
-			float prezioa = eskaintza.getPrezioa();
+		Eskaintza eskaintz = db.find(Eskaintza.class, eskaintza.getIdEskaintza());
+		User erosle = eskaintz.getEroslea();
+		Eskaera eskaer = db.find(Eskaera.class, eskaera.getIdEskaera());
+		if (saltzaile!=null && erosle!=null && !eskaera.isBought()) {
+			float prezioa = eskaintz.getPrezioa();
 			float erosleSaldoa = erosle.getSaldoa();
 			if (erosleSaldoa>=prezioa) {
 				erosle.diruaKendu(prezioa);
 				saltzaile.diruaGehitu(prezioa);
-				eskaera.setBought();
-				eskaintza.setOnartua();
+				eskaer.setBought();
+				eskaintz.setOnartua();
+				String title = eskaer.getProduktuIzena();
+				Mugimendua mugi = erosle.addMugimendua("Eskaera: " + title, prezioa*(-1));
+				Mugimendua mugi2 = saltzaile.addMugimendua("Eskaera salmenta: " + title, prezioa);
+				eskaintz.setOnartua();
 				db.getTransaction().commit();
 				return true;
 			} else {
 				db.getTransaction().rollback();
 				throw new NahikoDirurikEzException(ResourceBundle.getBundle("Etiquetas").getString("DataAccess.NahikoDirurikEzException"));
 			}
+		} else {
+			db.getTransaction().rollback();
+			return false;
 		}
-		db.getTransaction().rollback();
-		return false;
+
 	}
 	
 	public void ezeztatuEskaintza(Eskaintza eskaintza) {
 		db.getTransaction().begin();
-		eskaintza.setEzeztatua();
+		Eskaintza esk = db.find(Eskaintza.class, eskaintza.getIdEskaintza());
+		esk.setEzeztatua();
 		db.getTransaction().commit();
 	}
 	

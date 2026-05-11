@@ -63,7 +63,7 @@ public class QueryNireEskaerakGUI extends JFrame {
                     int row = table.rowAtPoint(mouseEvent.getPoint());
                     Eskaera esk = (Eskaera) tableModelProducts.getValueAt(row, 2);
                     thisFrame.setVisible(false);
-                    new EskaintzakGUI(thisFrame, esk).setVisible(true);                }
+                    new QueryEskaintzakGUI(thisFrame, esk, email).setVisible(true);                }
             }
         });
 

@@ -30,7 +30,7 @@ public class Sale implements Serializable {
 	private float price;
 	private Date pubDate;
 	private String fileName;
-	public boolean bought=false;
+	private boolean bought=false;
 	@ManyToOne
 	private User user;  
 	
@@ -244,7 +244,10 @@ public class Sale implements Serializable {
 		bought =b;
 	}
 
-
+	public boolean isBought() {
+		return bought;
+	}
+	
 	public boolean hasErreklam() {
 		if (erreklamazioa != null) {
 			return true;

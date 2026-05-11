@@ -48,6 +48,9 @@ public class Eskaintza implements Serializable {
 		this.egoera = "Ikusi gabe";
 	}
 	
+	public Integer getIdEskaintza() {
+		return idEskaintza;
+	}
 	
 	public String getErantzunMezua() {
 		return erantzunMezua;

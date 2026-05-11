@@ -148,7 +148,7 @@ public class ShowSaleGUI extends JFrame{
 		
 		unekoSaldoa = facade.getSaldoa(email);
 		saldoa.setText(unekoSaldoa + "€");
-		saldoa.setBounds(new Rectangle(520, 56, 90, 20));
+		saldoa.setBounds(new Rectangle(470, 166, 90, 20));
 		getContentPane().add(saldoa);
 		String file=sale.getFile();
 		if (file!=null) {
@@ -164,11 +164,13 @@ public class ShowSaleGUI extends JFrame{
 	    buyButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		try {
-	    			facade.buy(sale, email);
-	    			float prezioa = sale.getPrice();
-	    			unekoSaldoa -= prezioa;
-	    			saldoa.setText(unekoSaldoa + "€");
-		    		dispose();
+	    			Sale sale2 = facade.buy(sale, email);
+	    			if (sale2!=null) {
+	    				float prezioa = sale.getPrice();
+		    			unekoSaldoa -= prezioa;
+		    			saldoa.setText(unekoSaldoa + "€");
+			    		dispose();
+	    			}
 	    		} catch (NahikoDirurikEzException exc) {
 	    			jLabelError.setText(exc.getMessage());
 	    		}
@@ -195,13 +197,13 @@ public class ShowSaleGUI extends JFrame{
 	    	public void actionPerformed(ActionEvent e) {
 	    		List<Sale> erosketak = new ArrayList<>();
 	    		erosketak.add(sale);
-	    		JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, ShowSaleGUI.this, erosketak);
+	    		JFrame hurrengoPantaila = new QueryMultipleSalesGUI(thisFrame, email, erosketak);
 	    		hurrengoPantaila.setVisible(true);
 	    	}
 	    });
 	    
 	    multipleBuy.setVisible(true);
-	    multipleBuy.setBounds(227, 187, 333, 38);
+	    multipleBuy.setBounds(227, 212, 333, 38);
 	    getContentPane().add(multipleBuy);
 	    
 		

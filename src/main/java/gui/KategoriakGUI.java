@@ -65,7 +65,7 @@ public class KategoriakGUI extends JFrame {
 		checkBoxes.add(chckbxNewCheckBox_3);
 		
 		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("KategoriakGUI.title"));
-		lblNewLabel.setBounds(121, 22, 246, 21);
+		lblNewLabel.setBounds(61, 22, 306, 21);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("KategoriakGUI.botoia")); 

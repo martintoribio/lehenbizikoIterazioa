@@ -100,7 +100,7 @@ public class QuerySalesGUI extends JFrame {
 					else jLabelProducts.setText(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Products"));
 
 					for (domain.Sale sale : sales) {
-						if (!sale.bought) {
+						if (!sale.isBought()) {
 							Vector<Object> row = new Vector<Object>();
 							row.add(sale.getTitle());
 							row.add(sale.getPrice());

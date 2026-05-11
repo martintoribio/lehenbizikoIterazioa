@@ -38,7 +38,7 @@ public class QueryMultipleSalesGUI extends JFrame {
 	private String loggedEmail;
 	private List<Sale> displayedSales = new ArrayList<>(); 
 	
-	public QueryMultipleSalesGUI(JFrame pantaila, String email, JFrame aurrekoPantaila, List<Sale> saskia) {
+	public QueryMultipleSalesGUI(JFrame pantaila, String email, List<Sale> saskia) {
 		jasotakoPantaila = pantaila;
 		this.loggedEmail = email;
 		thisFrame = this;

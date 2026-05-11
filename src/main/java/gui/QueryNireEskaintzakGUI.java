@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class QueryNireEskaintzakGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private final JLabel jLabelEskaerak = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryEskaerak.Products"));
+    private final JLabel jLabelEskaerak = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QuerySalesGUI.Products"));
     private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
     private JScrollPane scrollPanelProducts = new JScrollPane();
     private JTable tableProducts = new JTable();
@@ -47,7 +47,7 @@ public class QueryNireEskaintzakGUI extends JFrame {
         tableModelProducts.setColumnCount(3);
         tableProducts.getColumnModel().getColumn(0).setPreferredWidth(180);
         tableProducts.getColumnModel().getColumn(1).setPreferredWidth(120);
-        tableProducts.getColumnModel().removeColumn(tableProducts.getColumnModel().getColumn(2));
+        tableProducts.getColumnModel().getColumn(2).setPreferredWidth(100);
         this.getContentPane().add(scrollPanelProducts, null);
 
         jButtonClose.setBounds(170, 300, 130, 30);
