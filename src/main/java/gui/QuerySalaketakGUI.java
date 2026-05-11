@@ -24,6 +24,7 @@ public class QuerySalaketakGUI extends JFrame {
 	private String[] columnNamesProducts = new String[] { "Salaketa", "Produktua", "Egoera"};
 
 	public QuerySalaketakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(600, 400));
 		this.setTitle("Salaketak");
@@ -46,6 +47,12 @@ public class QuerySalaketakGUI extends JFrame {
 		this.getContentPane().add(scrollPanelProducts, null);
 
 		loadReports(email);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(1);
+			}
+		});
 	}
 
 	private void loadReports(String email) {

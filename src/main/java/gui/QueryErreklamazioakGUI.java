@@ -24,6 +24,7 @@ public class QueryErreklamazioakGUI extends JFrame {
 	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua", "Egoera"};
 
 	public QueryErreklamazioakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(600, 400));
 		this.setTitle("Erreklamazioak");
@@ -46,6 +47,12 @@ public class QueryErreklamazioakGUI extends JFrame {
 		this.getContentPane().add(scrollPanelProducts, null);
 
 		loadErreklamazioak(email);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(1);
+			}
+		});
 	}
 
 	private void loadErreklamazioak(String email) {
