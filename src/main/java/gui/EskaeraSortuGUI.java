@@ -28,7 +28,7 @@ public class EskaeraSortuGUI extends JFrame {
 	private JTextField textField;
 	BLFacade facade = MainGUI.getBusinessLogic();
 	
-	public EskaeraSortuGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public EskaeraSortuGUI(JFrame pantaila, String email) {
 		jasotakoPantaila=pantaila;
 		this.loggedEmail = email;
 		thisFrame=this;

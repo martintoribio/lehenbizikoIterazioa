@@ -21,7 +21,7 @@ public class QueryErreklamazioakGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryErreklamazioakGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua", "Egoera"};
+	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua",  ResourceBundle.getBundle("Etiquetas").getString("Status")};
 
 	public QueryErreklamazioakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

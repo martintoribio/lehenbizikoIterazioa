@@ -76,7 +76,7 @@ public class EskaeraErantzunGUI extends JFrame {
 		JButton eskaeraErantzunButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.EskaeraErantzun"));
 		eskaeraErantzunButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!erantzunMezuaArea.getText().trim().isEmpty() && prezioaField.getText().trim().isEmpty()) {
+				if(!erantzunMezuaArea.getText().trim().isEmpty() && !prezioaField.getText().trim().isEmpty()) {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 						String erantzunMezua = erantzunMezuaArea.getText();

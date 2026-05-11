@@ -26,7 +26,7 @@ public class QueryBoughtGUI extends JFrame {
 			ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.PublicationDate") 
 	};
 
-	public QueryBoughtGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QueryBoughtGUI(JFrame pantaila, String email) {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(750, 500));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QueryBoughtGUI.name"));
@@ -63,7 +63,7 @@ public class QueryBoughtGUI extends JFrame {
 				if (mouseEvent.getClickCount() == 2) {
 					int row = tableProducts.rowAtPoint(mouseEvent.getPoint());
 					Sale s = (Sale) tableModelProducts.getValueAt(row, 4);
-					new ShowBoughtSaleGUI(s,email,aurrekoPantaila);
+					new ShowBoughtSaleGUI(s,email,pantaila);
 				}
 			}
 		});

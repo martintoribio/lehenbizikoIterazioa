@@ -44,7 +44,7 @@ public class MainGUIErregistratuaArd extends JFrame {
 		JButton salaketaBut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratuaArd.Complaint"));
 		salaketaBut.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryAztertzekoSalaketakGUI(nirePantaila, mail,nirePantaila);
+		        JFrame a = new QueryAztertzekoSalaketakGUI(nirePantaila, mail);
 		        a.setVisible(true);
 		    }
 		});
@@ -54,7 +54,7 @@ public class MainGUIErregistratuaArd extends JFrame {
 		JButton errekBut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratuaArd.Claim"));
 		errekBut.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		        JFrame a = new QueryAztertzekoErreklamazioakGUI(nirePantaila, mail,nirePantaila);
+		        JFrame a = new QueryAztertzekoErreklamazioakGUI(nirePantaila, mail);
 		        a.setVisible(true);
 		    }
 		});
