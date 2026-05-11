@@ -11,7 +11,7 @@ public class MenuNireEremuaGUI extends JFrame {
     private JPanel jContentPane;
     
     public MenuNireEremuaGUI(JFrame pantailaNagusia, String sellerMail) {
-        setSize(500, 300);
+        setSize(700, 300);
         setTitle("Nire Eremua - " + sellerMail);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -23,7 +23,19 @@ public class MenuNireEremuaGUI extends JFrame {
 
         JButton btnViewBought = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryBought"));
         btnViewBought.addActionListener(e -> {
-            new QueryBoughtGUI(this, sellerMail, this).setVisible(true);
+            new QueryBoughtGUI(this, sellerMail).setVisible(true);
+            this.setVisible(false);
+        });
+        
+        JButton btnViewEskaintzak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryEskaintza"));
+        btnViewEskaintzak.addActionListener(e -> {
+            new QueryNireEskaintzakGUI(this, sellerMail).setVisible(true);
+            this.setVisible(false);
+        });
+        
+        JButton btnViewNireEskaerak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.QueryNireEskaerak"));
+        btnViewNireEskaerak.addActionListener(e -> {
+            new QueryNireEskaerakGUI(this, sellerMail).setVisible(true);
             this.setVisible(false);
         });
 
@@ -37,9 +49,11 @@ public class MenuNireEremuaGUI extends JFrame {
         jContentPane.setLayout(new BorderLayout(10, 15));
         jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
         
-        JPanel panelZentroa = new JPanel(new GridLayout(1,2,15,0));
+        JPanel panelZentroa = new JPanel(new GridLayout(1,4,15,0));
         panelZentroa.add(btnViewFavorites);
         panelZentroa.add(btnViewBought);
+        panelZentroa.add(btnViewEskaintzak);
+        panelZentroa.add(btnViewNireEskaerak);
         jContentPane.add(panelZentroa, BorderLayout.CENTER);
         
         JPanel panelItxi = new JPanel(new FlowLayout(FlowLayout.CENTER));

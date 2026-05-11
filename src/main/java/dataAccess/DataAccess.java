@@ -104,7 +104,7 @@ public class DataAccess {
 
 			user1.addSale("futbol baloia", "oso polita, gutxi erabilita", "Kirolak", 2, 10, today, null);
 			user1.addSale("salomon mendiko botak", "44 zenbakia, 3 ateraldi", "Moda", 2, 20, today, null);
-			user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
+			Sale sale1 = user1.addSale("samsung 42\" telebista", "berria, erabili gabe", "Elektronika", 1, 175, today, null);
 			user1.addEskaera("saskibaloi baloia", "Kirolak");
 			user1.addEskaera("korrika egiteko zapatilak", "Moda");
 			

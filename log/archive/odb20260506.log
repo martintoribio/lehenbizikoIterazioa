@@ -1,0 +1,142 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-06 10:43:58 #1 store] 
+Database 'C:\Users\Jon\git\lehenbizikoIterazioaaa\src\main\resources\products.temp' is opened by 9644@LAPTOP-9T7B58EJ
+
+[2026-05-06 10:43:58 #2 type.registry] 
+New type domain.User
+
+[2026-05-06 10:43:58 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-06 10:43:58 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-06 10:43:58 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-06 10:43:58 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-06 10:43:58 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-06 10:43:58 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-06 10:43:58 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-06 10:43:58 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-06 10:43:58 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-06 10:43:58 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-06 10:43:58 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-06 10:43:58 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-06 10:43:58 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-06 10:43:58 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-06 10:43:58 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-06 10:43:58 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-06 10:43:58 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-06 10:43:58 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-06 10:43:58 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-06 10:43:58 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-06 10:43:58 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-06 11:37:24 #1 store] 
+Database 'C:\Users\Jon\git\lehenbizikoIterazioaaa\src\main\resources\products.temp' is opened by 2352@LAPTOP-9T7B58EJ
+
+[2026-05-06 11:37:24 #2 type.registry] 
+New type domain.User
+
+[2026-05-06 11:37:24 #3 type] 
+Type domain.User is not enhanced.
+
+[2026-05-06 11:37:24 #4 type.registry] 
+New type domain.Erreklamazioa
+
+[2026-05-06 11:37:24 #5 type.registry] 
+New type domain.Salaketa
+
+[2026-05-06 11:37:24 #6 type.registry] 
+New type domain.Mugimendua
+
+[2026-05-06 11:37:24 #7 type.registry] 
+New type domain.Sale
+
+[2026-05-06 11:37:24 #8 type.registry] 
+New type domain.Txartela
+
+[2026-05-06 11:37:24 #9 type] 
+Type domain.Erreklamazioa is not enhanced.
+
+[2026-05-06 11:37:24 #10 type] 
+Type domain.Salaketa is not enhanced.
+
+[2026-05-06 11:37:24 #11 type] 
+Type domain.Mugimendua is not enhanced.
+
+[2026-05-06 11:37:24 #12 type] 
+Type domain.Sale is not enhanced.
+
+[2026-05-06 11:37:24 #13 type.registry] 
+New type domain.Notifikazioa
+
+[2026-05-06 11:37:24 #14 type] 
+Type domain.Txartela is not enhanced.
+
+[2026-05-06 11:37:24 #15 type] 
+Type domain.Notifikazioa is not enhanced.
+
+[2026-05-06 11:37:24 #16 type.registry] 
+New type domain.Arduraduna
+
+[2026-05-06 11:37:24 #17 type] 
+Type domain.Arduraduna is not enhanced.
+
+[2026-05-06 11:37:24 #18 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+[2026-05-06 11:37:24 #19 type.registry] 
+New type java.util.ArrayList<java.lang.String>
+
+[2026-05-06 11:37:24 #20 type.registry] 
+New type java.util.ArrayList<domain.Sale>
+
+[2026-05-06 11:37:24 #21 type.registry] 
+New type java.util.ArrayList<domain.Mugimendua>
+
+[2026-05-06 11:37:24 #22 type.registry] 
+New type java.util.ArrayList<domain.Salaketa>
+
+[2026-05-06 11:37:24 #23 type.registry] 
+New type java.util.ArrayList<domain.Erreklamazioa>
+

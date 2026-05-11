@@ -21,9 +21,10 @@ public class QuerySalaketakGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelTitle = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QuerySalaketakGUI.name"));
 
-	private String[] columnNamesProducts = new String[] { "Salaketa", "Produktua", "Egoera"};
+	private String[] columnNamesProducts = new String[] { "Salaketa", "Produktua",  ResourceBundle.getBundle("Etiquetas").getString("Status")};
 
-	public QuerySalaketakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QuerySalaketakGUI(JFrame pantaila, String email) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(600, 400));
 		this.setTitle("Salaketak");
@@ -46,6 +47,12 @@ public class QuerySalaketakGUI extends JFrame {
 		this.getContentPane().add(scrollPanelProducts, null);
 
 		loadReports(email);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(1);
+			}
+		});
 	}
 
 	private void loadReports(String email) {

@@ -77,7 +77,7 @@ public class SalaketaIkusiGUI extends JFrame{
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thisFrame.dispose();
-				new QueryAztertzekoSalaketakGUI(aurrekoPantaila, email, aurrekoPantaila).setVisible(true);
+				new QueryAztertzekoSalaketakGUI(aurrekoPantaila, email).setVisible(true);
 				}
 		});
 		

@@ -24,7 +24,7 @@ public class QueryAztertzekoErreklamazioakGUI extends JFrame {
 	private JFrame unekoPantaila = this;
 	private String[] columnNamesProducts = new String[] { "Erreklamazioa", "Produktua", "Erabiltzailea"};
 
-	public QueryAztertzekoErreklamazioakGUI(JFrame pantaila, String email,JFrame aurrekoPantaila) {
+	public QueryAztertzekoErreklamazioakGUI(JFrame pantaila, String email) {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(750, 300));
 		this.setTitle("Erreklamazioak");

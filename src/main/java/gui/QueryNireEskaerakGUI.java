@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-public class QueryEskaerakGUI extends JFrame {
+public class QueryNireEskaerakGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private final JLabel jLabelEskaerak = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryEskaerak.Products"));
@@ -27,7 +27,7 @@ public class QueryEskaerakGUI extends JFrame {
     };
     private String loggedEmail;
 
-    public QueryEskaerakGUI(JFrame pantaila, String email, JFrame aurrekoPantaila) {
+    public QueryNireEskaerakGUI(JFrame pantaila, String email) {
         jasotakoPantaila = pantaila;
         this.loggedEmail = email;
         tableProducts.setEnabled(false);
@@ -62,7 +62,7 @@ public class QueryEskaerakGUI extends JFrame {
                     JTable table = (JTable) mouseEvent.getSource();
                     int row = table.rowAtPoint(mouseEvent.getPoint());
                     Eskaera esk = (Eskaera) tableModelProducts.getValueAt(row, 2);
-                    new EskaeraErantzunGUI(esk, email, thisFrame).setVisible(true);
+                    //Añadir aqui el bomboclat
                 }
             }
         });
@@ -73,7 +73,7 @@ public class QueryEskaerakGUI extends JFrame {
     private void loadEskaerak() {
         try {
             BLFacade facade = MainGUI.getBusinessLogic();
-            List<Eskaera> eskaerak = facade.getEskaerak();
+            List<Eskaera> eskaerak = facade.getNireEskaerak(loggedEmail);
             for (Eskaera esk : eskaerak) {
                 Vector<Object> row = new Vector<Object>();
                 row.add(esk.getProduktuIzena());

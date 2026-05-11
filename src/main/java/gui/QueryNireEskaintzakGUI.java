@@ -2,6 +2,7 @@ package gui;
 
 import businessLogic.BLFacade;
 import domain.Eskaera;
+import domain.Eskaintza;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-public class QueryEskaerakGUI extends JFrame {
+public class QueryNireEskaintzakGUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private final JLabel jLabelEskaerak = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryEskaerak.Products"));
@@ -23,11 +24,12 @@ public class QueryEskaerakGUI extends JFrame {
     private JFrame jasotakoPantaila;
     private String[] columnNamesProducts = new String[] {
             ResourceBundle.getBundle("Etiquetas").getString("EskaeraSortuGUI.productName"),
-            ResourceBundle.getBundle("Etiquetas").getString("CreateSaleGUI.Category"),
+            ResourceBundle.getBundle("Etiquetas").getString("Price"),
+            ResourceBundle.getBundle("Etiquetas").getString("Status")
     };
     private String loggedEmail;
 
-    public QueryEskaerakGUI(JFrame pantaila, String email, JFrame aurrekoPantaila) {
+    public QueryNireEskaintzakGUI(JFrame pantaila, String email) {
         jasotakoPantaila = pantaila;
         this.loggedEmail = email;
         tableProducts.setEnabled(false);
@@ -55,30 +57,20 @@ public class QueryEskaerakGUI extends JFrame {
         });
         this.getContentPane().add(jButtonClose, null);
 
-        tableProducts.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-                if (mouseEvent.getClickCount() == 2) {
-                    JTable table = (JTable) mouseEvent.getSource();
-                    int row = table.rowAtPoint(mouseEvent.getPoint());
-                    Eskaera esk = (Eskaera) tableModelProducts.getValueAt(row, 2);
-                    new EskaeraErantzunGUI(esk, email, thisFrame).setVisible(true);
-                }
-            }
-        });
 
-        loadEskaerak();
+        loadNireEskaintzak();
     }
 
-    private void loadEskaerak() {
+    private void loadNireEskaintzak() {
         try {
             BLFacade facade = MainGUI.getBusinessLogic();
-            List<Eskaera> eskaerak = facade.getEskaerak();
-            for (Eskaera esk : eskaerak) {
+            List<Eskaintza> eskaintzak = facade.getNireEskaintzak(loggedEmail);
+            for (Eskaintza esk : eskaintzak) {
                 Vector<Object> row = new Vector<Object>();
-                row.add(esk.getProduktuIzena());
-                row.add(esk.getKategoria());
-                row.add(esk);
+                Eskaera eskaera = esk.getEskaera();
+                row.add(eskaera.getProduktuIzena());
+                row.add(esk.getPrezioa());
+                row.add(esk.getEgoera());
                 tableModelProducts.addRow(row);
             }
         } catch (Exception e) {
