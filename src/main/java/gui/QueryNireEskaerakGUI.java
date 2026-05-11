@@ -62,8 +62,8 @@ public class QueryNireEskaerakGUI extends JFrame {
                     JTable table = (JTable) mouseEvent.getSource();
                     int row = table.rowAtPoint(mouseEvent.getPoint());
                     Eskaera esk = (Eskaera) tableModelProducts.getValueAt(row, 2);
-                    //Añadir aqui el bomboclat
-                }
+                    thisFrame.setVisible(false);
+                    new EskaintzakGUI(thisFrame, esk).setVisible(true);                }
             }
         });
 
