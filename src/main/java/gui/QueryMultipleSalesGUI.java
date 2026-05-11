@@ -20,8 +20,8 @@ public class QueryMultipleSalesGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	
 	// --- CAMBIO: Botón de pago y etiqueta de saldo ---
-	private JButton jButtonBuy = new JButton("Pagar Selección"); 
-	private JLabel jLabelSaldo = new JLabel();
+	private JButton jButtonBuy = new JButton(); 
+	private JLabel jLabelSaldoa = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.LabelSaldoa"));
 
 	private JScrollPane scrollPanelProducts = new JScrollPane();
 	private JTable tableProducts = new JTable();
@@ -47,17 +47,15 @@ public class QueryMultipleSalesGUI extends JFrame {
 		
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(700, 500));
-		this.setTitle("Finalizar Compra");
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.EndBuy"));
 
-		// --- CAMBIO: Configuración Visual del Saldo (Margen derecha arriba) ---
-		jLabelSaldo.setFont(new Font("Tahoma", Font.BOLD, 13));
-		jLabelSaldo.setForeground(new Color(0, 128, 0)); // Color verde éxito
-		jLabelSaldo.setHorizontalAlignment(SwingConstants.RIGHT);
-		jLabelSaldo.setBounds(420, 20, 230, 25);
+		jLabelSaldoa.setFont(new Font("Tahoma", Font.BOLD, 13));
+		jLabelSaldoa.setForeground(new Color(0, 128, 0)); 
+		jLabelSaldoa.setHorizontalAlignment(SwingConstants.RIGHT);
+		jLabelSaldoa.setBounds(420, 20, 230, 25);
 		actualizarSaldoUI(); 
-		this.getContentPane().add(jLabelSaldo);
+		this.getContentPane().add(jLabelSaldoa);
 
-		// Configuración de tabla con Checkbox
 		tableModelProducts = new DefaultTableModel(null, columnNamesProducts) {
 			@Override
 			public Class<?> getColumnClass(int columnIndex) {
@@ -140,9 +138,9 @@ public class QueryMultipleSalesGUI extends JFrame {
 		try {
 			BLFacade facade = MainGUI.getBusinessLogic();
 			float saldo = facade.getSaldoa(loggedEmail);
-			jLabelSaldo.setText("Tu Saldo: " + String.format("%.2f", saldo) + "€");
+			jLabelSaldoa.setText("Tu Saldo: " + String.format("%.2f", saldo) + "€");
 		} catch (Exception e) {
-			jLabelSaldo.setText("Saldo: ---");
+			jLabelSaldoa.setText("Saldo: ---");
 		}
 	}
 
