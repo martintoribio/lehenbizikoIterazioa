@@ -32,6 +32,12 @@ public class MenuNotifikazioakGUI extends JFrame {
             new QueryNotifikazioakGUI(sellerMail, this).setVisible(true);
             this.setVisible(false);
         });
+        
+        JButton jButtonChangeKategoriak = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUIErregistratua.AldatuKategoriak")); 
+        jButtonChangeKategoriak.addActionListener(e -> {
+            new KategoriakGUI(sellerMail).setVisible(true);
+            this.setVisible(false);
+        });
 
         JButton btnAtzera = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close")); 
         btnAtzera.addActionListener(e -> {
@@ -42,11 +48,11 @@ public class MenuNotifikazioakGUI extends JFrame {
         jContentPane = new JPanel(new BorderLayout(10, 15));
         jContentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
 
-        JPanel panelZentroa = new JPanel(new GridLayout(1, 3, 15, 0));
+        JPanel panelZentroa = new JPanel(new GridLayout(1, 4, 15, 0));
         panelZentroa.add(viewSalaketak);
         panelZentroa.add(viewErreklamazioak);
         panelZentroa.add(jButtonViewNotifikazioak);
-        
+        panelZentroa.add(jButtonChangeKategoriak);    
         jContentPane.add(panelZentroa, BorderLayout.CENTER);
 
         JPanel panelItxi = new JPanel(new FlowLayout(FlowLayout.CENTER));
