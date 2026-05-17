@@ -106,29 +106,38 @@ public class QueryMultipleSalesGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.ErrorNoSelect"));
 					return;
 				}
-
-				try {
-					for (Sale s : hautatutakoak) {
-						facade.buy(s, loggedEmail);
-						saskia.add(s);
-					}
-
-					JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.Success"));
-					
-					float saldoBerria = facade.getSaldoa(loggedEmail);
-					jLabelSaldoa.setText(ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.LabelSaldoa") + ": " + String.format("%.2f", saldoBerria) + "€");
-					
-					for (int j = errenkadak.size() - 1; j >= 0; j--) {
-						int index = errenkadak.get(j);
-						tableModelProducts.removeRow(index);
-						displayedSales.remove(index);
-					}
-
-				} catch (NahikoDirurikEzException ex) {
-					JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("NahikoDirurikEzException"), "Error", JOptionPane.ERROR_MESSAGE);
-				} catch (Exception ex) {
-					ex.printStackTrace();
+				float prezioTotala = 0;
+				for (Sale s : hautatutakoak) {
+					prezioTotala += s.getPrice();
 				}
+				float saldoa = facade.getSaldoa(email);
+				if (prezioTotala<=saldoa) {
+					try {
+						for (Sale s : hautatutakoak) {
+							facade.buy(s, loggedEmail);
+							saskia.add(s);
+						}
+						
+						JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.Success"));
+						
+						float saldoBerria = facade.getSaldoa(loggedEmail);
+						jLabelSaldoa.setText(ResourceBundle.getBundle("Etiquetas").getString("QueryMultipleSalesGUI.LabelSaldoa") + ": " + String.format("%.2f", saldoBerria) + "€");
+						
+						for (int j = errenkadak.size() - 1; j >= 0; j--) {
+							int index = errenkadak.get(j);
+							tableModelProducts.removeRow(index);
+							displayedSales.remove(index);
+						}
+
+					} catch (NahikoDirurikEzException ex) {
+						JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("NahikoDirurikEzException"), "Error", JOptionPane.ERROR_MESSAGE);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, ResourceBundle.getBundle("Etiquetas").getString("NahikoDirurikEzException"), "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		this.getContentPane().add(jButtonBuy);
